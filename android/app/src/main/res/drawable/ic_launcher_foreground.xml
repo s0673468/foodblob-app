@@ -1,0 +1,10 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!--
+  Reuse the exact iOS mascot composition. Its subject already sits inside Android's
+  central adaptive-icon safe zone, so every launcher mask keeps the face intact.
+-->
+<bitmap xmlns:android="http://schemas.android.com/apk/res/android"
+    android:antialias="true"
+    android:filter="true"
+    android:gravity="fill"
+    android:src="@drawable/foodblob_icon" />

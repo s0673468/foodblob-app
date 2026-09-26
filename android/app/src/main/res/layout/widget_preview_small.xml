@@ -1,0 +1,9 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!-- Native FoodWidgetArtworkRenderer fixture: green 4, yellow 2, red 1 at 2x.
+     Keep the launcher picker faithful to the installed widget composition. -->
+<ImageView xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:contentDescription="@string/widget_small_description"
+    android:scaleType="fitCenter"
+    android:src="@drawable/widget_picker_sky_meadow_small" />

@@ -1,0 +1,24 @@
+<?xml version="1.0" encoding="utf-8"?>
+<ripple xmlns:android="http://schemas.android.com/apk/res/android"
+    android:color="#70FF788A">
+    <!-- A native held state remains visible even when ripple motion is disabled. -->
+    <item android:id="@android:id/background">
+        <selector>
+            <item android:state_enabled="true" android:state_pressed="true">
+                <shape android:shape="rectangle">
+                    <gradient android:angle="270" android:startColor="#50FFFFFF"
+                        android:centerColor="#30FF788A" android:endColor="#18000000" />
+                    <stroke android:width="1dp" android:color="#60FFFFFF" />
+                    <corners android:radius="24dp" />
+                </shape>
+            </item>
+            <item android:drawable="@android:color/transparent" />
+        </selector>
+    </item>
+    <item android:id="@android:id/mask">
+        <shape android:shape="rectangle">
+            <solid android:color="#FFFFFFFF" />
+            <corners android:radius="24dp" />
+        </shape>
+    </item>
+</ripple>
