@@ -1,16 +1,25 @@
 #!/usr/bin/env bash
 set -euo pipefail
 
-if (( $# != 1 )); then
+preflight_only=false
+if [[ "${1:-}" == "--preflight" ]] && (( $# == 3 )); then
+  preflight_only=true
+  device_serial="$2"
+  supplied_apk="$3"
+elif (( $# == 1 )) && [[ "$1" != --* ]]; then
+  device_serial="$1"
+else
   echo "Usage: scripts/android_release_install.sh <adb-serial>" >&2
+  echo "       scripts/android_release_install.sh --preflight <adb-serial> <existing-apk>" >&2
   exit 2
 fi
-
-device_serial="$1"
 repo_root="$(cd "$(dirname "$0")/.." && pwd)"
 app_id="org.example.foodblob"
-track_id="com.health.track"
+track_id="org.example.track"
 release_apk="$repo_root/android/app/build/outputs/apk/release/app-release.apk"
+if [[ "$preflight_only" == true ]]; then
+  release_apk="$supplied_apk"
+fi
 sdk_root="${ANDROID_SDK_ROOT:-${ANDROID_HOME:-}}"
 
 adb_path="${sdk_root:+$sdk_root/platform-tools/adb}"
@@ -56,13 +65,23 @@ if [[ -z "$device_model" || -z "$device_fingerprint" || ! "$device_sdk" =~ ^[0-9
   exit 1
 fi
 
-"$repo_root/scripts/android_gradle.sh" :app:assembleRelease
+if [[ "$preflight_only" == false ]]; then
+  "$repo_root/scripts/android_gradle.sh" :app:assembleRelease
+fi
 if [[ ! -f "$release_apk" ]]; then
-  echo "Release APK was not produced." >&2
+  echo "Release APK does not exist: provide an existing APK for preflight." >&2
   exit 1
 fi
 
-badging="$($aapt2_path dump badging "$release_apk")"
+badging="$("$aapt2_path" dump badging "$release_apk")"
+if [[ ! "$badging" =~ package:\ name=\'([^\']+)\' ]] || [[ "${BASH_REMATCH[1]}" != "$app_id" ]]; then
+  echo "Refusing an APK whose package does not match $app_id." >&2
+  exit 1
+fi
+if [[ "$badging" == *application-debuggable* ]]; then
+  echo "Refusing a debuggable APK; the release must be non-debuggable." >&2
+  exit 1
+fi
 if [[ "$badging" =~ versionCode=\'([0-9]+)\' ]]; then
   built_version_code="${BASH_REMATCH[1]}"
 else
@@ -160,6 +179,12 @@ verify_installed_anchor "$track_id" "installed Track" "signature-permission"
 if (( anchor_count == 0 )); then
   echo "No trusted Food Blob signing anchor is available. Install matching Track first or set FOODBLOB_EXPECTED_SIGNER_SHA256." >&2
   exit 1
+fi
+
+if [[ "$preflight_only" == true ]]; then
+  echo "Preflight passed: package, version, non-debuggable status, and signing compatibility verified."
+  echo "No build, installation, or app-data mutation was performed."
+  exit 0
 fi
 
 "${adb_command[@]}" install -r "$release_apk"

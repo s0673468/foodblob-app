@@ -60,6 +60,19 @@ version, signer, non-debuggable flag, and unchanged first-install time:
 scripts/android_release_install.sh <adb-serial>
 ```
 
+Check an already-built release APK against a connected device without building
+or installing anything:
+
+```sh
+scripts/android_release_install.sh --preflight <adb-serial> /absolute/path/to/app-release.apk
+```
+
+Preflight reads device/package metadata and temporary copies of installed APKs
+to verify the expected package, version, non-debuggable flag, and signing
+compatibility. It runs no Gradle build, install, uninstall, data clear, or app
+launch. Its temporary APK copies are removed on exit. A successful preflight
+is a compatibility check; it does not install the update or verify app behavior.
+
 The installer requires a trust anchor before any first install: an already
 installed compatible Food Blob or Track APK, including an Android-accepted
 signature-permission certificate lineage for the connected device API, or an explicit non-secret
