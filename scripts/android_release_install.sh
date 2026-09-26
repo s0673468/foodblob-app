@@ -138,7 +138,7 @@ verify_installed_anchor() {
       "$device_sdk" \
       "$release_apk" \
       "$temporary_dir/$label.apk"; then
-    echo "Refusing installation because the release signer is not compatible with installed $label." >&2
+    echo "Refusing installation because the release signer is not compatible with $label." >&2
     exit 1
   fi
 }
