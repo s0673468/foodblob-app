@@ -139,7 +139,9 @@ For a test-first loop, `make android-unit` runs JVM tests and lint;
 runs iPhone unit tests and the Watch build. `make android-check` retains one
 Gradle invocation for all existing tests, lint and build variants. Gradle already
 enables its build cache; retain task-owned build/dependency caches rather than
-cleaning them between runs. Do not run parallel Make targets against the same
+cleaning them between runs. `PYTHON` and `ANDROID_GRADLE_ARGS` Make overrides
+are inherited by the selected lane; for example use
+`ANDROID_GRADLE_ARGS=--max-workers=2` within an appropriate reservation. Do not run parallel Make targets against the same
 Xcode project/DerivedData.
 
 `android-check` compiles the Room/provider/Compose instrumented suites and

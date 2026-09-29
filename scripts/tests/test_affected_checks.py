@@ -1,6 +1,7 @@
 import importlib.util
 import io
 import json
+import os
 from pathlib import Path
 import subprocess
 import tempfile
@@ -135,6 +136,12 @@ class GitDiscoveryTests(unittest.TestCase):
         self.assertTrue(plan["full_fallback"])
         self.assertIn("docs/android.md", plan["changed_paths"])
         self.assertIn("surprise/unknown.txt", plan["changed_paths"])
+
+    def test_execution_preserves_make_command_line_overrides(self):
+        self.write("Makefile", "release-tests workflow-lint:\n\t@echo '$(PYTHON)|$(ANDROID_GRADLE_ARGS)' >> forwarded.txt\n")
+        with patch.dict(os.environ, {"MAKEFLAGS": "PYTHON=custom-python ANDROID_GRADLE_ARGS=--max-workers=2"}):
+            self.assertEqual(affected.execute_plan(affected.plan_checks(["README.md"]), self.root, "portable"), 0)
+        self.assertEqual((self.root / "forwarded.txt").read_text().splitlines(), ["custom-python|--max-workers=2"] * 2)
 
     def test_clean_worktree_still_runs_cheap_checks(self):
         paths, error = affected.changed_paths(self.root, "baseline")

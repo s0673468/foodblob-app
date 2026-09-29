@@ -5,6 +5,8 @@ SCHEME := FoodBlob
 DESTINATION ?= platform=iOS Simulator,name=iPhone 17 Pro,OS=latest
 XCODEBUILD ?= xcodebuild
 CHECK_BASE ?= origin/main
+PYTHON ?= python3
+ANDROID_GRADLE_ARGS ?=
 
 .PHONY: project project-check release-tests workflow-lint ios-test watch-build apple-check android-unit android-build-check android-check ios-acceptance android-device-test check-affected check-affected-run perf-benchmark check check-ci
 
@@ -15,7 +17,7 @@ project-check: project
 	git diff --exit-code -- $(PROJECT)
 
 release-tests:
-	PYTHONDONTWRITEBYTECODE=1 python3 -m unittest discover \
+	PYTHONDONTWRITEBYTECODE=1 $(PYTHON) -m unittest discover \
 		-s scripts/tests -p 'test_*.py' -v
 
 workflow-lint:
@@ -47,10 +49,10 @@ watch-build:
 apple-check: ios-test watch-build
 
 android-unit:
-	scripts/android_gradle.sh :app:testDebugUnitTest :app:lintDebug
+	scripts/android_gradle.sh $(ANDROID_GRADLE_ARGS) :app:testDebugUnitTest :app:lintDebug
 
 android-build-check:
-	scripts/android_gradle.sh \
+	scripts/android_gradle.sh $(ANDROID_GRADLE_ARGS) \
 		:app:assembleDebug \
 		:app:assembleRelease \
 		:app:assembleBenchmark \
@@ -59,7 +61,7 @@ android-build-check:
 
 # Builds device/benchmark tests; it does not execute them.
 android-check:
-	scripts/android_gradle.sh \
+	scripts/android_gradle.sh $(ANDROID_GRADLE_ARGS) \
 		:app:testDebugUnitTest \
 		:app:lintDebug \
 		:app:assembleDebug \
@@ -82,10 +84,10 @@ android-device-test:
 
 # Planning is read-only; execution requires one explicitly chosen, admitted host lane.
 check-affected:
-	PYTHONDONTWRITEBYTECODE=1 python3 scripts/affected_checks.py --base '$(CHECK_BASE)' --plan
+	PYTHONDONTWRITEBYTECODE=1 $(PYTHON) scripts/affected_checks.py --base '$(CHECK_BASE)' --plan
 
 check-affected-run:
-	PYTHONDONTWRITEBYTECODE=1 python3 scripts/affected_checks.py --base '$(CHECK_BASE)' --execute --platform '$(PLATFORM)'
+	PYTHONDONTWRITEBYTECODE=1 $(PYTHON) scripts/affected_checks.py --base '$(CHECK_BASE)' --execute --platform '$(PLATFORM)'
 
 perf-benchmark:
 	scripts/run_performance_benchmarks.sh $(PERF_ARGS)
