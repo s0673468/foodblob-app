@@ -66,12 +66,13 @@ def plan_checks(paths, discovery_error=None):
         else:
             full = True
             reasons.append(f"{path}: global configuration or unclassified path; select the full gate.")
-    portable = ["release-tests", "workflow-lint"]
+    portable = ["release-tests"]
     if full or android:
         portable.append("android-check")
     elif android_unit:
         portable.append("android-unit")
-    apple_targets = ["project-check", "apple-check"] if full else (["apple-check"] if apple else [])
+    apple_targets = ["workflow-lint"]
+    apple_targets += ["project-check", "apple-check"] if full else (["apple-check"] if apple else [])
     return {
         "purpose": "local iteration; never a final full-gate receipt",
         "changed_paths": paths,

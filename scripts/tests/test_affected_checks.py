@@ -18,8 +18,8 @@ spec.loader.exec_module(affected)
 class AffectedPlanTests(unittest.TestCase):
     def test_android_source_does_not_start_apple(self):
         plan = affected.plan_checks(["android/app/src/main/java/org/example/foodblob/domain/FoodModels.kt"])
-        self.assertEqual(plan["lanes"]["portable"], ["release-tests", "workflow-lint", "android-check"])
-        self.assertEqual(plan["lanes"]["apple"], [])
+        self.assertEqual(plan["lanes"]["portable"], ["release-tests", "android-check"])
+        self.assertEqual(plan["lanes"]["apple"], ["workflow-lint"])
         self.assertTrue(plan["acceptance"])
 
     def test_android_unit_test_edit_uses_unit_lane(self):
@@ -34,8 +34,8 @@ class AffectedPlanTests(unittest.TestCase):
 
     def test_apple_shared_code_runs_apple_and_cheap_cross_platform_contracts(self):
         plan = affected.plan_checks(["Shared/FoodModels.swift"])
-        self.assertEqual(plan["lanes"]["apple"], ["apple-check"])
-        self.assertEqual(plan["lanes"]["portable"], ["release-tests", "workflow-lint"])
+        self.assertEqual(plan["lanes"]["apple"], ["workflow-lint", "apple-check"])
+        self.assertEqual(plan["lanes"]["portable"], ["release-tests"])
 
     def test_native_ui_marks_acceptance_without_running_it(self):
         plan = affected.plan_checks(["FoodBlob/Features/Today/TodayView.swift"])
@@ -51,15 +51,15 @@ class AffectedPlanTests(unittest.TestCase):
         for path in ["README.md", "docs/android.md"]:
             with self.subTest(path=path):
                 plan = affected.plan_checks([path])
-                self.assertEqual(plan["lanes"]["portable"], ["release-tests", "workflow-lint"])
-                self.assertEqual(plan["lanes"]["apple"], [])
+                self.assertEqual(plan["lanes"]["portable"], ["release-tests"])
+                self.assertEqual(plan["lanes"]["apple"], ["workflow-lint"])
 
     def test_unknown_global_or_unsafe_path_falls_back_to_full(self):
         for path in ["new-module/thing.swift", "Makefile", ".github/workflows/tests.yml", "tools/generate_project.rb", "FoodBlob.xcodeproj/project.pbxproj", "../android/thing.kt", "/android/thing.kt"]:
             with self.subTest(path=path):
                 plan = affected.plan_checks([path])
                 self.assertTrue(plan["full_fallback"])
-                self.assertEqual(plan["lanes"]["apple"], ["project-check", "apple-check"])
+                self.assertEqual(plan["lanes"]["apple"], ["workflow-lint", "project-check", "apple-check"])
                 self.assertIn("android-check", plan["lanes"]["portable"])
 
     def test_git_failure_falls_back_even_with_explicit_paths(self):
@@ -73,11 +73,11 @@ class AffectedPlanTests(unittest.TestCase):
             run.return_value.returncode = 17
             result = affected.execute_plan(plan, Path("/fixture"), "portable")
         self.assertEqual(result, 17)
-        run.assert_called_once_with(["make", "release-tests", "workflow-lint", "android-check"], cwd=Path("/fixture"))
+        run.assert_called_once_with(["make", "release-tests", "android-check"], cwd=Path("/fixture"))
 
     def test_empty_platform_does_not_execute(self):
         with patch.object(affected.subprocess, "run") as run:
-            self.assertEqual(affected.execute_plan(affected.plan_checks(["README.md"]), Path("/fixture"), "apple"), 0)
+            self.assertEqual(affected.execute_plan({"lanes": {"apple": []}}, Path("/fixture"), "apple"), 0)
         run.assert_not_called()
 
     def test_execute_requires_explicit_platform(self):
@@ -141,13 +141,13 @@ class GitDiscoveryTests(unittest.TestCase):
         self.write("Makefile", "release-tests workflow-lint:\n\t@echo '$(PYTHON)|$(ANDROID_GRADLE_ARGS)' >> forwarded.txt\n")
         with patch.dict(os.environ, {"MAKEFLAGS": "PYTHON=custom-python ANDROID_GRADLE_ARGS=--max-workers=2"}):
             self.assertEqual(affected.execute_plan(affected.plan_checks(["README.md"]), self.root, "portable"), 0)
-        self.assertEqual((self.root / "forwarded.txt").read_text().splitlines(), ["custom-python|--max-workers=2"] * 2)
+        self.assertEqual((self.root / "forwarded.txt").read_text().splitlines(), ["custom-python|--max-workers=2"])
 
     def test_clean_worktree_still_runs_cheap_checks(self):
         paths, error = affected.changed_paths(self.root, "baseline")
         self.assertEqual(paths, [])
         self.assertIsNone(error)
-        self.assertEqual(affected.plan_checks(paths)["lanes"]["portable"], ["release-tests", "workflow-lint"])
+        self.assertEqual(affected.plan_checks(paths)["lanes"]["portable"], ["release-tests"])
 
 
 if __name__ == "__main__":

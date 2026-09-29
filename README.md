@@ -121,9 +121,14 @@ Run each selected lane on its admitted fleet host:
 ```sh
 # Portable work: quiet, admitted ger-z with JDK 17 and Android SDK 36.
 make check-affected-run PLATFORM=portable CHECK_BASE=origin/main
-# Apple work: admitted M1 with Xcode, Metal and iPhone/Watch simulator runtimes.
+# Ruby lint and affected Apple work: admitted M1 with its installed toolchain.
 make check-affected-run PLATFORM=apple CHECK_BASE=origin/main
 ```
+
+The Apple lane always includes the small Ruby workflow lint because the local
+ger-z toolchain has no Ruby; native builds are selected only for affected Apple
+paths. Run both planned lanes, or record the same lightweight lint separately.
+Apple builds require Xcode, Metal and iPhone/Watch simulator runtimes.
 
 The command does not select a host, reserve capacity, install dependencies, or
 run device acceptance. Its JSON lists those acceptance entry points separately
