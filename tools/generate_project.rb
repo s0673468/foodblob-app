@@ -10,7 +10,7 @@ PROJECT_PATH = File.join(ROOT, "FoodBlob.xcodeproj")
 TEAM_ID = ENV.fetch("FOODBLOB_DEVELOPMENT_TEAM", "")
 
 class DeterministicProject < Xcodeproj::Project
-  def initialize(...)
+  def initialize(*arguments, &block)
     @food_blob_uuid_index = 0
     super
   end
@@ -43,14 +43,7 @@ widget_tests = project.new_target(
   :ios,
   "17.0"
 )
-watch_app = project.new_target(:watch2_app, "FoodBlobWatch", :watchos, "10.0")
-watch_app.build_phases.delete_if { |phase| phase.isa == "PBXSourcesBuildPhase" }
-watch_extension = project.new_target(
-  :watch2_extension,
-  "FoodBlobWatchExtension",
-  :watchos,
-  "10.0"
-)
+watch_app = project.new_target(:application, "FoodBlobWatch", :watchos, "10.0")
 watch_widgets = project.new_target(
   :app_extension,
   "FoodBlobWatchWidgets",
@@ -68,7 +61,6 @@ widget_tests.add_dependency(app)
 app.add_dependency(watch_app)
 watch_dependency = app.dependency_for_target(watch_app)
 watch_dependency.platform_filters = ["watchos"]
-watch_app.add_dependency(watch_extension)
 watch_app.add_dependency(watch_widgets)
 
 embed_extensions = app.new_copy_files_build_phase("Embed App Extensions")
@@ -97,7 +89,7 @@ embed_watch_extensions = watch_app.new_copy_files_build_phase(
   "Embed Watch Extensions"
 )
 embed_watch_extensions.dst_subfolder_spec = "13"
-[watch_extension, watch_widgets].each do |target|
+[watch_widgets].each do |target|
   embedded = embed_watch_extensions.add_file_reference(
     target.product_reference,
     true
@@ -160,14 +152,14 @@ add_swift_sources(
   project,
   "Shared Watch Sources",
   "Shared",
-  [watch_extension, watch_widgets],
+  [watch_app, watch_widgets],
   only: watch_shared_sources
 )
 add_swift_sources(
   project,
   "WatchShared",
   "WatchShared",
-  [watch_extension, watch_widgets, widget_tests],
+  [watch_app, watch_widgets, widget_tests],
   excluded_target_sources: {
     "FoodBlobWatchWidgets" => [
       "FoodWatchAcknowledgementApplier.swift",
@@ -192,7 +184,7 @@ add_swift_sources(
   project,
   "FoodBlobWatchExtension",
   "FoodBlobWatchExtension",
-  [watch_extension]
+  [watch_app]
 )
 add_swift_sources(
   project,
@@ -250,10 +242,6 @@ common_settings(app_tests, "org.example.foodblob.tests")
 common_settings(widget_tests, "org.example.foodblob.widgettests")
 common_watch_settings(watch_app, "org.example.foodblob.watchkitapp")
 common_watch_settings(
-  watch_extension,
-  "org.example.foodblob.watchkitapp.watchkitextension"
-)
-common_watch_settings(
   watch_widgets,
   "org.example.foodblob.watchkitapp.widgets"
 )
@@ -291,19 +279,6 @@ watch_app.build_configurations.each do |configuration|
     "GENERATE_INFOPLIST_FILE" => "NO",
     "INFOPLIST_FILE" => "FoodBlobWatch/Info.plist",
     "PRODUCT_NAME" => "FoodBlobWatch",
-    "SKIP_INSTALL" => "YES",
-    "SUPPORTED_PLATFORMS" => "watchos watchsimulator"
-  )
-end
-
-watch_extension.build_configurations.each do |configuration|
-  configuration.build_settings.merge!(
-    "APPLICATION_EXTENSION_API_ONLY" => "YES",
-    "CODE_SIGN_ENTITLEMENTS" =>
-      "FoodBlobWatchExtension/FoodBlobWatchExtension.entitlements",
-    "GENERATE_INFOPLIST_FILE" => "NO",
-    "INFOPLIST_FILE" => "FoodBlobWatchExtension/Info.plist",
-    "PRODUCT_NAME" => "FoodBlobWatchExtension",
     "SKIP_INSTALL" => "YES",
     "SUPPORTED_PLATFORMS" => "watchos watchsimulator"
   )
@@ -401,7 +376,6 @@ scheme.save_as(PROJECT_PATH, "FoodBlob", true)
 
 watch_scheme = Xcodeproj::XCScheme.new
 watch_scheme.add_build_target(watch_app)
-watch_scheme.add_build_target(watch_extension)
 watch_scheme.add_build_target(watch_widgets)
 watch_scheme.set_launch_target(watch_app)
 watch_scheme.save_as(PROJECT_PATH, "FoodBlobWatch", true)

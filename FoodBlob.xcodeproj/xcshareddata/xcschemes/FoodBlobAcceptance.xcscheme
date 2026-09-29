@@ -55,7 +55,7 @@
             skipped = "NO">
             <BuildableReference
                BuildableIdentifier = "primary"
-               BlueprintIdentifier = "2968FC14A1E27097AEC7750D"
+               BlueprintIdentifier = "4B900B56817179671A6D4642"
                BuildableName = "FoodBlobUITests.xctest"
                BlueprintName = "FoodBlobUITests"
                ReferencedContainer = "container:FoodBlob.xcodeproj">

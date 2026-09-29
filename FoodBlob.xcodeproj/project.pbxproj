@@ -7,219 +7,209 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
-		05B229EE4F473EAB459973A1 /* WidgetLayoutID.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4B0C5130E209773D0FCC91FD /* WidgetLayoutID.swift */; };
-		0879608E40E3BD1C2417F195 /* ChangeFoodCountIntent+AppProcess.swift in Sources */ = {isa = PBXBuildFile; fileRef = 23AE42610258271241386C19 /* ChangeFoodCountIntent+AppProcess.swift */; };
-		0B1C79473F2EA696B3EFDFA1 /* FoodWidgetLedger.swift in Sources */ = {isa = PBXBuildFile; fileRef = C10E0CDADD7922A4596DFE6D /* FoodWidgetLedger.swift */; };
-		10A9B77E30778AFC3541F0F3 /* FoodWatchConnectivityReceiver.swift in Sources */ = {isa = PBXBuildFile; fileRef = 828275C8DF2998F2A4471647 /* FoodWatchConnectivityReceiver.swift */; };
-		13DB936B90DA91A31B3A9663 /* FoodModels.swift in Sources */ = {isa = PBXBuildFile; fileRef = 53AEB77118F91EF1DFFA544E /* FoodModels.swift */; };
-		182F9995769779E2D58A3D8E /* FoodWatchOutboxTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0A8D1AD660D1FFCB26C40C80 /* FoodWatchOutboxTests.swift */; };
-		1A5340215C7AF68A827CEBAD /* FoodBlobView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 962A9D90AA09A39A4F9446C2 /* FoodBlobView.swift */; };
-		1AA6F361020FB70427518242 /* LivingBlobTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 74EF1EBA8059AB9B73CE01BD /* LivingBlobTests.swift */; };
-		1D5CF1D9AAFC655C9E7210CB /* SkinStudioView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1F70E60C51CB4BF42B9B07C3 /* SkinStudioView.swift */; };
-		212CFFC1B6A6FD1AC790D71A /* JellySurfaceTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = C25797989CFC6F5D6074A446 /* JellySurfaceTests.swift */; };
-		22033041FBAD25CB2D0915FD /* FoodBlobWatchExtension.appex in Embed Watch Extensions */ = {isa = PBXBuildFile; fileRef = 146F65EE2A6EAC9E3858B240 /* FoodBlobWatchExtension.appex */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
-		226CE20A96B37474DC46A4D9 /* FoodModels.swift in Sources */ = {isa = PBXBuildFile; fileRef = 53AEB77118F91EF1DFFA544E /* FoodModels.swift */; };
-		26E04C4B14E8894EC176AB5B /* FoodWatchSyncTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = D63FF8C075091DF41AEA4206 /* FoodWatchSyncTests.swift */; };
-		27059AF5C6E7E6B246B006C2 /* BlobColor.swift in Sources */ = {isa = PBXBuildFile; fileRef = 55E16D14B7FCD89361BBBFE0 /* BlobColor.swift */; };
-		2A03B7BFB908AB685475CFAE /* FoodWidgetArtwork.swift in Sources */ = {isa = PBXBuildFile; fileRef = B3B985BD3EE2AF82759455BB /* FoodWidgetArtwork.swift */; };
-		3227884771CC04145CE35F4B /* LivingBlob.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9FA134E4DC5F85E1DF4D2E64 /* LivingBlob.swift */; };
-		363FADE44F8A168122919A0D /* PrivacyInfo.xcprivacy in Resources */ = {isa = PBXBuildFile; fileRef = 4DAA8D2E7613D2B955F22EE1 /* PrivacyInfo.xcprivacy */; };
-		3847A7BDFF1071CFB5AECBF5 /* FoodWatchSessionClient.swift in Sources */ = {isa = PBXBuildFile; fileRef = 406DAC9333C10BAE027A83CE /* FoodWatchSessionClient.swift */; };
-		392B9DBC1B12324234A10244 /* BlobColor+SwiftUI.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1F895CF754C0F8F688DBB9FC /* BlobColor+SwiftUI.swift */; };
-		39B32D2F832614D834CB5B51 /* FoodWatchVisuals.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5D9340B1C1875A8AA798DC28 /* FoodWatchVisuals.swift */; };
-		3F2D006F68830C78EF92E41A /* FoodWatchLayoutMetrics.swift in Sources */ = {isa = PBXBuildFile; fileRef = D7DAA7C2E9DEC9C0F4C25DC3 /* FoodWatchLayoutMetrics.swift */; };
-		4058C754726B08D7D19F5456 /* WidgetArtworkRenderingTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 673364827DA2FEB31DE3EEFC /* WidgetArtworkRenderingTests.swift */; };
-		408CBA06EAD829ACFEB56C4B /* FoodBlobWatchComplication.swift in Sources */ = {isa = PBXBuildFile; fileRef = 002F85A50953DB30A37156AE /* FoodBlobWatchComplication.swift */; };
-		417CA4D229D3766C34FC4D28 /* LivingBlob.swift in Sources */ = {isa = PBXBuildFile; fileRef = 890A32FBB8FF835E92C5BF7E /* LivingBlob.swift */; };
-		4588E1AF4FE5FDDF7BD49680 /* BlobMaterial.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4B5FC824BDD4F495615AE0C2 /* BlobMaterial.swift */; };
-		4747CBE884AA8C1DCB1014F8 /* BlobMaterialPreferenceTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 37BD23B3431A1697846C3DD5 /* BlobMaterialPreferenceTests.swift */; };
-		488E098FA97342489853A5CF /* FoodWidgetActionRuntime.swift in Sources */ = {isa = PBXBuildFile; fileRef = BA840C4D1780F992026552E7 /* FoodWidgetActionRuntime.swift */; };
-		496D76C74EA45384C95C709B /* WidgetGeometryTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = E055C0FB54131AB06F024778 /* WidgetGeometryTests.swift */; };
-		49FDF4CD42299CD1FEFE3D5B /* FoodWatchLayoutMetrics.swift in Sources */ = {isa = PBXBuildFile; fileRef = D7DAA7C2E9DEC9C0F4C25DC3 /* FoodWatchLayoutMetrics.swift */; };
+		03B027C65405DDE244D0AF8C /* FoodWatchAcknowledgementDeliveryTracker.swift in Sources */ = {isa = PBXBuildFile; fileRef = E0A4023770EE28765FA1A9AD /* FoodWatchAcknowledgementDeliveryTracker.swift */; };
+		05B229EE4F473EAB459973A1 /* FoodDateKey.swift in Sources */ = {isa = PBXBuildFile; fileRef = 88928B9739CC94C0571C1FFE /* FoodDateKey.swift */; };
+		0B1C79473F2EA696B3EFDFA1 /* FoodWatchIncomingDeliveryTracker.swift in Sources */ = {isa = PBXBuildFile; fileRef = F44545350042FC1411875251 /* FoodWatchIncomingDeliveryTracker.swift */; };
+		0C8D738D58182359227F2F45 /* JellySurface.swift in Sources */ = {isa = PBXBuildFile; fileRef = 10A9B77E30778AFC3541F0F3 /* JellySurface.swift */; };
+		13DB936B90DA91A31B3A9663 /* WidgetLayoutID.swift in Sources */ = {isa = PBXBuildFile; fileRef = 53AEB77118F91EF1DFFA544E /* WidgetLayoutID.swift */; };
+		160734F76A21470FC4289994 /* FoodWidgetLedger.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9DF135DB98D257F0E9244048 /* FoodWidgetLedger.swift */; };
+		1A5340215C7AF68A827CEBAD /* SkinWorldBackgrounds.swift in Sources */ = {isa = PBXBuildFile; fileRef = 962A9D90AA09A39A4F9446C2 /* SkinWorldBackgrounds.swift */; };
+		1D5CF1D9AAFC655C9E7210CB /* BlobColor.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1F70E60C51CB4BF42B9B07C3 /* BlobColor.swift */; };
+		1E6CB25EEF3299F07440F89E /* FoodBlobRootView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4F0A604A045DE77C6C3106CA /* FoodBlobRootView.swift */; };
+		2159EF5780399AB37DC2ADBD /* FoodWidgetActionRuntime.swift in Sources */ = {isa = PBXBuildFile; fileRef = 96DE55653E61384A4C041520 /* FoodWidgetActionRuntime.swift */; };
+		22033041FBAD25CB2D0915FD /* FoodWatchActivationGate.swift in Sources */ = {isa = PBXBuildFile; fileRef = D5E350189A7E9225153CD7DA /* FoodWatchActivationGate.swift */; };
+		226CE20A96B37474DC46A4D9 /* WidgetLayoutID.swift in Sources */ = {isa = PBXBuildFile; fileRef = 53AEB77118F91EF1DFFA544E /* WidgetLayoutID.swift */; };
+		23AE42610258271241386C19 /* ConnectedBlobMotion.swift in Sources */ = {isa = PBXBuildFile; fileRef = 638D7F409873653C2692F8D5 /* ConnectedBlobMotion.swift */; };
+		24BA1DE9B9B0FCE518FAFB53 /* FoodBlobWatchComplication.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8A75A4731B6BBEEF61160DD1 /* FoodBlobWatchComplication.swift */; };
+		27059AF5C6E7E6B246B006C2 /* FoodBlobSnapshot.swift in Sources */ = {isa = PBXBuildFile; fileRef = 55E16D14B7FCD89361BBBFE0 /* FoodBlobSnapshot.swift */; };
+		2799DD3AA235CB44CEE51A59 /* SkinStudioView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9AC6686FE650E4902B36EDB3 /* SkinStudioView.swift */; };
+		2A03B7BFB908AB685475CFAE /* BlobColor+SwiftUI.swift in Sources */ = {isa = PBXBuildFile; fileRef = C7459895921F12BA114E65FB /* BlobColor+SwiftUI.swift */; };
+		363FADE44F8A168122919A0D /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = D283DEFD4EF160615A7FFFC2 /* Foundation.framework */; };
+		3847A7BDFF1071CFB5AECBF5 /* PrivacyInfo.xcprivacy in Resources */ = {isa = PBXBuildFile; fileRef = DF7A88176100590FEE3E3CDA /* PrivacyInfo.xcprivacy */; };
+		392B9DBC1B12324234A10244 /* FoodBlobPersistence.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1F895CF754C0F8F688DBB9FC /* FoodBlobPersistence.swift */; };
+		39B32D2F832614D834CB5B51 /* ConnectedBlobMotionTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = C5786BB2B7FC29B38BF73074 /* ConnectedBlobMotionTests.swift */; };
+		3B15AA1DD26D51F5CDE0518E /* JellySurfaceTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = E0526E53F9C0E0604B5E4361 /* JellySurfaceTests.swift */; };
+		3BBBE1C23E058672A6D45F7A /* FoodDateKey.swift in Sources */ = {isa = PBXBuildFile; fileRef = 88928B9739CC94C0571C1FFE /* FoodDateKey.swift */; };
+		400480E53110BDBF049D75CE /* FoodWatchReceiptStore.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6C7B9D1E72C235099763F2F4 /* FoodWatchReceiptStore.swift */; };
+		403B8FC7AD2BC0D53A6B5F4C /* BlobColorTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8F4E301142A335EE6AC38A0E /* BlobColorTests.swift */; };
+		406DAC9333C10BAE027A83CE /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 82A38627A9ECF0903A4FB550 /* Assets.xcassets */; };
+		408CBA06EAD829ACFEB56C4B /* JellySurface.metal in Sources */ = {isa = PBXBuildFile; fileRef = 002F85A50953DB30A37156AE /* JellySurface.metal */; };
+		417CA4D229D3766C34FC4D28 /* BlobMaterial.swift in Sources */ = {isa = PBXBuildFile; fileRef = A81FA8C25CDDC2FFD26C7BE4 /* BlobMaterial.swift */; };
+		4556F902350C8190CBCF43BB /* FoodBlobWidgets.appex in Embed App Extensions */ = {isa = PBXBuildFile; fileRef = D7713B3F3E54671E56410F17 /* FoodBlobWidgets.appex */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
+		4588E1AF4FE5FDDF7BD49680 /* FoodWidgetLedger.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4B5FC824BDD4F495615AE0C2 /* FoodWidgetLedger.swift */; };
+		4747CBE884AA8C1DCB1014F8 /* FoodWatchOutboxTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 37BD23B3431A1697846C3DD5 /* FoodWatchOutboxTests.swift */; };
+		488E098FA97342489853A5CF /* WidgetLayoutID.swift in Sources */ = {isa = PBXBuildFile; fileRef = BA840C4D1780F992026552E7 /* WidgetLayoutID.swift */; };
+		49FDF4CD42299CD1FEFE3D5B /* FoodBlobWidgetsBundle.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3F2D006F68830C78EF92E41A /* FoodBlobWidgetsBundle.swift */; };
+		4A8AC99EBC887936D1141052 /* FoodBlobWatchWidgets.appex in Embed Watch Extensions */ = {isa = PBXBuildFile; fileRef = 146F65EE2A6EAC9E3858B240 /* FoodBlobWatchWidgets.appex */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
+		4A8C2F02DA8E22645797D45F /* DateKeyTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 74BFCD5E19B4D7C4CA26F204 /* DateKeyTests.swift */; };
+		4B0C5130E209773D0FCC91FD /* BlobMaterial.swift in Sources */ = {isa = PBXBuildFile; fileRef = A81FA8C25CDDC2FFD26C7BE4 /* BlobMaterial.swift */; };
 		4C284C12855D868DC91D92E5 /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = D283DEFD4EF160615A7FFFC2 /* Foundation.framework */; };
-		5157EF56FF41861557662032 /* FoodWatchAcknowledgementDeliveryTracker.swift in Sources */ = {isa = PBXBuildFile; fileRef = 160734F76A21470FC4289994 /* FoodWatchAcknowledgementDeliveryTracker.swift */; };
-		51873C94763117059E5F4A6B /* BlobColor+SwiftUI.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9D6A393372B66344B33DD22D /* BlobColor+SwiftUI.swift */; };
+		4CC27FAFC96F9F5BD33B9792 /* FoodWatchConnectivityReceiver.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8D07E76E71A10AFFF0DBDB41 /* FoodWatchConnectivityReceiver.swift */; };
+		4D21CB8048AC7FA100C3ED5E /* BlobMaterial.swift in Sources */ = {isa = PBXBuildFile; fileRef = E02E8F787D741C7173125DBB /* BlobMaterial.swift */; };
+		5157EF56FF41861557662032 /* FoodWidgetLedger.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9DF135DB98D257F0E9244048 /* FoodWidgetLedger.swift */; };
+		51873C94763117059E5F4A6B /* FoodModels.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9D6A393372B66344B33DD22D /* FoodModels.swift */; };
 		528BB805405550316B975155 /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = D283DEFD4EF160615A7FFFC2 /* Foundation.framework */; };
-		55BF38D6B4914C0CCFE6F658 /* FoodWatchAcknowledgementApplier.swift in Sources */ = {isa = PBXBuildFile; fileRef = 89ECC9493FC46BD04E06D57D /* FoodWatchAcknowledgementApplier.swift */; };
-		568F0A22804D53B2C5193E73 /* LiquidFeedbackTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = E1DFE774F5169BDF4B3BBBAF /* LiquidFeedbackTests.swift */; };
-		5A1687916EFFE43817D017CD /* FoodBlobSnapshot.swift in Sources */ = {isa = PBXBuildFile; fileRef = 03B027C65405DDE244D0AF8C /* FoodBlobSnapshot.swift */; };
-		5A51C37482168E52FD0D5C97 /* BlobColor.swift in Sources */ = {isa = PBXBuildFile; fileRef = DF5D4501EEB9C6F30941CF8C /* BlobColor.swift */; };
-		5F3AA1859D5FE464DE499E76 /* FoodCounterWidget.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3B15AA1DD26D51F5CDE0518E /* FoodCounterWidget.swift */; };
-		6302C0AC80D2217D900226FB /* ChangeFoodCountIntent.swift in Sources */ = {isa = PBXBuildFile; fileRef = 83B7F2D16C52BE592CAA55A6 /* ChangeFoodCountIntent.swift */; };
-		6312E364FBE932537C4614D5 /* ConnectedBlobMotion.swift in Sources */ = {isa = PBXBuildFile; fileRef = 02851F07A2246F5285F73096 /* ConnectedBlobMotion.swift */; };
-		66AD244DA81C063CD6231479 /* FoodStoreTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9FD67EE00D2DC63241A930A4 /* FoodStoreTests.swift */; };
-		6A58D64A9EF8BA8A1B72718E /* FoodBlobWatchApp.swift in Sources */ = {isa = PBXBuildFile; fileRef = 24BA1DE9B9B0FCE518FAFB53 /* FoodBlobWatchApp.swift */; };
-		6C682492FD63F9FE978D8842 /* OnboardingView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8E5E333886071577383EFDA2 /* OnboardingView.swift */; };
-		6C81749C0AE3CB669D170436 /* BlobMaterial.swift in Sources */ = {isa = PBXBuildFile; fileRef = 43C4B951E56A34C61451634D /* BlobMaterial.swift */; };
-		6FE4EA61227ACFEF24210A4C /* FoodWatchTransferContract.swift in Sources */ = {isa = PBXBuildFile; fileRef = 34ACB7299DC85614460F3E6F /* FoodWatchTransferContract.swift */; };
-		74BFCD5E19B4D7C4CA26F204 /* ConnectedBlobMotionTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = ABDE3F0E27FA77C4055933B0 /* ConnectedBlobMotionTests.swift */; };
-		74F0B24894549A6E878C276D /* FoodModels.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2159EF5780399AB37DC2ADBD /* FoodModels.swift */; };
-		7A199DEFD651398B7A320AF3 /* PrivacyInfo.xcprivacy in Resources */ = {isa = PBXBuildFile; fileRef = 4DAA8D2E7613D2B955F22EE1 /* PrivacyInfo.xcprivacy */; };
-		7B18D8D0B0BD193B8A98CECF /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = D283DEFD4EF160615A7FFFC2 /* Foundation.framework */; };
-		7D2FB09EC85DBDA94C013C23 /* FoodBlobSnapshotTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3A55E7FA949139773A9F8E11 /* FoodBlobSnapshotTests.swift */; };
-		810487A9E5980AD94A95B838 /* DateKeyTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = D7F51F4298220B52C875275A /* DateKeyTests.swift */; };
-		81F504F33E9E959B196AF977 /* ChangeFoodCountIntent.swift in Sources */ = {isa = PBXBuildFile; fileRef = 83B7F2D16C52BE592CAA55A6 /* ChangeFoodCountIntent.swift */; };
-		82753611CA7E28B3F934E567 /* BlobColor.swift in Sources */ = {isa = PBXBuildFile; fileRef = 55E16D14B7FCD89361BBBFE0 /* BlobColor.swift */; };
-		832B11C229EF1F3A11282DF5 /* FoodDateKey.swift in Sources */ = {isa = PBXBuildFile; fileRef = 58DA77D0109BF5BC475F14AB /* FoodDateKey.swift */; };
-		84B44F1EF46707538E82CB76 /* FoodDateKey.swift in Sources */ = {isa = PBXBuildFile; fileRef = 58DA77D0109BF5BC475F14AB /* FoodDateKey.swift */; };
-		88928B9739CC94C0571C1FFE /* WidgetLayoutID.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4B0C5130E209773D0FCC91FD /* WidgetLayoutID.swift */; };
-		8BD8D9C6FBDEAFF735FD1106 /* TodayView.swift in Sources */ = {isa = PBXBuildFile; fileRef = E02E8F787D741C7173125DBB /* TodayView.swift */; };
-		8C7621DA8EFB8426A51E524B /* FoodWatchActivationGate.swift in Sources */ = {isa = PBXBuildFile; fileRef = B2DDCA9D1565976D5926CA24 /* FoodWatchActivationGate.swift */; };
-		8D07E76E71A10AFFF0DBDB41 /* FoodBlobWatchWidgets.appex in Embed Watch Extensions */ = {isa = PBXBuildFile; fileRef = 0562AC289D7B95CAFEFB90F4 /* FoodBlobWatchWidgets.appex */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
-		8D74659F5EAF9663D818022C /* FoodBlobWatchWidgetsBundle.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4B900B56817179671A6D4642 /* FoodBlobWatchWidgetsBundle.swift */; };
-		8EB6B0283B4397FB183EA6A6 /* JellySurface.swift in Sources */ = {isa = PBXBuildFile; fileRef = AF4072376D83853CE962D4A0 /* JellySurface.swift */; };
-		919497D28A8270430FF84227 /* LiquidFeedback.swift in Sources */ = {isa = PBXBuildFile; fileRef = A7DC4AAEBA8F6CB126CB099B /* LiquidFeedback.swift */; };
-		928A262DAF49C79764B9D869 /* FoodWatchIncomingDeliveryTracker.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7EEC2D6A28CC96F9294C1615 /* FoodWatchIncomingDeliveryTracker.swift */; };
+		555FE62DEAD40A9DC2574B5F /* BlobColor+SwiftUI.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3A389052F0AE271FF6ECD4D6 /* BlobColor+SwiftUI.swift */; };
+		5A1687916EFFE43817D017CD /* FoodWatchTransferContract.swift in Sources */ = {isa = PBXBuildFile; fileRef = F46D2A3EE8E9E1AB860B2878 /* FoodWatchTransferContract.swift */; };
+		5A51C37482168E52FD0D5C97 /* FoodWatchTransferContract.swift in Sources */ = {isa = PBXBuildFile; fileRef = DF5D4501EEB9C6F30941CF8C /* FoodWatchTransferContract.swift */; };
+		5DF5A27DEFF66545F4443CE5 /* FoodBlobWatch.app in Embed Watch Content */ = {isa = PBXBuildFile; fileRef = D08772BA6B5B8B87701A4FB3 /* FoodBlobWatch.app */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
+		6302C0AC80D2217D900226FB /* FoodModels.swift in Sources */ = {isa = PBXBuildFile; fileRef = 83B7F2D16C52BE592CAA55A6 /* FoodModels.swift */; };
+		6312E364FBE932537C4614D5 /* SkinCatalog.swift in Sources */ = {isa = PBXBuildFile; fileRef = 02851F07A2246F5285F73096 /* SkinCatalog.swift */; };
+		66AD244DA81C063CD6231479 /* WidgetGeometryTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9FD67EE00D2DC63241A930A4 /* WidgetGeometryTests.swift */; };
+		673364827DA2FEB31DE3EEFC /* FoodBlobWatchTodayView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1AA6F361020FB70427518242 /* FoodBlobWatchTodayView.swift */; };
+		6C682492FD63F9FE978D8842 /* WidgetSetupView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8E5E333886071577383EFDA2 /* WidgetSetupView.swift */; };
+		6C81749C0AE3CB669D170436 /* FoodDateKey.swift in Sources */ = {isa = PBXBuildFile; fileRef = 43C4B951E56A34C61451634D /* FoodDateKey.swift */; };
+		74EF1EBA8059AB9B73CE01BD /* FoodBlobWatchApplicationDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 26E04C4B14E8894EC176AB5B /* FoodBlobWatchApplicationDelegate.swift */; };
+		76F9987542F71806E48DB467 /* FoodWidgetArtwork.swift in Sources */ = {isa = PBXBuildFile; fileRef = 74F0B24894549A6E878C276D /* FoodWidgetArtwork.swift */; };
+		77FA3C916A395F48E1E955B3 /* BlobColor+SwiftUI.swift in Sources */ = {isa = PBXBuildFile; fileRef = C7459895921F12BA114E65FB /* BlobColor+SwiftUI.swift */; };
+		79067E1E806F5EB67A526FB5 /* PrivacyInfo.xcprivacy in Resources */ = {isa = PBXBuildFile; fileRef = DF7A88176100590FEE3E3CDA /* PrivacyInfo.xcprivacy */; };
+		7D2FB09EC85DBDA94C013C23 /* LivingBlobTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3A55E7FA949139773A9F8E11 /* LivingBlobTests.swift */; };
+		7D92A168FF01ACBDE397F234 /* FoodWatchOutboxStore.swift in Sources */ = {isa = PBXBuildFile; fileRef = F84D575C39F1D50D1383B4E4 /* FoodWatchOutboxStore.swift */; };
+		7EEC2D6A28CC96F9294C1615 /* FoodWatchVisuals.swift in Sources */ = {isa = PBXBuildFile; fileRef = 55BF38D6B4914C0CCFE6F658 /* FoodWatchVisuals.swift */; };
+		810487A9E5980AD94A95B838 /* FoodWatchSyncTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = D7F51F4298220B52C875275A /* FoodWatchSyncTests.swift */; };
+		81F504F33E9E959B196AF977 /* FoodModels.swift in Sources */ = {isa = PBXBuildFile; fileRef = 83B7F2D16C52BE592CAA55A6 /* FoodModels.swift */; };
+		82753611CA7E28B3F934E567 /* FoodBlobSnapshot.swift in Sources */ = {isa = PBXBuildFile; fileRef = 55E16D14B7FCD89361BBBFE0 /* FoodBlobSnapshot.swift */; };
+		828275C8DF2998F2A4471647 /* FoodCounterControls.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8C7621DA8EFB8426A51E524B /* FoodCounterControls.swift */; };
+		832B11C229EF1F3A11282DF5 /* LivingBlob.swift in Sources */ = {isa = PBXBuildFile; fileRef = 58DA77D0109BF5BC475F14AB /* LivingBlob.swift */; };
+		8471893D46AFE77F8D983B12 /* OnboardingView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 919497D28A8270430FF84227 /* OnboardingView.swift */; };
+		84B44F1EF46707538E82CB76 /* LivingBlob.swift in Sources */ = {isa = PBXBuildFile; fileRef = 58DA77D0109BF5BC475F14AB /* LivingBlob.swift */; };
+		85A80C4A3A967869AAF9934D /* FoodBlobApp.swift in Sources */ = {isa = PBXBuildFile; fileRef = F4D1AF513AE74FAAB4E1CF1E /* FoodBlobApp.swift */; };
+		872DBC91970CDB0521E7E7E1 /* LiquidFeedbackTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5F3AA1859D5FE464DE499E76 /* LiquidFeedbackTests.swift */; };
+		890A32FBB8FF835E92C5BF7E /* BlobColor.swift in Sources */ = {isa = PBXBuildFile; fileRef = F23A5769B9867B6EF9E7DBB2 /* BlobColor.swift */; };
+		89ECC9493FC46BD04E06D57D /* FoodWatchOutboxStore.swift in Sources */ = {isa = PBXBuildFile; fileRef = F84D575C39F1D50D1383B4E4 /* FoodWatchOutboxStore.swift */; };
+		8BD8D9C6FBDEAFF735FD1106 /* BlobMaterial.swift in Sources */ = {isa = PBXBuildFile; fileRef = E02E8F787D741C7173125DBB /* BlobMaterial.swift */; };
+		8EB6B0283B4397FB183EA6A6 /* HistoryView.swift in Sources */ = {isa = PBXBuildFile; fileRef = AF4072376D83853CE962D4A0 /* HistoryView.swift */; };
+		902E0C62D7EF1D1B603D6D4E /* FoodWatchLayoutMetrics.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3227884771CC04145CE35F4B /* FoodWatchLayoutMetrics.swift */; };
+		928A262DAF49C79764B9D869 /* FoodWatchVisuals.swift in Sources */ = {isa = PBXBuildFile; fileRef = 55BF38D6B4914C0CCFE6F658 /* FoodWatchVisuals.swift */; };
 		9312F9A3FE47E8633F733F84 /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 0E839F51819DEDDDE9492F44 /* Foundation.framework */; };
-		96DE55653E61384A4C041520 /* FoodDateKey.swift in Sources */ = {isa = PBXBuildFile; fileRef = FFAE9A17321DBAC18314F8E3 /* FoodDateKey.swift */; };
-		97B37B52E69F8B5FD29E9A5B /* FoodBlobWatchTodayView.swift in Sources */ = {isa = PBXBuildFile; fileRef = D4E3BB902C876A43B596231D /* FoodBlobWatchTodayView.swift */; };
-		9A66DD11AD33A225CEFD73D7 /* FoodWatchTransferContract.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3729D4424A9D5DE610881D45 /* FoodWatchTransferContract.swift */; };
-		9AC6686FE650E4902B36EDB3 /* SkinWorldBackgrounds.swift in Sources */ = {isa = PBXBuildFile; fileRef = 860460CDB2D0EEA01C745302 /* SkinWorldBackgrounds.swift */; };
-		9DF135DB98D257F0E9244048 /* FoodStore.swift in Sources */ = {isa = PBXBuildFile; fileRef = 76F9987542F71806E48DB467 /* FoodStore.swift */; };
-		9E35674786D47E3284C81FCD /* FoodBlobApp.swift in Sources */ = {isa = PBXBuildFile; fileRef = 400480E53110BDBF049D75CE /* FoodBlobApp.swift */; };
-		9E3F900931E01840529BF6DE /* FoodWidgetTimeline.swift in Sources */ = {isa = PBXBuildFile; fileRef = 872DBC91970CDB0521E7E7E1 /* FoodWidgetTimeline.swift */; };
-		A007F1BA067AF59A3D3E84CB /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = A8FF870A86F8EDA2004B5BAE /* Assets.xcassets */; };
-		A29B0A2FCCB63B1041ABFD6F /* FoodWatchOutboxStore.swift in Sources */ = {isa = PBXBuildFile; fileRef = D27F17C4C1F844AC00D0EF8F /* FoodWatchOutboxStore.swift */; };
-		A354E9413109BE673A408CB5 /* FoodBlobRootView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 24D8FF8AF550F55F6FE29784 /* FoodBlobRootView.swift */; };
-		A4C3AE07078AFAD1831E4756 /* FoodCountsTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 340BFED8D35C1017481294B0 /* FoodCountsTests.swift */; };
-		A6D0E0FE6A4F0DF286547827 /* FoodWatchVisuals.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5D9340B1C1875A8AA798DC28 /* FoodWatchVisuals.swift */; };
-		A81FA8C25CDDC2FFD26C7BE4 /* LivingBlob.swift in Sources */ = {isa = PBXBuildFile; fileRef = 890A32FBB8FF835E92C5BF7E /* LivingBlob.swift */; };
-		ABB7F0D136118A72A567677F /* BlobColor.swift in Sources */ = {isa = PBXBuildFile; fileRef = DF5D4501EEB9C6F30941CF8C /* BlobColor.swift */; };
-		AF0FB4BEFA5338A57E57434D /* LivingBlob.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9FA134E4DC5F85E1DF4D2E64 /* LivingBlob.swift */; };
+		97B37B52E69F8B5FD29E9A5B /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = D4E3BB902C876A43B596231D /* Assets.xcassets */; };
+		9A3F31E894A41C5C9F3DC8A7 /* BlobColor.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1F70E60C51CB4BF42B9B07C3 /* BlobColor.swift */; };
+		9A66DD11AD33A225CEFD73D7 /* LivingBlob.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3729D4424A9D5DE610881D45 /* LivingBlob.swift */; };
+		9FA134E4DC5F85E1DF4D2E64 /* FoodWatchIncomingDeliveryTracker.swift in Sources */ = {isa = PBXBuildFile; fileRef = F44545350042FC1411875251 /* FoodWatchIncomingDeliveryTracker.swift */; };
+		A2CD2B7371797053E00044C1 /* FoodWatchSessionClient.swift in Sources */ = {isa = PBXBuildFile; fileRef = 496D76C74EA45384C95C709B /* FoodWatchSessionClient.swift */; };
+		A354E9413109BE673A408CB5 /* BlobPlopSound.swift in Sources */ = {isa = PBXBuildFile; fileRef = 24D8FF8AF550F55F6FE29784 /* BlobPlopSound.swift */; };
+		A4C3AE07078AFAD1831E4756 /* WidgetArtworkRenderingTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 340BFED8D35C1017481294B0 /* WidgetArtworkRenderingTests.swift */; };
+		A6D0E0FE6A4F0DF286547827 /* AppContractTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5D9340B1C1875A8AA798DC28 /* AppContractTests.swift */; };
+		A73534649DFFF4E1DCA0848F /* LiquidFeedback.swift in Sources */ = {isa = PBXBuildFile; fileRef = D60B07CA1000D9592CAD54DA /* LiquidFeedback.swift */; };
+		A7E3150A13E4180655E5B0DD /* ChangeFoodCountIntent.swift in Sources */ = {isa = PBXBuildFile; fileRef = 314BCF87E3B1B95E6D0CC6B9 /* ChangeFoodCountIntent.swift */; };
+		ABB7F0D136118A72A567677F /* FoodWatchTransferContract.swift in Sources */ = {isa = PBXBuildFile; fileRef = DF5D4501EEB9C6F30941CF8C /* FoodWatchTransferContract.swift */; };
+		ABDE3F0E27FA77C4055933B0 /* BlobMaterialPreferenceTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = DC5E92B716CF1A4C937779D6 /* BlobMaterialPreferenceTests.swift */; };
+		AF0FB4BEFA5338A57E57434D /* FoodWatchLayoutMetrics.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3227884771CC04145CE35F4B /* FoodWatchLayoutMetrics.swift */; };
+		B2DDCA9D1565976D5926CA24 /* FoodBlobView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0879608E40E3BD1C2417F195 /* FoodBlobView.swift */; };
 		B55628076445C169F5A584E5 /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = D283DEFD4EF160615A7FFFC2 /* Foundation.framework */; };
-		B978EB04A83CB379095F3303 /* BlobColor+SwiftUI.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1F895CF754C0F8F688DBB9FC /* BlobColor+SwiftUI.swift */; };
+		B978EB04A83CB379095F3303 /* FoodBlobPersistence.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1F895CF754C0F8F688DBB9FC /* FoodBlobPersistence.swift */; };
 		BB21473CA6BD2F6F3BACF368 /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 0E839F51819DEDDDE9492F44 /* Foundation.framework */; };
-		BB8BFFB20BE84791073681F0 /* FoodModels.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2159EF5780399AB37DC2ADBD /* FoodModels.swift */; };
-		BD05207158053C93174FD791 /* FoodBlobWatchApplicationDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = F89D97F4A2D0A8CFD9D38E7B /* FoodBlobWatchApplicationDelegate.swift */; };
-		BED6B5D76F03F7905BC2BA19 /* FoodWatchOutboxStore.swift in Sources */ = {isa = PBXBuildFile; fileRef = D27F17C4C1F844AC00D0EF8F /* FoodWatchOutboxStore.swift */; };
-		C1074613226220B9EC373D15 /* BlobMaterial.swift in Sources */ = {isa = PBXBuildFile; fileRef = 43C4B951E56A34C61451634D /* BlobMaterial.swift */; };
-		C26CB6465A8AF15D291CE64C /* SettingsView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3A389052F0AE271FF6ECD4D6 /* SettingsView.swift */; };
-		C31B0639270A79E75A70AA80 /* WidgetSetupView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 314BCF87E3B1B95E6D0CC6B9 /* WidgetSetupView.swift */; };
-		C56204256C69D05DA6A6E004 /* JellyInteractionUITests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 93DA2DFDCF8C28EB621906F7 /* JellyInteractionUITests.swift */; };
-		C5786BB2B7FC29B38BF73074 /* FoodWatchVisuals.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5D9340B1C1875A8AA798DC28 /* FoodWatchVisuals.swift */; };
-		C60433881BA471BC4E2394B8 /* FoodBlobPersistence.swift in Sources */ = {isa = PBXBuildFile; fileRef = A97B02C33C4207303DF9E723 /* FoodBlobPersistence.swift */; };
-		C7459895921F12BA114E65FB /* FoodWidgetArtwork.swift in Sources */ = {isa = PBXBuildFile; fileRef = B3B985BD3EE2AF82759455BB /* FoodWidgetArtwork.swift */; };
-		C78766F5264152012CC452A0 /* FoodWatchLayoutTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = AEA6624CB7DE57AE2E905A3D /* FoodWatchLayoutTests.swift */; };
-		CA9100D0814E50916080D54B /* FoodWatchTransferContract.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3729D4424A9D5DE610881D45 /* FoodWatchTransferContract.swift */; };
-		CAA8F9BD81CDEACF41F459A1 /* JellySurface.metal in Sources */ = {isa = PBXBuildFile; fileRef = BC2E3DD78C69D62558997C77 /* JellySurface.metal */; };
-		CB35A885B7DA10DDD0233BFF /* FoodWatchTransferContract.swift in Sources */ = {isa = PBXBuildFile; fileRef = 34ACB7299DC85614460F3E6F /* FoodWatchTransferContract.swift */; };
-		CCE22ABF48542B7338ECA970 /* SkinCatalog.swift in Sources */ = {isa = PBXBuildFile; fileRef = C8968FB33CCA25BCA9A062F0 /* SkinCatalog.swift */; };
-		D291C7C0C551EFEE1B8BF713 /* BlobPlopSound.swift in Sources */ = {isa = PBXBuildFile; fileRef = 88D4037BEED24BF24342D9A7 /* BlobPlopSound.swift */; };
-		D2BAA0617038DA8E03D214FC /* FoodWatchAcknowledgementApplier.swift in Sources */ = {isa = PBXBuildFile; fileRef = 89ECC9493FC46BD04E06D57D /* FoodWatchAcknowledgementApplier.swift */; };
-		D581EB09FB27D6F4778D29E8 /* FoodCounterControls.swift in Sources */ = {isa = PBXBuildFile; fileRef = D81834E3BA74EAD8C6891833 /* FoodCounterControls.swift */; };
-		D60B07CA1000D9592CAD54DA /* FoodWatchReceiptStore.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0C8D738D58182359227F2F45 /* FoodWatchReceiptStore.swift */; };
-		D7B88C7BD7950D3ABDBF2C40 /* FoodWatchIncomingDeliveryTracker.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7EEC2D6A28CC96F9294C1615 /* FoodWatchIncomingDeliveryTracker.swift */; };
+		BB8BFFB20BE84791073681F0 /* FoodWidgetArtwork.swift in Sources */ = {isa = PBXBuildFile; fileRef = 74F0B24894549A6E878C276D /* FoodWidgetArtwork.swift */; };
+		C1074613226220B9EC373D15 /* FoodDateKey.swift in Sources */ = {isa = PBXBuildFile; fileRef = 43C4B951E56A34C61451634D /* FoodDateKey.swift */; };
+		C10E0CDADD7922A4596DFE6D /* FoodWatchAcknowledgementApplier.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6FE4EA61227ACFEF24210A4C /* FoodWatchAcknowledgementApplier.swift */; };
+		C25797989CFC6F5D6074A446 /* FoodBlobSnapshotTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = F8F5A3E4DAC42695882A9C36 /* FoodBlobSnapshotTests.swift */; };
+		C26CB6465A8AF15D291CE64C /* BlobColor+SwiftUI.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3A389052F0AE271FF6ECD4D6 /* BlobColor+SwiftUI.swift */; };
+		C31B0639270A79E75A70AA80 /* ChangeFoodCountIntent.swift in Sources */ = {isa = PBXBuildFile; fileRef = 314BCF87E3B1B95E6D0CC6B9 /* ChangeFoodCountIntent.swift */; };
+		C60433881BA471BC4E2394B8 /* FoodStore.swift in Sources */ = {isa = PBXBuildFile; fileRef = A97B02C33C4207303DF9E723 /* FoodStore.swift */; };
+		C78766F5264152012CC452A0 /* WidgetLedgerTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = AEA6624CB7DE57AE2E905A3D /* WidgetLedgerTests.swift */; };
+		CA9100D0814E50916080D54B /* LivingBlob.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3729D4424A9D5DE610881D45 /* LivingBlob.swift */; };
+		CB35A885B7DA10DDD0233BFF /* FoodWatchAcknowledgementApplier.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6FE4EA61227ACFEF24210A4C /* FoodWatchAcknowledgementApplier.swift */; };
+		CCE22ABF48542B7338ECA970 /* SettingsView.swift in Sources */ = {isa = PBXBuildFile; fileRef = C8968FB33CCA25BCA9A062F0 /* SettingsView.swift */; };
+		D27F17C4C1F844AC00D0EF8F /* FoodCounterWidget.swift in Sources */ = {isa = PBXBuildFile; fileRef = FA1892D38F5B355B6F78D56D /* FoodCounterWidget.swift */; };
+		D291C7C0C551EFEE1B8BF713 /* MascotBlobView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 88D4037BEED24BF24342D9A7 /* MascotBlobView.swift */; };
+		D2BAA0617038DA8E03D214FC /* FoodWatchOutboxStore.swift in Sources */ = {isa = PBXBuildFile; fileRef = F84D575C39F1D50D1383B4E4 /* FoodWatchOutboxStore.swift */; };
+		D63FF8C075091DF41AEA4206 /* FoodBlobWatchApp.swift in Sources */ = {isa = PBXBuildFile; fileRef = 182F9995769779E2D58A3D8E /* FoodBlobWatchApp.swift */; };
+		D670E0096F06FC865CBEF599 /* FoodStoreTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 568F0A22804D53B2C5193E73 /* FoodStoreTests.swift */; };
+		D7B88C7BD7950D3ABDBF2C40 /* FoodWatchVisuals.swift in Sources */ = {isa = PBXBuildFile; fileRef = 55BF38D6B4914C0CCFE6F658 /* FoodWatchVisuals.swift */; };
 		D80B6CD151FAC67ED25BBAFD /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = D283DEFD4EF160615A7FFFC2 /* Foundation.framework */; };
-		D99D88882DF39201E580B799 /* WidgetLayoutID.swift in Sources */ = {isa = PBXBuildFile; fileRef = 902E0C62D7EF1D1B603D6D4E /* WidgetLayoutID.swift */; };
-		DC5E92B716CF1A4C937779D6 /* AppContractTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 403B8FC7AD2BC0D53A6B5F4C /* AppContractTests.swift */; };
-		DC8ED843BD75096F4E45C49C /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 0E839F51819DEDDDE9492F44 /* Foundation.framework */; };
-		DEB985A9F207B2DCEFF4F5A7 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 17E5B92F46493B0AA318B606 /* Assets.xcassets */; };
-		DF7A88176100590FEE3E3CDA /* FoodWatchModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 82A38627A9ECF0903A4FB550 /* FoodWatchModel.swift */; };
-		E0526E53F9C0E0604B5E4361 /* FoodBlobWidgetsBundle.swift in Sources */ = {isa = PBXBuildFile; fileRef = E452E5E8627CD18C6CC4A99F /* FoodBlobWidgetsBundle.swift */; };
-		E0A4023770EE28765FA1A9AD /* FoodBlobPersistence.swift in Sources */ = {isa = PBXBuildFile; fileRef = A97B02C33C4207303DF9E723 /* FoodBlobPersistence.swift */; };
-		E203AD087BDA9819611D8507 /* BlobMaterial.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4B5FC824BDD4F495615AE0C2 /* BlobMaterial.swift */; };
-		E2C0954D6CDE31DC65F7E134 /* BlobColor+SwiftUI.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9D6A393372B66344B33DD22D /* BlobColor+SwiftUI.swift */; };
-		E2D524B8FAE44962F3709DD0 /* FoodWidgetActionRuntime.swift in Sources */ = {isa = PBXBuildFile; fileRef = BA840C4D1780F992026552E7 /* FoodWidgetActionRuntime.swift */; };
-		E3D69120E795D0CF21461A11 /* FoodBlobWidgets.appex in Embed App Extensions */ = {isa = PBXBuildFile; fileRef = D7713B3F3E54671E56410F17 /* FoodBlobWidgets.appex */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
-		EC48EA9A1D7EA80065B1FE56 /* FoodWidgetLedger.swift in Sources */ = {isa = PBXBuildFile; fileRef = 77FA3C916A395F48E1E955B3 /* FoodWidgetLedger.swift */; };
-		F0ACAB36750EB7270C0350EA /* FoodDateKey.swift in Sources */ = {isa = PBXBuildFile; fileRef = FFAE9A17321DBAC18314F8E3 /* FoodDateKey.swift */; };
-		F23A5769B9867B6EF9E7DBB2 /* FoodWidgetLedger.swift in Sources */ = {isa = PBXBuildFile; fileRef = 77FA3C916A395F48E1E955B3 /* FoodWidgetLedger.swift */; };
-		F44545350042FC1411875251 /* FoodWidgetLedger.swift in Sources */ = {isa = PBXBuildFile; fileRef = C10E0CDADD7922A4596DFE6D /* FoodWidgetLedger.swift */; };
-		F46D2A3EE8E9E1AB860B2878 /* FoodBlobSnapshot.swift in Sources */ = {isa = PBXBuildFile; fileRef = 03B027C65405DDE244D0AF8C /* FoodBlobSnapshot.swift */; };
-		F6F09EDEA2E50BC18C627608 /* HistoryView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 93C60504CD715DEE6A9F0BCC /* HistoryView.swift */; };
-		F84D575C39F1D50D1383B4E4 /* WidgetLayoutID.swift in Sources */ = {isa = PBXBuildFile; fileRef = 902E0C62D7EF1D1B603D6D4E /* WidgetLayoutID.swift */; };
-		F8F5A3E4DAC42695882A9C36 /* HistoryProjectionTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4A8C2F02DA8E22645797D45F /* HistoryProjectionTests.swift */; };
-		FA1892D38F5B355B6F78D56D /* FoodWatchLayoutMetrics.swift in Sources */ = {isa = PBXBuildFile; fileRef = D7DAA7C2E9DEC9C0F4C25DC3 /* FoodWatchLayoutMetrics.swift */; };
-		FA3053C4E004B7CCB3D894F2 /* BlobColorTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 848CDF11FB418747932E0EEB /* BlobColorTests.swift */; };
-		FBE0A1B68DA05D7EF5787179 /* FoodBlobWatch.app in Embed Watch Content */ = {isa = PBXBuildFile; fileRef = D08772BA6B5B8B87701A4FB3 /* FoodBlobWatch.app */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
-		FDB91590E977A5645D6E8ABE /* WidgetLedgerTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = A2CD2B7371797053E00044C1 /* WidgetLedgerTests.swift */; };
-		FE7A56B89785A1930A5E8669 /* MascotBlobView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8471893D46AFE77F8D983B12 /* MascotBlobView.swift */; };
-		FF0ED3714FF5E62D86196FCD /* FoodWatchOutboxStore.swift in Sources */ = {isa = PBXBuildFile; fileRef = D27F17C4C1F844AC00D0EF8F /* FoodWatchOutboxStore.swift */; };
+		D99D88882DF39201E580B799 /* FoodWatchLayoutMetrics.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3227884771CC04145CE35F4B /* FoodWatchLayoutMetrics.swift */; };
+		E055C0FB54131AB06F024778 /* FoodWatchModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4058C754726B08D7D19F5456 /* FoodWatchModel.swift */; };
+		E1DFE774F5169BDF4B3BBBAF /* FoodCountsTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 212CFFC1B6A6FD1AC790D71A /* FoodCountsTests.swift */; };
+		E203AD087BDA9819611D8507 /* FoodWidgetLedger.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4B5FC824BDD4F495615AE0C2 /* FoodWidgetLedger.swift */; };
+		E2C0954D6CDE31DC65F7E134 /* FoodModels.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9D6A393372B66344B33DD22D /* FoodModels.swift */; };
+		E2D524B8FAE44962F3709DD0 /* WidgetLayoutID.swift in Sources */ = {isa = PBXBuildFile; fileRef = BA840C4D1780F992026552E7 /* WidgetLayoutID.swift */; };
+		E452E5E8627CD18C6CC4A99F /* HistoryProjectionTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1A5EB7B8E108BB678BCA9C6E /* HistoryProjectionTests.swift */; };
+		E9ACF61ADDE2BB1C04E0A9C8 /* JellyInteractionUITests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2968FC14A1E27097AEC7750D /* JellyInteractionUITests.swift */; };
+		EC48EA9A1D7EA80065B1FE56 /* BlobColor.swift in Sources */ = {isa = PBXBuildFile; fileRef = F23A5769B9867B6EF9E7DBB2 /* BlobColor.swift */; };
+		F0ACAB36750EB7270C0350EA /* FoodWidgetActionRuntime.swift in Sources */ = {isa = PBXBuildFile; fileRef = 96DE55653E61384A4C041520 /* FoodWidgetActionRuntime.swift */; };
+		F6F09EDEA2E50BC18C627608 /* TodayView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 93C60504CD715DEE6A9F0BCC /* TodayView.swift */; };
+		F89D97F4A2D0A8CFD9D38E7B /* FoodBlobWatchWidgetsBundle.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6A58D64A9EF8BA8A1B72718E /* FoodBlobWatchWidgetsBundle.swift */; };
+		FA3053C4E004B7CCB3D894F2 /* FoodWatchLayoutTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 848CDF11FB418747932E0EEB /* FoodWatchLayoutTests.swift */; };
+		FBE0A1B68DA05D7EF5787179 /* ChangeFoodCountIntent+AppProcess.swift in Sources */ = {isa = PBXBuildFile; fileRef = 11315B043FBCE826D7788D88 /* ChangeFoodCountIntent+AppProcess.swift */; };
+		FF0ED3714FF5E62D86196FCD /* FoodWidgetTimeline.swift in Sources */ = {isa = PBXBuildFile; fileRef = BED6B5D76F03F7905BC2BA19 /* FoodWidgetTimeline.swift */; };
+		FFAE9A17321DBAC18314F8E3 /* FoodWatchTransferContract.swift in Sources */ = {isa = PBXBuildFile; fileRef = F46D2A3EE8E9E1AB860B2878 /* FoodWatchTransferContract.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
-		4556F902350C8190CBCF43BB /* PBXContainerItemProxy */ = {
+		0562AC289D7B95CAFEFB90F4 /* PBXContainerItemProxy */ = {
 			isa = PBXContainerItemProxy;
 			containerPortal = B1C4252561410D384AB57FC2 /* Project object */;
 			proxyType = 1;
 			remoteGlobalIDString = 678FDF2FADF3BDEF919099D2;
 			remoteInfo = FoodBlobWidgets;
 		};
-		5DF5A27DEFF66545F4443CE5 /* PBXContainerItemProxy */ = {
-			isa = PBXContainerItemProxy;
-			containerPortal = B1C4252561410D384AB57FC2 /* Project object */;
-			proxyType = 1;
-			remoteGlobalIDString = 960B8FA2CDFFE166261E3064;
-			remoteInfo = FoodBlob;
-		};
-		7D7C0EB2BAC658EE89EB3629 /* PBXContainerItemProxy */ = {
-			isa = PBXContainerItemProxy;
-			containerPortal = B1C4252561410D384AB57FC2 /* Project object */;
-			proxyType = 1;
-			remoteGlobalIDString = 960B8FA2CDFFE166261E3064;
-			remoteInfo = FoodBlob;
-		};
-		85A80C4A3A967869AAF9934D /* PBXContainerItemProxy */ = {
-			isa = PBXContainerItemProxy;
-			containerPortal = B1C4252561410D384AB57FC2 /* Project object */;
-			proxyType = 1;
-			remoteGlobalIDString = CF05ED8456722E3AF35EE6EA;
-			remoteInfo = FoodBlobWatchWidgets;
-		};
-		BD3878D91883A14BD2D8C7E4 /* PBXContainerItemProxy */ = {
-			isa = PBXContainerItemProxy;
-			containerPortal = B1C4252561410D384AB57FC2 /* Project object */;
-			proxyType = 1;
-			remoteGlobalIDString = 960B8FA2CDFFE166261E3064;
-			remoteInfo = FoodBlob;
-		};
-		EE6EFC05C577A5E072D875C3 /* PBXContainerItemProxy */ = {
+		17C8B77D6A1C55F5A4AD5247 /* PBXContainerItemProxy */ = {
 			isa = PBXContainerItemProxy;
 			containerPortal = B1C4252561410D384AB57FC2 /* Project object */;
 			proxyType = 1;
 			remoteGlobalIDString = 499C14B23923079FB7688CC1;
-			remoteInfo = FoodBlobWatchExtension;
+			remoteInfo = FoodBlobWatchWidgets;
 		};
-		F3D4522A8D947703854E3CC1 /* PBXContainerItemProxy */ = {
+		52764EDAF605F8D86922D02E /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = B1C4252561410D384AB57FC2 /* Project object */;
+			proxyType = 1;
+			remoteGlobalIDString = 960B8FA2CDFFE166261E3064;
+			remoteInfo = FoodBlob;
+		};
+		7A199DEFD651398B7A320AF3 /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = B1C4252561410D384AB57FC2 /* Project object */;
+			proxyType = 1;
+			remoteGlobalIDString = 960B8FA2CDFFE166261E3064;
+			remoteInfo = FoodBlob;
+		};
+		CF05ED8456722E3AF35EE6EA /* PBXContainerItemProxy */ = {
 			isa = PBXContainerItemProxy;
 			containerPortal = B1C4252561410D384AB57FC2 /* Project object */;
 			proxyType = 1;
 			remoteGlobalIDString = 678FDF2FADF3BDEF919099D2;
 			remoteInfo = FoodBlobWidgets;
 		};
+		ED787197696135ED47E674D5 /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = B1C4252561410D384AB57FC2 /* Project object */;
+			proxyType = 1;
+			remoteGlobalIDString = 960B8FA2CDFFE166261E3064;
+			remoteInfo = FoodBlob;
+		};
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXCopyFilesBuildPhase section */
-		11315B043FBCE826D7788D88 /* Embed Watch Content */ = {
+		329E39C8B838E555B8A14B12 /* Embed Watch Content */ = {
 			isa = PBXCopyFilesBuildPhase;
 			buildActionMask = 2147483647;
 			dstPath = "$(CONTENTS_FOLDER_PATH)/Watch";
 			dstSubfolderSpec = 16;
 			files = (
-				FBE0A1B68DA05D7EF5787179 /* FoodBlobWatch.app in Embed Watch Content */,
+				5DF5A27DEFF66545F4443CE5 /* FoodBlobWatch.app in Embed Watch Content */,
 			);
 			name = "Embed Watch Content";
 			runOnlyForDeploymentPostprocessing = 1;
 		};
-		1E6CB25EEF3299F07440F89E /* Embed App Extensions */ = {
+		E2039B1E7F3A4CF2247C5AF3 /* Embed App Extensions */ = {
 			isa = PBXCopyFilesBuildPhase;
 			buildActionMask = 2147483647;
 			dstPath = "";
 			dstSubfolderSpec = 13;
 			files = (
-				E3D69120E795D0CF21461A11 /* FoodBlobWidgets.appex in Embed App Extensions */,
+				4556F902350C8190CBCF43BB /* FoodBlobWidgets.appex in Embed App Extensions */,
 			);
 			name = "Embed App Extensions";
 			runOnlyForDeploymentPostprocessing = 0;
 		};
-		D5E350189A7E9225153CD7DA /* Embed Watch Extensions */ = {
+		E21FAD9C6A2C988D1EDDB467 /* Embed Watch Extensions */ = {
 			isa = PBXCopyFilesBuildPhase;
 			buildActionMask = 2147483647;
 			dstPath = "";
 			dstSubfolderSpec = 13;
 			files = (
-				22033041FBAD25CB2D0915FD /* FoodBlobWatchExtension.appex in Embed Watch Extensions */,
-				8D07E76E71A10AFFF0DBDB41 /* FoodBlobWatchWidgets.appex in Embed Watch Extensions */,
+				4A8AC99EBC887936D1141052 /* FoodBlobWatchWidgets.appex in Embed Watch Extensions */,
 			);
 			name = "Embed Watch Extensions";
 			runOnlyForDeploymentPostprocessing = 0;
@@ -227,100 +217,99 @@
 /* End PBXCopyFilesBuildPhase section */
 
 /* Begin PBXFileReference section */
-		002F85A50953DB30A37156AE /* FoodBlobWatchComplication.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; path = FoodBlobWatchComplication.swift; sourceTree = "<group>"; };
-		02851F07A2246F5285F73096 /* ConnectedBlobMotion.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; path = ConnectedBlobMotion.swift; sourceTree = "<group>"; };
-		03B027C65405DDE244D0AF8C /* FoodBlobSnapshot.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; path = FoodBlobSnapshot.swift; sourceTree = "<group>"; };
-		0562AC289D7B95CAFEFB90F4 /* FoodBlobWatchWidgets.appex */ = {isa = PBXFileReference; explicitFileType = "wrapper.app-extension"; includeInIndex = 0; path = FoodBlobWatchWidgets.appex; sourceTree = BUILT_PRODUCTS_DIR; };
-		0A8D1AD660D1FFCB26C40C80 /* FoodWatchOutboxTests.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; path = FoodWatchOutboxTests.swift; sourceTree = "<group>"; };
-		0C8D738D58182359227F2F45 /* FoodWatchReceiptStore.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; path = FoodWatchReceiptStore.swift; sourceTree = "<group>"; };
+		002F85A50953DB30A37156AE /* JellySurface.metal */ = {isa = PBXFileReference; includeInIndex = 1; name = JellySurface.metal; path = FoodBlob/Design/JellySurface.metal; sourceTree = "<group>"; };
+		02851F07A2246F5285F73096 /* SkinCatalog.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; path = SkinCatalog.swift; sourceTree = "<group>"; };
+		0879608E40E3BD1C2417F195 /* FoodBlobView.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; path = FoodBlobView.swift; sourceTree = "<group>"; };
 		0E839F51819DEDDDE9492F44 /* Foundation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Foundation.framework; path = Platforms/WatchOS.platform/Developer/SDKs/WatchOS11.0.sdk/System/Library/Frameworks/Foundation.framework; sourceTree = DEVELOPER_DIR; };
-		146F65EE2A6EAC9E3858B240 /* FoodBlobWatchExtension.appex */ = {isa = PBXFileReference; explicitFileType = "wrapper.app-extension"; includeInIndex = 0; path = FoodBlobWatchExtension.appex; sourceTree = BUILT_PRODUCTS_DIR; };
-		160734F76A21470FC4289994 /* FoodWatchAcknowledgementDeliveryTracker.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; path = FoodWatchAcknowledgementDeliveryTracker.swift; sourceTree = "<group>"; };
-		17E5B92F46493B0AA318B606 /* Assets.xcassets */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
-		1F70E60C51CB4BF42B9B07C3 /* SkinStudioView.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; path = SkinStudioView.swift; sourceTree = "<group>"; };
-		1F895CF754C0F8F688DBB9FC /* BlobColor+SwiftUI.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; path = "BlobColor+SwiftUI.swift"; sourceTree = "<group>"; };
-		2159EF5780399AB37DC2ADBD /* FoodModels.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; path = FoodModels.swift; sourceTree = "<group>"; };
-		23AE42610258271241386C19 /* ChangeFoodCountIntent+AppProcess.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; path = "ChangeFoodCountIntent+AppProcess.swift"; sourceTree = "<group>"; };
-		24BA1DE9B9B0FCE518FAFB53 /* FoodBlobWatchApp.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; path = FoodBlobWatchApp.swift; sourceTree = "<group>"; };
-		24D8FF8AF550F55F6FE29784 /* FoodBlobRootView.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; path = FoodBlobRootView.swift; sourceTree = "<group>"; };
-		314BCF87E3B1B95E6D0CC6B9 /* WidgetSetupView.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; path = WidgetSetupView.swift; sourceTree = "<group>"; };
-		340BFED8D35C1017481294B0 /* FoodCountsTests.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; path = FoodCountsTests.swift; sourceTree = "<group>"; };
-		34ACB7299DC85614460F3E6F /* FoodWatchTransferContract.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; path = FoodWatchTransferContract.swift; sourceTree = "<group>"; };
-		3729D4424A9D5DE610881D45 /* FoodWatchTransferContract.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; path = FoodWatchTransferContract.swift; sourceTree = "<group>"; };
-		37BD23B3431A1697846C3DD5 /* BlobMaterialPreferenceTests.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; path = BlobMaterialPreferenceTests.swift; sourceTree = "<group>"; };
-		3A389052F0AE271FF6ECD4D6 /* SettingsView.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; path = SettingsView.swift; sourceTree = "<group>"; };
-		3A55E7FA949139773A9F8E11 /* FoodBlobSnapshotTests.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; path = FoodBlobSnapshotTests.swift; sourceTree = "<group>"; };
-		3B15AA1DD26D51F5CDE0518E /* FoodCounterWidget.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; path = FoodCounterWidget.swift; sourceTree = "<group>"; };
+		10A9B77E30778AFC3541F0F3 /* JellySurface.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; path = JellySurface.swift; sourceTree = "<group>"; };
+		11315B043FBCE826D7788D88 /* ChangeFoodCountIntent+AppProcess.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; path = "ChangeFoodCountIntent+AppProcess.swift"; sourceTree = "<group>"; };
+		146F65EE2A6EAC9E3858B240 /* FoodBlobWatchWidgets.appex */ = {isa = PBXFileReference; explicitFileType = "wrapper.app-extension"; includeInIndex = 0; path = FoodBlobWatchWidgets.appex; sourceTree = BUILT_PRODUCTS_DIR; };
+		182F9995769779E2D58A3D8E /* FoodBlobWatchApp.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; path = FoodBlobWatchApp.swift; sourceTree = "<group>"; };
+		1A5EB7B8E108BB678BCA9C6E /* HistoryProjectionTests.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; path = HistoryProjectionTests.swift; sourceTree = "<group>"; };
+		1AA6F361020FB70427518242 /* FoodBlobWatchTodayView.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; path = FoodBlobWatchTodayView.swift; sourceTree = "<group>"; };
+		1F70E60C51CB4BF42B9B07C3 /* BlobColor.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; path = BlobColor.swift; sourceTree = "<group>"; };
+		1F895CF754C0F8F688DBB9FC /* FoodBlobPersistence.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; path = FoodBlobPersistence.swift; sourceTree = "<group>"; };
+		212CFFC1B6A6FD1AC790D71A /* FoodCountsTests.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; path = FoodCountsTests.swift; sourceTree = "<group>"; };
+		24D8FF8AF550F55F6FE29784 /* BlobPlopSound.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; path = BlobPlopSound.swift; sourceTree = "<group>"; };
+		26E04C4B14E8894EC176AB5B /* FoodBlobWatchApplicationDelegate.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; path = FoodBlobWatchApplicationDelegate.swift; sourceTree = "<group>"; };
+		2968FC14A1E27097AEC7750D /* JellyInteractionUITests.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; path = JellyInteractionUITests.swift; sourceTree = "<group>"; };
+		314BCF87E3B1B95E6D0CC6B9 /* ChangeFoodCountIntent.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; path = ChangeFoodCountIntent.swift; sourceTree = "<group>"; };
+		3227884771CC04145CE35F4B /* FoodWatchLayoutMetrics.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; path = FoodWatchLayoutMetrics.swift; sourceTree = "<group>"; };
+		340BFED8D35C1017481294B0 /* WidgetArtworkRenderingTests.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; path = WidgetArtworkRenderingTests.swift; sourceTree = "<group>"; };
+		3729D4424A9D5DE610881D45 /* LivingBlob.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; path = LivingBlob.swift; sourceTree = "<group>"; };
+		37BD23B3431A1697846C3DD5 /* FoodWatchOutboxTests.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; path = FoodWatchOutboxTests.swift; sourceTree = "<group>"; };
+		3A389052F0AE271FF6ECD4D6 /* BlobColor+SwiftUI.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; path = "BlobColor+SwiftUI.swift"; sourceTree = "<group>"; };
+		3A55E7FA949139773A9F8E11 /* LivingBlobTests.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; path = LivingBlobTests.swift; sourceTree = "<group>"; };
 		3C18D1D40B0CE857CFB44245 /* Food Blob.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "Food Blob.app"; sourceTree = BUILT_PRODUCTS_DIR; };
-		400480E53110BDBF049D75CE /* FoodBlobApp.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; path = FoodBlobApp.swift; sourceTree = "<group>"; };
-		403B8FC7AD2BC0D53A6B5F4C /* AppContractTests.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; path = AppContractTests.swift; sourceTree = "<group>"; };
-		406DAC9333C10BAE027A83CE /* FoodWatchSessionClient.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; path = FoodWatchSessionClient.swift; sourceTree = "<group>"; };
-		43C4B951E56A34C61451634D /* BlobMaterial.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; path = BlobMaterial.swift; sourceTree = "<group>"; };
-		4A8C2F02DA8E22645797D45F /* HistoryProjectionTests.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; path = HistoryProjectionTests.swift; sourceTree = "<group>"; };
-		4B0C5130E209773D0FCC91FD /* WidgetLayoutID.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; path = WidgetLayoutID.swift; sourceTree = "<group>"; };
-		4B5FC824BDD4F495615AE0C2 /* BlobMaterial.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; path = BlobMaterial.swift; sourceTree = "<group>"; };
-		4B900B56817179671A6D4642 /* FoodBlobWatchWidgetsBundle.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; path = FoodBlobWatchWidgetsBundle.swift; sourceTree = "<group>"; };
-		4DAA8D2E7613D2B955F22EE1 /* PrivacyInfo.xcprivacy */ = {isa = PBXFileReference; includeInIndex = 1; path = PrivacyInfo.xcprivacy; sourceTree = "<group>"; };
-		4F596B712A4C0025D8B91165 /* FoodBlobUITests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = FoodBlobUITests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
-		53AEB77118F91EF1DFFA544E /* FoodModels.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; path = FoodModels.swift; sourceTree = "<group>"; };
-		55E16D14B7FCD89361BBBFE0 /* BlobColor.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; path = BlobColor.swift; sourceTree = "<group>"; };
-		58DA77D0109BF5BC475F14AB /* FoodDateKey.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; path = FoodDateKey.swift; sourceTree = "<group>"; };
-		5D9340B1C1875A8AA798DC28 /* FoodWatchVisuals.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; path = FoodWatchVisuals.swift; sourceTree = "<group>"; };
-		673364827DA2FEB31DE3EEFC /* WidgetArtworkRenderingTests.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; path = WidgetArtworkRenderingTests.swift; sourceTree = "<group>"; };
-		74EF1EBA8059AB9B73CE01BD /* LivingBlobTests.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; path = LivingBlobTests.swift; sourceTree = "<group>"; };
+		3F2D006F68830C78EF92E41A /* FoodBlobWidgetsBundle.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; path = FoodBlobWidgetsBundle.swift; sourceTree = "<group>"; };
+		4058C754726B08D7D19F5456 /* FoodWatchModel.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; path = FoodWatchModel.swift; sourceTree = "<group>"; };
+		43C4B951E56A34C61451634D /* FoodDateKey.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; path = FoodDateKey.swift; sourceTree = "<group>"; };
+		496D76C74EA45384C95C709B /* FoodWatchSessionClient.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; path = FoodWatchSessionClient.swift; sourceTree = "<group>"; };
+		4B5FC824BDD4F495615AE0C2 /* FoodWidgetLedger.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; path = FoodWidgetLedger.swift; sourceTree = "<group>"; };
+		4F0A604A045DE77C6C3106CA /* FoodBlobRootView.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; path = FoodBlobRootView.swift; sourceTree = "<group>"; };
+		53AEB77118F91EF1DFFA544E /* WidgetLayoutID.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; path = WidgetLayoutID.swift; sourceTree = "<group>"; };
+		55BF38D6B4914C0CCFE6F658 /* FoodWatchVisuals.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; path = FoodWatchVisuals.swift; sourceTree = "<group>"; };
+		55E16D14B7FCD89361BBBFE0 /* FoodBlobSnapshot.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; path = FoodBlobSnapshot.swift; sourceTree = "<group>"; };
+		568F0A22804D53B2C5193E73 /* FoodStoreTests.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; path = FoodStoreTests.swift; sourceTree = "<group>"; };
+		58DA77D0109BF5BC475F14AB /* LivingBlob.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; path = LivingBlob.swift; sourceTree = "<group>"; };
+		5D9340B1C1875A8AA798DC28 /* AppContractTests.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; path = AppContractTests.swift; sourceTree = "<group>"; };
+		5F3AA1859D5FE464DE499E76 /* LiquidFeedbackTests.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; path = LiquidFeedbackTests.swift; sourceTree = "<group>"; };
+		638D7F409873653C2692F8D5 /* ConnectedBlobMotion.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; path = ConnectedBlobMotion.swift; sourceTree = "<group>"; };
+		6A58D64A9EF8BA8A1B72718E /* FoodBlobWatchWidgetsBundle.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; path = FoodBlobWatchWidgetsBundle.swift; sourceTree = "<group>"; };
+		6C7B9D1E72C235099763F2F4 /* FoodWatchReceiptStore.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; path = FoodWatchReceiptStore.swift; sourceTree = "<group>"; };
+		6FE4EA61227ACFEF24210A4C /* FoodWatchAcknowledgementApplier.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; path = FoodWatchAcknowledgementApplier.swift; sourceTree = "<group>"; };
+		74BFCD5E19B4D7C4CA26F204 /* DateKeyTests.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; path = DateKeyTests.swift; sourceTree = "<group>"; };
+		74F0B24894549A6E878C276D /* FoodWidgetArtwork.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; path = FoodWidgetArtwork.swift; sourceTree = "<group>"; };
 		764C380D38276EB52EEE0B24 /* FoodBlobWidgetTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = FoodBlobWidgetTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
-		76F9987542F71806E48DB467 /* FoodStore.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; path = FoodStore.swift; sourceTree = "<group>"; };
-		77FA3C916A395F48E1E955B3 /* FoodWidgetLedger.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; path = FoodWidgetLedger.swift; sourceTree = "<group>"; };
-		7EEC2D6A28CC96F9294C1615 /* FoodWatchIncomingDeliveryTracker.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; path = FoodWatchIncomingDeliveryTracker.swift; sourceTree = "<group>"; };
-		828275C8DF2998F2A4471647 /* FoodWatchConnectivityReceiver.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; path = FoodWatchConnectivityReceiver.swift; sourceTree = "<group>"; };
-		82A38627A9ECF0903A4FB550 /* FoodWatchModel.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; path = FoodWatchModel.swift; sourceTree = "<group>"; };
-		83B7F2D16C52BE592CAA55A6 /* ChangeFoodCountIntent.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; path = ChangeFoodCountIntent.swift; sourceTree = "<group>"; };
-		8471893D46AFE77F8D983B12 /* MascotBlobView.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; path = MascotBlobView.swift; sourceTree = "<group>"; };
-		848CDF11FB418747932E0EEB /* BlobColorTests.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; path = BlobColorTests.swift; sourceTree = "<group>"; };
-		860460CDB2D0EEA01C745302 /* SkinWorldBackgrounds.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; path = SkinWorldBackgrounds.swift; sourceTree = "<group>"; };
-		872DBC91970CDB0521E7E7E1 /* FoodWidgetTimeline.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; path = FoodWidgetTimeline.swift; sourceTree = "<group>"; };
-		88D4037BEED24BF24342D9A7 /* BlobPlopSound.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; path = BlobPlopSound.swift; sourceTree = "<group>"; };
-		890A32FBB8FF835E92C5BF7E /* LivingBlob.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; path = LivingBlob.swift; sourceTree = "<group>"; };
-		89ECC9493FC46BD04E06D57D /* FoodWatchAcknowledgementApplier.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; path = FoodWatchAcknowledgementApplier.swift; sourceTree = "<group>"; };
+		82A38627A9ECF0903A4FB550 /* Assets.xcassets */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
+		83B7F2D16C52BE592CAA55A6 /* FoodModels.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; path = FoodModels.swift; sourceTree = "<group>"; };
+		848CDF11FB418747932E0EEB /* FoodWatchLayoutTests.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; path = FoodWatchLayoutTests.swift; sourceTree = "<group>"; };
+		88928B9739CC94C0571C1FFE /* FoodDateKey.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; path = FoodDateKey.swift; sourceTree = "<group>"; };
+		88D4037BEED24BF24342D9A7 /* MascotBlobView.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; path = MascotBlobView.swift; sourceTree = "<group>"; };
+		8A75A4731B6BBEEF61160DD1 /* FoodBlobWatchComplication.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; path = FoodBlobWatchComplication.swift; sourceTree = "<group>"; };
+		8C7621DA8EFB8426A51E524B /* FoodCounterControls.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; path = FoodCounterControls.swift; sourceTree = "<group>"; };
 		8CBCDD5878ABB821C8DEDC3A /* FoodBlobTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = FoodBlobTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
-		8E5E333886071577383EFDA2 /* OnboardingView.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; path = OnboardingView.swift; sourceTree = "<group>"; };
-		902E0C62D7EF1D1B603D6D4E /* WidgetLayoutID.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; path = WidgetLayoutID.swift; sourceTree = "<group>"; };
-		93C60504CD715DEE6A9F0BCC /* HistoryView.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; path = HistoryView.swift; sourceTree = "<group>"; };
-		93DA2DFDCF8C28EB621906F7 /* JellyInteractionUITests.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; path = JellyInteractionUITests.swift; sourceTree = "<group>"; };
-		962A9D90AA09A39A4F9446C2 /* FoodBlobView.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; path = FoodBlobView.swift; sourceTree = "<group>"; };
-		9D6A393372B66344B33DD22D /* BlobColor+SwiftUI.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; path = "BlobColor+SwiftUI.swift"; sourceTree = "<group>"; };
-		9FA134E4DC5F85E1DF4D2E64 /* LivingBlob.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; path = LivingBlob.swift; sourceTree = "<group>"; };
-		9FD67EE00D2DC63241A930A4 /* FoodStoreTests.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; path = FoodStoreTests.swift; sourceTree = "<group>"; };
-		A2CD2B7371797053E00044C1 /* WidgetLedgerTests.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; path = WidgetLedgerTests.swift; sourceTree = "<group>"; };
-		A7DC4AAEBA8F6CB126CB099B /* LiquidFeedback.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; path = LiquidFeedback.swift; sourceTree = "<group>"; };
-		A8FF870A86F8EDA2004B5BAE /* Assets.xcassets */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
-		A97B02C33C4207303DF9E723 /* FoodBlobPersistence.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; path = FoodBlobPersistence.swift; sourceTree = "<group>"; };
-		ABDE3F0E27FA77C4055933B0 /* ConnectedBlobMotionTests.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; path = ConnectedBlobMotionTests.swift; sourceTree = "<group>"; };
-		AEA6624CB7DE57AE2E905A3D /* FoodWatchLayoutTests.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; path = FoodWatchLayoutTests.swift; sourceTree = "<group>"; };
-		AF4072376D83853CE962D4A0 /* JellySurface.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; path = JellySurface.swift; sourceTree = "<group>"; };
-		B2DDCA9D1565976D5926CA24 /* FoodWatchActivationGate.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; path = FoodWatchActivationGate.swift; sourceTree = "<group>"; };
-		B3B985BD3EE2AF82759455BB /* FoodWidgetArtwork.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; path = FoodWidgetArtwork.swift; sourceTree = "<group>"; };
-		BA840C4D1780F992026552E7 /* FoodWidgetActionRuntime.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; path = FoodWidgetActionRuntime.swift; sourceTree = "<group>"; };
-		BC2E3DD78C69D62558997C77 /* JellySurface.metal */ = {isa = PBXFileReference; includeInIndex = 1; name = JellySurface.metal; path = FoodBlob/Design/JellySurface.metal; sourceTree = "<group>"; };
-		C10E0CDADD7922A4596DFE6D /* FoodWidgetLedger.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; path = FoodWidgetLedger.swift; sourceTree = "<group>"; };
-		C25797989CFC6F5D6074A446 /* JellySurfaceTests.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; path = JellySurfaceTests.swift; sourceTree = "<group>"; };
-		C8968FB33CCA25BCA9A062F0 /* SkinCatalog.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; path = SkinCatalog.swift; sourceTree = "<group>"; };
+		8D07E76E71A10AFFF0DBDB41 /* FoodWatchConnectivityReceiver.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; path = FoodWatchConnectivityReceiver.swift; sourceTree = "<group>"; };
+		8E5E333886071577383EFDA2 /* WidgetSetupView.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; path = WidgetSetupView.swift; sourceTree = "<group>"; };
+		8F4E301142A335EE6AC38A0E /* BlobColorTests.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; path = BlobColorTests.swift; sourceTree = "<group>"; };
+		919497D28A8270430FF84227 /* OnboardingView.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; path = OnboardingView.swift; sourceTree = "<group>"; };
+		93C60504CD715DEE6A9F0BCC /* TodayView.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; path = TodayView.swift; sourceTree = "<group>"; };
+		962A9D90AA09A39A4F9446C2 /* SkinWorldBackgrounds.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; path = SkinWorldBackgrounds.swift; sourceTree = "<group>"; };
+		96DE55653E61384A4C041520 /* FoodWidgetActionRuntime.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; path = FoodWidgetActionRuntime.swift; sourceTree = "<group>"; };
+		9AC6686FE650E4902B36EDB3 /* SkinStudioView.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; path = SkinStudioView.swift; sourceTree = "<group>"; };
+		9D6A393372B66344B33DD22D /* FoodModels.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; path = FoodModels.swift; sourceTree = "<group>"; };
+		9DF135DB98D257F0E9244048 /* FoodWidgetLedger.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; path = FoodWidgetLedger.swift; sourceTree = "<group>"; };
+		9FD67EE00D2DC63241A930A4 /* WidgetGeometryTests.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; path = WidgetGeometryTests.swift; sourceTree = "<group>"; };
+		A007F1BA067AF59A3D3E84CB /* FoodBlobUITests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = FoodBlobUITests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
+		A81FA8C25CDDC2FFD26C7BE4 /* BlobMaterial.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; path = BlobMaterial.swift; sourceTree = "<group>"; };
+		A97B02C33C4207303DF9E723 /* FoodStore.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; path = FoodStore.swift; sourceTree = "<group>"; };
+		AEA6624CB7DE57AE2E905A3D /* WidgetLedgerTests.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; path = WidgetLedgerTests.swift; sourceTree = "<group>"; };
+		AF4072376D83853CE962D4A0 /* HistoryView.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; path = HistoryView.swift; sourceTree = "<group>"; };
+		BA840C4D1780F992026552E7 /* WidgetLayoutID.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; path = WidgetLayoutID.swift; sourceTree = "<group>"; };
+		BED6B5D76F03F7905BC2BA19 /* FoodWidgetTimeline.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; path = FoodWidgetTimeline.swift; sourceTree = "<group>"; };
+		C5786BB2B7FC29B38BF73074 /* ConnectedBlobMotionTests.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; path = ConnectedBlobMotionTests.swift; sourceTree = "<group>"; };
+		C7459895921F12BA114E65FB /* BlobColor+SwiftUI.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; path = "BlobColor+SwiftUI.swift"; sourceTree = "<group>"; };
+		C8968FB33CCA25BCA9A062F0 /* SettingsView.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; path = SettingsView.swift; sourceTree = "<group>"; };
 		D08772BA6B5B8B87701A4FB3 /* FoodBlobWatch.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = FoodBlobWatch.app; sourceTree = BUILT_PRODUCTS_DIR; };
-		D27F17C4C1F844AC00D0EF8F /* FoodWatchOutboxStore.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; path = FoodWatchOutboxStore.swift; sourceTree = "<group>"; };
 		D283DEFD4EF160615A7FFFC2 /* Foundation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Foundation.framework; path = Platforms/iPhoneOS.platform/Developer/SDKs/iPhoneOS18.0.sdk/System/Library/Frameworks/Foundation.framework; sourceTree = DEVELOPER_DIR; };
-		D4E3BB902C876A43B596231D /* FoodBlobWatchTodayView.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; path = FoodBlobWatchTodayView.swift; sourceTree = "<group>"; };
-		D63FF8C075091DF41AEA4206 /* FoodWatchSyncTests.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; path = FoodWatchSyncTests.swift; sourceTree = "<group>"; };
+		D4E3BB902C876A43B596231D /* Assets.xcassets */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
+		D5E350189A7E9225153CD7DA /* FoodWatchActivationGate.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; path = FoodWatchActivationGate.swift; sourceTree = "<group>"; };
+		D60B07CA1000D9592CAD54DA /* LiquidFeedback.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; path = LiquidFeedback.swift; sourceTree = "<group>"; };
 		D7713B3F3E54671E56410F17 /* FoodBlobWidgets.appex */ = {isa = PBXFileReference; explicitFileType = "wrapper.app-extension"; includeInIndex = 0; path = FoodBlobWidgets.appex; sourceTree = BUILT_PRODUCTS_DIR; };
-		D7DAA7C2E9DEC9C0F4C25DC3 /* FoodWatchLayoutMetrics.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; path = FoodWatchLayoutMetrics.swift; sourceTree = "<group>"; };
-		D7F51F4298220B52C875275A /* DateKeyTests.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; path = DateKeyTests.swift; sourceTree = "<group>"; };
-		D81834E3BA74EAD8C6891833 /* FoodCounterControls.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; path = FoodCounterControls.swift; sourceTree = "<group>"; };
-		DF5D4501EEB9C6F30941CF8C /* BlobColor.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; path = BlobColor.swift; sourceTree = "<group>"; };
-		E02E8F787D741C7173125DBB /* TodayView.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; path = TodayView.swift; sourceTree = "<group>"; };
-		E055C0FB54131AB06F024778 /* WidgetGeometryTests.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; path = WidgetGeometryTests.swift; sourceTree = "<group>"; };
-		E1DFE774F5169BDF4B3BBBAF /* LiquidFeedbackTests.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; path = LiquidFeedbackTests.swift; sourceTree = "<group>"; };
-		E452E5E8627CD18C6CC4A99F /* FoodBlobWidgetsBundle.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; path = FoodBlobWidgetsBundle.swift; sourceTree = "<group>"; };
-		F89D97F4A2D0A8CFD9D38E7B /* FoodBlobWatchApplicationDelegate.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; path = FoodBlobWatchApplicationDelegate.swift; sourceTree = "<group>"; };
-		FFAE9A17321DBAC18314F8E3 /* FoodDateKey.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; path = FoodDateKey.swift; sourceTree = "<group>"; };
+		D7F51F4298220B52C875275A /* FoodWatchSyncTests.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; path = FoodWatchSyncTests.swift; sourceTree = "<group>"; };
+		DC5E92B716CF1A4C937779D6 /* BlobMaterialPreferenceTests.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; path = BlobMaterialPreferenceTests.swift; sourceTree = "<group>"; };
+		DF5D4501EEB9C6F30941CF8C /* FoodWatchTransferContract.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; path = FoodWatchTransferContract.swift; sourceTree = "<group>"; };
+		DF7A88176100590FEE3E3CDA /* PrivacyInfo.xcprivacy */ = {isa = PBXFileReference; includeInIndex = 1; path = PrivacyInfo.xcprivacy; sourceTree = "<group>"; };
+		E02E8F787D741C7173125DBB /* BlobMaterial.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; path = BlobMaterial.swift; sourceTree = "<group>"; };
+		E0526E53F9C0E0604B5E4361 /* JellySurfaceTests.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; path = JellySurfaceTests.swift; sourceTree = "<group>"; };
+		E0A4023770EE28765FA1A9AD /* FoodWatchAcknowledgementDeliveryTracker.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; path = FoodWatchAcknowledgementDeliveryTracker.swift; sourceTree = "<group>"; };
+		F23A5769B9867B6EF9E7DBB2 /* BlobColor.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; path = BlobColor.swift; sourceTree = "<group>"; };
+		F44545350042FC1411875251 /* FoodWatchIncomingDeliveryTracker.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; path = FoodWatchIncomingDeliveryTracker.swift; sourceTree = "<group>"; };
+		F46D2A3EE8E9E1AB860B2878 /* FoodWatchTransferContract.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; path = FoodWatchTransferContract.swift; sourceTree = "<group>"; };
+		F4D1AF513AE74FAAB4E1CF1E /* FoodBlobApp.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; path = FoodBlobApp.swift; sourceTree = "<group>"; };
+		F84D575C39F1D50D1383B4E4 /* FoodWatchOutboxStore.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; path = FoodWatchOutboxStore.swift; sourceTree = "<group>"; };
+		F8F5A3E4DAC42695882A9C36 /* FoodBlobSnapshotTests.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; path = FoodBlobSnapshotTests.swift; sourceTree = "<group>"; };
+		FA1892D38F5B355B6F78D56D /* FoodCounterWidget.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; path = FoodCounterWidget.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -340,11 +329,11 @@
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
-		52764EDAF605F8D86922D02E /* Frameworks */ = {
+		4DAA8D2E7613D2B955F22EE1 /* Frameworks */ = {
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				DC8ED843BD75096F4E45C49C /* Foundation.framework in Frameworks */,
+				363FADE44F8A168122919A0D /* Foundation.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -361,14 +350,6 @@
 			buildActionMask = 2147483647;
 			files = (
 				D80B6CD151FAC67ED25BBAFD /* Foundation.framework in Frameworks */,
-			);
-			runOnlyForDeploymentPostprocessing = 0;
-		};
-		71EC61A58ACC294E6B724F5F /* Frameworks */ = {
-			isa = PBXFrameworksBuildPhase;
-			buildActionMask = 2147483647;
-			files = (
-				7B18D8D0B0BD193B8A98CECF /* Foundation.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -391,29 +372,30 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
-		1A5EB7B8E108BB678BCA9C6E /* FoodBlobWidgets */ = {
+		0A8D1AD660D1FFCB26C40C80 /* FoodBlobWatchExtension */ = {
 			isa = PBXGroup;
 			children = (
-				E452E5E8627CD18C6CC4A99F /* FoodBlobWidgetsBundle.swift */,
-				3B15AA1DD26D51F5CDE0518E /* FoodCounterWidget.swift */,
-				872DBC91970CDB0521E7E7E1 /* FoodWidgetTimeline.swift */,
+				182F9995769779E2D58A3D8E /* FoodBlobWatchApp.swift */,
+				26E04C4B14E8894EC176AB5B /* FoodBlobWatchApplicationDelegate.swift */,
+				1AA6F361020FB70427518242 /* FoodBlobWatchTodayView.swift */,
+				4058C754726B08D7D19F5456 /* FoodWatchModel.swift */,
+				496D76C74EA45384C95C709B /* FoodWatchSessionClient.swift */,
 			);
-			name = FoodBlobWidgets;
-			path = FoodBlobWidgets;
+			name = FoodBlobWatchExtension;
+			path = FoodBlobWatchExtension;
 			sourceTree = "<group>";
 		};
-		2799DD3AA235CB44CEE51A59 /* Features */ = {
+		34ACB7299DC85614460F3E6F /* WatchShared */ = {
 			isa = PBXGroup;
 			children = (
-				D62D2AFDCED64895D6F841CF /* History */,
-				9CFE7456440BF32F79EB99FE /* Onboarding */,
-				651D509CD02876CCB01F9602 /* Settings */,
-				555FE62DEAD40A9DC2574B5F /* Skins */,
-				9A3F31E894A41C5C9F3DC8A7 /* Today */,
-				4D21CB8048AC7FA100C3ED5E /* Widgets */,
+				6FE4EA61227ACFEF24210A4C /* FoodWatchAcknowledgementApplier.swift */,
+				F44545350042FC1411875251 /* FoodWatchIncomingDeliveryTracker.swift */,
+				3227884771CC04145CE35F4B /* FoodWatchLayoutMetrics.swift */,
+				F84D575C39F1D50D1383B4E4 /* FoodWatchOutboxStore.swift */,
+				55BF38D6B4914C0CCFE6F658 /* FoodWatchVisuals.swift */,
 			);
-			name = Features;
-			path = Features;
+			name = WatchShared;
+			path = WatchShared;
 			sourceTree = "<group>";
 		};
 		366B27553D9795D4583B722B /* Products */ = {
@@ -424,51 +406,10 @@
 				8CBCDD5878ABB821C8DEDC3A /* FoodBlobTests.xctest */,
 				764C380D38276EB52EEE0B24 /* FoodBlobWidgetTests.xctest */,
 				D08772BA6B5B8B87701A4FB3 /* FoodBlobWatch.app */,
-				146F65EE2A6EAC9E3858B240 /* FoodBlobWatchExtension.appex */,
-				0562AC289D7B95CAFEFB90F4 /* FoodBlobWatchWidgets.appex */,
-				4F596B712A4C0025D8B91165 /* FoodBlobUITests.xctest */,
+				146F65EE2A6EAC9E3858B240 /* FoodBlobWatchWidgets.appex */,
+				A007F1BA067AF59A3D3E84CB /* FoodBlobUITests.xctest */,
 			);
 			name = Products;
-			sourceTree = "<group>";
-		};
-		3BBBE1C23E058672A6D45F7A /* Shared Watch Sources */ = {
-			isa = PBXGroup;
-			children = (
-				9D6A393372B66344B33DD22D /* BlobColor+SwiftUI.swift */,
-				DF5D4501EEB9C6F30941CF8C /* BlobColor.swift */,
-				4B5FC824BDD4F495615AE0C2 /* BlobMaterial.swift */,
-				58DA77D0109BF5BC475F14AB /* FoodDateKey.swift */,
-				53AEB77118F91EF1DFFA544E /* FoodModels.swift */,
-				34ACB7299DC85614460F3E6F /* FoodWatchTransferContract.swift */,
-				C10E0CDADD7922A4596DFE6D /* FoodWidgetLedger.swift */,
-				9FA134E4DC5F85E1DF4D2E64 /* LivingBlob.swift */,
-				902E0C62D7EF1D1B603D6D4E /* WidgetLayoutID.swift */,
-			);
-			name = "Shared Watch Sources";
-			path = Shared;
-			sourceTree = "<group>";
-		};
-		4CC27FAFC96F9F5BD33B9792 /* FoodBlob */ = {
-			isa = PBXGroup;
-			children = (
-				6C7B9D1E72C235099763F2F4 /* App */,
-				638D7F409873653C2692F8D5 /* Connectivity */,
-				A73534649DFFF4E1DCA0848F /* Design */,
-				2799DD3AA235CB44CEE51A59 /* Features */,
-				17E5B92F46493B0AA318B606 /* Assets.xcassets */,
-				4DAA8D2E7613D2B955F22EE1 /* PrivacyInfo.xcprivacy */,
-			);
-			name = FoodBlob;
-			path = FoodBlob;
-			sourceTree = "<group>";
-		};
-		4D21CB8048AC7FA100C3ED5E /* Widgets */ = {
-			isa = PBXGroup;
-			children = (
-				314BCF87E3B1B95E6D0CC6B9 /* WidgetSetupView.swift */,
-			);
-			name = Widgets;
-			path = Widgets;
 			sourceTree = "<group>";
 		};
 		4E2473472DD2D87CD6E8E84C = {
@@ -476,82 +417,66 @@
 			children = (
 				366B27553D9795D4583B722B /* Products */,
 				CD6795F04B66187A3AF6E1EE /* Frameworks */,
-				4CC27FAFC96F9F5BD33B9792 /* FoodBlob */,
-				A7E3150A13E4180655E5B0DD /* Shared */,
-				3BBBE1C23E058672A6D45F7A /* Shared Watch Sources */,
-				7D92A168FF01ACBDE397F234 /* WatchShared */,
-				1A5EB7B8E108BB678BCA9C6E /* FoodBlobWidgets */,
-				8F4E301142A335EE6AC38A0E /* FoodBlobTests */,
-				D670E0096F06FC865CBEF599 /* FoodBlobWidgetTests */,
-				8A75A4731B6BBEEF61160DD1 /* FoodBlobWatchExtension */,
-				79067E1E806F5EB67A526FB5 /* FoodBlobWatchWidgets */,
-				A899307907579B6504BA86DE /* FoodBlobWatch */,
-				BC2E3DD78C69D62558997C77 /* JellySurface.metal */,
-				D78F96A9F4212EA2F3761BF5 /* FoodBlobUITests */,
+				86E788A48C0F41E32E5DDF01 /* FoodBlob */,
+				651D509CD02876CCB01F9602 /* Shared */,
+				B3B985BD3EE2AF82759455BB /* Shared Watch Sources */,
+				34ACB7299DC85614460F3E6F /* WatchShared */,
+				D7DAA7C2E9DEC9C0F4C25DC3 /* FoodBlobWidgets */,
+				A29B0A2FCCB63B1041ABFD6F /* FoodBlobTests */,
+				9E3F900931E01840529BF6DE /* FoodBlobWidgetTests */,
+				0A8D1AD660D1FFCB26C40C80 /* FoodBlobWatchExtension */,
+				FDB91590E977A5645D6E8ABE /* FoodBlobWatchWidgets */,
+				BD05207158053C93174FD791 /* FoodBlobWatch */,
+				002F85A50953DB30A37156AE /* JellySurface.metal */,
+				CAA8F9BD81CDEACF41F459A1 /* FoodBlobUITests */,
 			);
 			sourceTree = "<group>";
 		};
-		555FE62DEAD40A9DC2574B5F /* Skins */ = {
+		651D509CD02876CCB01F9602 /* Shared */ = {
 			isa = PBXGroup;
 			children = (
-				1F70E60C51CB4BF42B9B07C3 /* SkinStudioView.swift */,
+				3A389052F0AE271FF6ECD4D6 /* BlobColor+SwiftUI.swift */,
+				1F70E60C51CB4BF42B9B07C3 /* BlobColor.swift */,
+				E02E8F787D741C7173125DBB /* BlobMaterial.swift */,
+				314BCF87E3B1B95E6D0CC6B9 /* ChangeFoodCountIntent.swift */,
+				1F895CF754C0F8F688DBB9FC /* FoodBlobPersistence.swift */,
+				55E16D14B7FCD89361BBBFE0 /* FoodBlobSnapshot.swift */,
+				43C4B951E56A34C61451634D /* FoodDateKey.swift */,
+				83B7F2D16C52BE592CAA55A6 /* FoodModels.swift */,
+				A97B02C33C4207303DF9E723 /* FoodStore.swift */,
+				E0A4023770EE28765FA1A9AD /* FoodWatchAcknowledgementDeliveryTracker.swift */,
+				F46D2A3EE8E9E1AB860B2878 /* FoodWatchTransferContract.swift */,
+				96DE55653E61384A4C041520 /* FoodWidgetActionRuntime.swift */,
+				74F0B24894549A6E878C276D /* FoodWidgetArtwork.swift */,
+				9DF135DB98D257F0E9244048 /* FoodWidgetLedger.swift */,
+				3729D4424A9D5DE610881D45 /* LivingBlob.swift */,
+				BA840C4D1780F992026552E7 /* WidgetLayoutID.swift */,
+			);
+			name = Shared;
+			path = Shared;
+			sourceTree = "<group>";
+		};
+		860460CDB2D0EEA01C745302 /* Skins */ = {
+			isa = PBXGroup;
+			children = (
+				9AC6686FE650E4902B36EDB3 /* SkinStudioView.swift */,
 			);
 			name = Skins;
 			path = Skins;
 			sourceTree = "<group>";
 		};
-		638D7F409873653C2692F8D5 /* Connectivity */ = {
+		86E788A48C0F41E32E5DDF01 /* FoodBlob */ = {
 			isa = PBXGroup;
 			children = (
-				23AE42610258271241386C19 /* ChangeFoodCountIntent+AppProcess.swift */,
-				B2DDCA9D1565976D5926CA24 /* FoodWatchActivationGate.swift */,
-				828275C8DF2998F2A4471647 /* FoodWatchConnectivityReceiver.swift */,
-				0C8D738D58182359227F2F45 /* FoodWatchReceiptStore.swift */,
+				EE6EFC05C577A5E072D875C3 /* App */,
+				E3D69120E795D0CF21461A11 /* Connectivity */,
+				9E35674786D47E3284C81FCD /* Design */,
+				D81834E3BA74EAD8C6891833 /* Features */,
+				82A38627A9ECF0903A4FB550 /* Assets.xcassets */,
+				DF7A88176100590FEE3E3CDA /* PrivacyInfo.xcprivacy */,
 			);
-			name = Connectivity;
-			path = Connectivity;
-			sourceTree = "<group>";
-		};
-		651D509CD02876CCB01F9602 /* Settings */ = {
-			isa = PBXGroup;
-			children = (
-				3A389052F0AE271FF6ECD4D6 /* SettingsView.swift */,
-			);
-			name = Settings;
-			path = Settings;
-			sourceTree = "<group>";
-		};
-		6C7B9D1E72C235099763F2F4 /* App */ = {
-			isa = PBXGroup;
-			children = (
-				400480E53110BDBF049D75CE /* FoodBlobApp.swift */,
-				24D8FF8AF550F55F6FE29784 /* FoodBlobRootView.swift */,
-			);
-			name = App;
-			path = App;
-			sourceTree = "<group>";
-		};
-		79067E1E806F5EB67A526FB5 /* FoodBlobWatchWidgets */ = {
-			isa = PBXGroup;
-			children = (
-				002F85A50953DB30A37156AE /* FoodBlobWatchComplication.swift */,
-				4B900B56817179671A6D4642 /* FoodBlobWatchWidgetsBundle.swift */,
-			);
-			name = FoodBlobWatchWidgets;
-			path = FoodBlobWatchWidgets;
-			sourceTree = "<group>";
-		};
-		7D92A168FF01ACBDE397F234 /* WatchShared */ = {
-			isa = PBXGroup;
-			children = (
-				89ECC9493FC46BD04E06D57D /* FoodWatchAcknowledgementApplier.swift */,
-				7EEC2D6A28CC96F9294C1615 /* FoodWatchIncomingDeliveryTracker.swift */,
-				D7DAA7C2E9DEC9C0F4C25DC3 /* FoodWatchLayoutMetrics.swift */,
-				D27F17C4C1F844AC00D0EF8F /* FoodWatchOutboxStore.swift */,
-				5D9340B1C1875A8AA798DC28 /* FoodWatchVisuals.swift */,
-			);
-			name = WatchShared;
-			path = WatchShared;
+			name = FoodBlob;
+			path = FoodBlob;
 			sourceTree = "<group>";
 		};
 		88E09802E6135123B2177AD3 /* iOS */ = {
@@ -562,98 +487,108 @@
 			name = iOS;
 			sourceTree = "<group>";
 		};
-		8A75A4731B6BBEEF61160DD1 /* FoodBlobWatchExtension */ = {
+		9CFE7456440BF32F79EB99FE /* Widgets */ = {
 			isa = PBXGroup;
 			children = (
-				24BA1DE9B9B0FCE518FAFB53 /* FoodBlobWatchApp.swift */,
-				F89D97F4A2D0A8CFD9D38E7B /* FoodBlobWatchApplicationDelegate.swift */,
-				D4E3BB902C876A43B596231D /* FoodBlobWatchTodayView.swift */,
-				82A38627A9ECF0903A4FB550 /* FoodWatchModel.swift */,
-				406DAC9333C10BAE027A83CE /* FoodWatchSessionClient.swift */,
+				8E5E333886071577383EFDA2 /* WidgetSetupView.swift */,
 			);
-			name = FoodBlobWatchExtension;
-			path = FoodBlobWatchExtension;
+			name = Widgets;
+			path = Widgets;
 			sourceTree = "<group>";
 		};
-		8F4E301142A335EE6AC38A0E /* FoodBlobTests */ = {
+		9E35674786D47E3284C81FCD /* Design */ = {
 			isa = PBXGroup;
 			children = (
-				403B8FC7AD2BC0D53A6B5F4C /* AppContractTests.swift */,
-				ABDE3F0E27FA77C4055933B0 /* ConnectedBlobMotionTests.swift */,
-				4A8C2F02DA8E22645797D45F /* HistoryProjectionTests.swift */,
-				C25797989CFC6F5D6074A446 /* JellySurfaceTests.swift */,
-				E1DFE774F5169BDF4B3BBBAF /* LiquidFeedbackTests.swift */,
-			);
-			name = FoodBlobTests;
-			path = FoodBlobTests;
-			sourceTree = "<group>";
-		};
-		9A3F31E894A41C5C9F3DC8A7 /* Today */ = {
-			isa = PBXGroup;
-			children = (
-				E02E8F787D741C7173125DBB /* TodayView.swift */,
-			);
-			name = Today;
-			path = Today;
-			sourceTree = "<group>";
-		};
-		9CFE7456440BF32F79EB99FE /* Onboarding */ = {
-			isa = PBXGroup;
-			children = (
-				8E5E333886071577383EFDA2 /* OnboardingView.swift */,
-			);
-			name = Onboarding;
-			path = Onboarding;
-			sourceTree = "<group>";
-		};
-		A73534649DFFF4E1DCA0848F /* Design */ = {
-			isa = PBXGroup;
-			children = (
-				88D4037BEED24BF24342D9A7 /* BlobPlopSound.swift */,
-				02851F07A2246F5285F73096 /* ConnectedBlobMotion.swift */,
-				962A9D90AA09A39A4F9446C2 /* FoodBlobView.swift */,
-				D81834E3BA74EAD8C6891833 /* FoodCounterControls.swift */,
-				AF4072376D83853CE962D4A0 /* JellySurface.swift */,
-				A7DC4AAEBA8F6CB126CB099B /* LiquidFeedback.swift */,
-				8471893D46AFE77F8D983B12 /* MascotBlobView.swift */,
-				C8968FB33CCA25BCA9A062F0 /* SkinCatalog.swift */,
-				860460CDB2D0EEA01C745302 /* SkinWorldBackgrounds.swift */,
+				24D8FF8AF550F55F6FE29784 /* BlobPlopSound.swift */,
+				638D7F409873653C2692F8D5 /* ConnectedBlobMotion.swift */,
+				0879608E40E3BD1C2417F195 /* FoodBlobView.swift */,
+				8C7621DA8EFB8426A51E524B /* FoodCounterControls.swift */,
+				10A9B77E30778AFC3541F0F3 /* JellySurface.swift */,
+				D60B07CA1000D9592CAD54DA /* LiquidFeedback.swift */,
+				88D4037BEED24BF24342D9A7 /* MascotBlobView.swift */,
+				02851F07A2246F5285F73096 /* SkinCatalog.swift */,
+				962A9D90AA09A39A4F9446C2 /* SkinWorldBackgrounds.swift */,
 			);
 			name = Design;
 			path = Design;
 			sourceTree = "<group>";
 		};
-		A7E3150A13E4180655E5B0DD /* Shared */ = {
+		9E3F900931E01840529BF6DE /* FoodBlobWidgetTests */ = {
 			isa = PBXGroup;
 			children = (
-				1F895CF754C0F8F688DBB9FC /* BlobColor+SwiftUI.swift */,
-				55E16D14B7FCD89361BBBFE0 /* BlobColor.swift */,
-				43C4B951E56A34C61451634D /* BlobMaterial.swift */,
-				83B7F2D16C52BE592CAA55A6 /* ChangeFoodCountIntent.swift */,
-				A97B02C33C4207303DF9E723 /* FoodBlobPersistence.swift */,
-				03B027C65405DDE244D0AF8C /* FoodBlobSnapshot.swift */,
-				FFAE9A17321DBAC18314F8E3 /* FoodDateKey.swift */,
-				2159EF5780399AB37DC2ADBD /* FoodModels.swift */,
-				76F9987542F71806E48DB467 /* FoodStore.swift */,
-				160734F76A21470FC4289994 /* FoodWatchAcknowledgementDeliveryTracker.swift */,
-				3729D4424A9D5DE610881D45 /* FoodWatchTransferContract.swift */,
-				BA840C4D1780F992026552E7 /* FoodWidgetActionRuntime.swift */,
-				B3B985BD3EE2AF82759455BB /* FoodWidgetArtwork.swift */,
-				77FA3C916A395F48E1E955B3 /* FoodWidgetLedger.swift */,
-				890A32FBB8FF835E92C5BF7E /* LivingBlob.swift */,
-				4B0C5130E209773D0FCC91FD /* WidgetLayoutID.swift */,
+				8F4E301142A335EE6AC38A0E /* BlobColorTests.swift */,
+				DC5E92B716CF1A4C937779D6 /* BlobMaterialPreferenceTests.swift */,
+				74BFCD5E19B4D7C4CA26F204 /* DateKeyTests.swift */,
+				F8F5A3E4DAC42695882A9C36 /* FoodBlobSnapshotTests.swift */,
+				212CFFC1B6A6FD1AC790D71A /* FoodCountsTests.swift */,
+				568F0A22804D53B2C5193E73 /* FoodStoreTests.swift */,
+				848CDF11FB418747932E0EEB /* FoodWatchLayoutTests.swift */,
+				37BD23B3431A1697846C3DD5 /* FoodWatchOutboxTests.swift */,
+				D7F51F4298220B52C875275A /* FoodWatchSyncTests.swift */,
+				3A55E7FA949139773A9F8E11 /* LivingBlobTests.swift */,
+				340BFED8D35C1017481294B0 /* WidgetArtworkRenderingTests.swift */,
+				9FD67EE00D2DC63241A930A4 /* WidgetGeometryTests.swift */,
+				AEA6624CB7DE57AE2E905A3D /* WidgetLedgerTests.swift */,
 			);
-			name = Shared;
+			name = FoodBlobWidgetTests;
+			path = FoodBlobWidgetTests;
+			sourceTree = "<group>";
+		};
+		A29B0A2FCCB63B1041ABFD6F /* FoodBlobTests */ = {
+			isa = PBXGroup;
+			children = (
+				5D9340B1C1875A8AA798DC28 /* AppContractTests.swift */,
+				C5786BB2B7FC29B38BF73074 /* ConnectedBlobMotionTests.swift */,
+				1A5EB7B8E108BB678BCA9C6E /* HistoryProjectionTests.swift */,
+				E0526E53F9C0E0604B5E4361 /* JellySurfaceTests.swift */,
+				5F3AA1859D5FE464DE499E76 /* LiquidFeedbackTests.swift */,
+			);
+			name = FoodBlobTests;
+			path = FoodBlobTests;
+			sourceTree = "<group>";
+		};
+		A7DC4AAEBA8F6CB126CB099B /* Onboarding */ = {
+			isa = PBXGroup;
+			children = (
+				919497D28A8270430FF84227 /* OnboardingView.swift */,
+			);
+			name = Onboarding;
+			path = Onboarding;
+			sourceTree = "<group>";
+		};
+		B3B985BD3EE2AF82759455BB /* Shared Watch Sources */ = {
+			isa = PBXGroup;
+			children = (
+				C7459895921F12BA114E65FB /* BlobColor+SwiftUI.swift */,
+				F23A5769B9867B6EF9E7DBB2 /* BlobColor.swift */,
+				A81FA8C25CDDC2FFD26C7BE4 /* BlobMaterial.swift */,
+				88928B9739CC94C0571C1FFE /* FoodDateKey.swift */,
+				9D6A393372B66344B33DD22D /* FoodModels.swift */,
+				DF5D4501EEB9C6F30941CF8C /* FoodWatchTransferContract.swift */,
+				4B5FC824BDD4F495615AE0C2 /* FoodWidgetLedger.swift */,
+				58DA77D0109BF5BC475F14AB /* LivingBlob.swift */,
+				53AEB77118F91EF1DFFA544E /* WidgetLayoutID.swift */,
+			);
+			name = "Shared Watch Sources";
 			path = Shared;
 			sourceTree = "<group>";
 		};
-		A899307907579B6504BA86DE /* FoodBlobWatch */ = {
+		BD05207158053C93174FD791 /* FoodBlobWatch */ = {
 			isa = PBXGroup;
 			children = (
-				A8FF870A86F8EDA2004B5BAE /* Assets.xcassets */,
+				D4E3BB902C876A43B596231D /* Assets.xcassets */,
 			);
 			name = FoodBlobWatch;
 			path = FoodBlobWatch;
+			sourceTree = "<group>";
+		};
+		CAA8F9BD81CDEACF41F459A1 /* FoodBlobUITests */ = {
+			isa = PBXGroup;
+			children = (
+				2968FC14A1E27097AEC7750D /* JellyInteractionUITests.swift */,
+			);
+			name = FoodBlobUITests;
+			path = FoodBlobUITests;
 			sourceTree = "<group>";
 		};
 		CD6795F04B66187A3AF6E1EE /* Frameworks */ = {
@@ -665,43 +600,59 @@
 			name = Frameworks;
 			sourceTree = "<group>";
 		};
-		D62D2AFDCED64895D6F841CF /* History */ = {
+		D581EB09FB27D6F4778D29E8 /* History */ = {
 			isa = PBXGroup;
 			children = (
-				93C60504CD715DEE6A9F0BCC /* HistoryView.swift */,
+				AF4072376D83853CE962D4A0 /* HistoryView.swift */,
 			);
 			name = History;
 			path = History;
 			sourceTree = "<group>";
 		};
-		D670E0096F06FC865CBEF599 /* FoodBlobWidgetTests */ = {
+		D62D2AFDCED64895D6F841CF /* Today */ = {
 			isa = PBXGroup;
 			children = (
-				848CDF11FB418747932E0EEB /* BlobColorTests.swift */,
-				37BD23B3431A1697846C3DD5 /* BlobMaterialPreferenceTests.swift */,
-				D7F51F4298220B52C875275A /* DateKeyTests.swift */,
-				3A55E7FA949139773A9F8E11 /* FoodBlobSnapshotTests.swift */,
-				340BFED8D35C1017481294B0 /* FoodCountsTests.swift */,
-				9FD67EE00D2DC63241A930A4 /* FoodStoreTests.swift */,
-				AEA6624CB7DE57AE2E905A3D /* FoodWatchLayoutTests.swift */,
-				0A8D1AD660D1FFCB26C40C80 /* FoodWatchOutboxTests.swift */,
-				D63FF8C075091DF41AEA4206 /* FoodWatchSyncTests.swift */,
-				74EF1EBA8059AB9B73CE01BD /* LivingBlobTests.swift */,
-				673364827DA2FEB31DE3EEFC /* WidgetArtworkRenderingTests.swift */,
-				E055C0FB54131AB06F024778 /* WidgetGeometryTests.swift */,
-				A2CD2B7371797053E00044C1 /* WidgetLedgerTests.swift */,
+				93C60504CD715DEE6A9F0BCC /* TodayView.swift */,
 			);
-			name = FoodBlobWidgetTests;
-			path = FoodBlobWidgetTests;
+			name = Today;
+			path = Today;
 			sourceTree = "<group>";
 		};
-		D78F96A9F4212EA2F3761BF5 /* FoodBlobUITests */ = {
+		D7DAA7C2E9DEC9C0F4C25DC3 /* FoodBlobWidgets */ = {
 			isa = PBXGroup;
 			children = (
-				93DA2DFDCF8C28EB621906F7 /* JellyInteractionUITests.swift */,
+				3F2D006F68830C78EF92E41A /* FoodBlobWidgetsBundle.swift */,
+				FA1892D38F5B355B6F78D56D /* FoodCounterWidget.swift */,
+				BED6B5D76F03F7905BC2BA19 /* FoodWidgetTimeline.swift */,
 			);
-			name = FoodBlobUITests;
-			path = FoodBlobUITests;
+			name = FoodBlobWidgets;
+			path = FoodBlobWidgets;
+			sourceTree = "<group>";
+		};
+		D81834E3BA74EAD8C6891833 /* Features */ = {
+			isa = PBXGroup;
+			children = (
+				D581EB09FB27D6F4778D29E8 /* History */,
+				A7DC4AAEBA8F6CB126CB099B /* Onboarding */,
+				FE7A56B89785A1930A5E8669 /* Settings */,
+				860460CDB2D0EEA01C745302 /* Skins */,
+				D62D2AFDCED64895D6F841CF /* Today */,
+				9CFE7456440BF32F79EB99FE /* Widgets */,
+			);
+			name = Features;
+			path = Features;
+			sourceTree = "<group>";
+		};
+		E3D69120E795D0CF21461A11 /* Connectivity */ = {
+			isa = PBXGroup;
+			children = (
+				11315B043FBCE826D7788D88 /* ChangeFoodCountIntent+AppProcess.swift */,
+				D5E350189A7E9225153CD7DA /* FoodWatchActivationGate.swift */,
+				8D07E76E71A10AFFF0DBDB41 /* FoodWatchConnectivityReceiver.swift */,
+				6C7B9D1E72C235099763F2F4 /* FoodWatchReceiptStore.swift */,
+			);
+			name = Connectivity;
+			path = Connectivity;
 			sourceTree = "<group>";
 		};
 		E792F7F5B20F8C0ABF48F15F /* watchOS */ = {
@@ -712,6 +663,35 @@
 			name = watchOS;
 			sourceTree = "<group>";
 		};
+		EE6EFC05C577A5E072D875C3 /* App */ = {
+			isa = PBXGroup;
+			children = (
+				F4D1AF513AE74FAAB4E1CF1E /* FoodBlobApp.swift */,
+				4F0A604A045DE77C6C3106CA /* FoodBlobRootView.swift */,
+			);
+			name = App;
+			path = App;
+			sourceTree = "<group>";
+		};
+		FDB91590E977A5645D6E8ABE /* FoodBlobWatchWidgets */ = {
+			isa = PBXGroup;
+			children = (
+				8A75A4731B6BBEEF61160DD1 /* FoodBlobWatchComplication.swift */,
+				6A58D64A9EF8BA8A1B72718E /* FoodBlobWatchWidgetsBundle.swift */,
+			);
+			name = FoodBlobWatchWidgets;
+			path = FoodBlobWatchWidgets;
+			sourceTree = "<group>";
+		};
+		FE7A56B89785A1930A5E8669 /* Settings */ = {
+			isa = PBXGroup;
+			children = (
+				C8968FB33CCA25BCA9A062F0 /* SettingsView.swift */,
+			);
+			name = Settings;
+			path = Settings;
+			sourceTree = "<group>";
+		};
 /* End PBXGroup section */
 
 /* Begin PBXNativeTarget section */
@@ -719,42 +699,24 @@
 			isa = PBXNativeTarget;
 			buildConfigurationList = 647DC36A354E39DD66FD4415 /* Build configuration list for PBXNativeTarget "FoodBlobWatch" */;
 			buildPhases = (
+				30EB583F09488E6A6D2E6FF6 /* Sources */,
 				55AAE6FF8B5CFC1A18B2AB40 /* Frameworks */,
 				09E57517F93C84C8218CDAEB /* Resources */,
-				D5E350189A7E9225153CD7DA /* Embed Watch Extensions */,
+				E21FAD9C6A2C988D1EDDB467 /* Embed Watch Extensions */,
 			);
 			buildRules = (
 			);
 			dependencies = (
-				F4D1AF513AE74FAAB4E1CF1E /* PBXTargetDependency */,
-				4F0A604A045DE77C6C3106CA /* PBXTargetDependency */,
+				7D7C0EB2BAC658EE89EB3629 /* PBXTargetDependency */,
 			);
 			name = FoodBlobWatch;
 			productName = FoodBlobWatch;
 			productReference = D08772BA6B5B8B87701A4FB3 /* FoodBlobWatch.app */;
-			productType = "com.apple.product-type.application.watchapp2";
+			productType = "com.apple.product-type.application";
 		};
-		2968FC14A1E27097AEC7750D /* FoodBlobUITests */ = {
+		499C14B23923079FB7688CC1 /* FoodBlobWatchWidgets */ = {
 			isa = PBXNativeTarget;
-			buildConfigurationList = E9ACF61ADDE2BB1C04E0A9C8 /* Build configuration list for PBXNativeTarget "FoodBlobUITests" */;
-			buildPhases = (
-				9B36CFB9486678D8ED7E2CD5 /* Sources */,
-				71EC61A58ACC294E6B724F5F /* Frameworks */,
-				D26D925F681673954CEAF395 /* Resources */,
-			);
-			buildRules = (
-			);
-			dependencies = (
-				BF8BCF726335B947A723EEFF /* PBXTargetDependency */,
-			);
-			name = FoodBlobUITests;
-			productName = FoodBlobUITests;
-			productReference = 4F596B712A4C0025D8B91165 /* FoodBlobUITests.xctest */;
-			productType = "com.apple.product-type.bundle.ui-testing";
-		};
-		499C14B23923079FB7688CC1 /* FoodBlobWatchExtension */ = {
-			isa = PBXNativeTarget;
-			buildConfigurationList = CB16F4D7CF9A7A1276DF3D77 /* Build configuration list for PBXNativeTarget "FoodBlobWatchExtension" */;
+			buildConfigurationList = CB16F4D7CF9A7A1276DF3D77 /* Build configuration list for PBXNativeTarget "FoodBlobWatchWidgets" */;
 			buildPhases = (
 				6084AA806B492CD36E052904 /* Sources */,
 				43AD760E3632A7AF93E50259 /* Frameworks */,
@@ -764,10 +726,28 @@
 			);
 			dependencies = (
 			);
-			name = FoodBlobWatchExtension;
-			productName = FoodBlobWatchExtension;
-			productReference = 146F65EE2A6EAC9E3858B240 /* FoodBlobWatchExtension.appex */;
-			productType = "com.apple.product-type.watchkit2-extension";
+			name = FoodBlobWatchWidgets;
+			productName = FoodBlobWatchWidgets;
+			productReference = 146F65EE2A6EAC9E3858B240 /* FoodBlobWatchWidgets.appex */;
+			productType = "com.apple.product-type.app-extension";
+		};
+		4B900B56817179671A6D4642 /* FoodBlobUITests */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = 8D74659F5EAF9663D818022C /* Build configuration list for PBXNativeTarget "FoodBlobUITests" */;
+			buildPhases = (
+				17E5B92F46493B0AA318B606 /* Sources */,
+				4DAA8D2E7613D2B955F22EE1 /* Frameworks */,
+				DEB985A9F207B2DCEFF4F5A7 /* Resources */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+				BC2E3DD78C69D62558997C77 /* PBXTargetDependency */,
+			);
+			name = FoodBlobUITests;
+			productName = FoodBlobUITests;
+			productReference = A007F1BA067AF59A3D3E84CB /* FoodBlobUITests.xctest */;
+			productType = "com.apple.product-type.bundle.ui-testing";
 		};
 		532842E5220113F981B32985 /* FoodBlobWidgetTests */ = {
 			isa = PBXNativeTarget;
@@ -780,8 +760,8 @@
 			buildRules = (
 			);
 			dependencies = (
-				329E39C8B838E555B8A14B12 /* PBXTargetDependency */,
-				E21FAD9C6A2C988D1EDDB467 /* PBXTargetDependency */,
+				68DCCFA40DAFE0FE3B952989 /* PBXTargetDependency */,
+				33D72E04BF37056F96811BA5 /* PBXTargetDependency */,
 			);
 			name = FoodBlobWidgetTests;
 			productName = FoodBlobWidgetTests;
@@ -812,13 +792,13 @@
 				8B073541961B1C0B2CAD06EA /* Sources */,
 				5BEB042B7A108466357D58D9 /* Frameworks */,
 				569A5E3DE23011DEB86F3283 /* Resources */,
-				1E6CB25EEF3299F07440F89E /* Embed App Extensions */,
-				11315B043FBCE826D7788D88 /* Embed Watch Content */,
+				E2039B1E7F3A4CF2247C5AF3 /* Embed App Extensions */,
+				329E39C8B838E555B8A14B12 /* Embed Watch Content */,
 			);
 			buildRules = (
 			);
 			dependencies = (
-				17C8B77D6A1C55F5A4AD5247 /* PBXTargetDependency */,
+				8DE07FACA91E44558BB70133 /* PBXTargetDependency */,
 			);
 			name = FoodBlob;
 			productName = FoodBlob;
@@ -836,29 +816,12 @@
 			buildRules = (
 			);
 			dependencies = (
-				E2039B1E7F3A4CF2247C5AF3 /* PBXTargetDependency */,
+				8E928C4D610F8E0EEB37A27A /* PBXTargetDependency */,
 			);
 			name = FoodBlobTests;
 			productName = FoodBlobTests;
 			productReference = 8CBCDD5878ABB821C8DEDC3A /* FoodBlobTests.xctest */;
 			productType = "com.apple.product-type.bundle.unit-test";
-		};
-		CF05ED8456722E3AF35EE6EA /* FoodBlobWatchWidgets */ = {
-			isa = PBXNativeTarget;
-			buildConfigurationList = 8DE07FACA91E44558BB70133 /* Build configuration list for PBXNativeTarget "FoodBlobWatchWidgets" */;
-			buildPhases = (
-				68DCCFA40DAFE0FE3B952989 /* Sources */,
-				52764EDAF605F8D86922D02E /* Frameworks */,
-				33D72E04BF37056F96811BA5 /* Resources */,
-			);
-			buildRules = (
-			);
-			dependencies = (
-			);
-			name = FoodBlobWatchWidgets;
-			productName = FoodBlobWatchWidgets;
-			productReference = 0562AC289D7B95CAFEFB90F4 /* FoodBlobWatchWidgets.appex */;
-			productType = "com.apple.product-type.app-extension";
 		};
 /* End PBXNativeTarget section */
 
@@ -869,7 +832,7 @@
 				LastSwiftUpdateCheck = 2660;
 				LastUpgradeCheck = 2660;
 				TargetAttributes = {
-					2968FC14A1E27097AEC7750D = {
+					4B900B56817179671A6D4642 = {
 						TestTargetID = 960B8FA2CDFFE166261E3064;
 					};
 				};
@@ -894,9 +857,8 @@
 				A9414E231601314C6ADBA5D8 /* FoodBlobTests */,
 				532842E5220113F981B32985 /* FoodBlobWidgetTests */,
 				20EC5480E4230DE42EEA90F1 /* FoodBlobWatch */,
-				499C14B23923079FB7688CC1 /* FoodBlobWatchExtension */,
-				CF05ED8456722E3AF35EE6EA /* FoodBlobWatchWidgets */,
-				2968FC14A1E27097AEC7750D /* FoodBlobUITests */,
+				499C14B23923079FB7688CC1 /* FoodBlobWatchWidgets */,
+				4B900B56817179671A6D4642 /* FoodBlobUITests */,
 			);
 		};
 /* End PBXProject section */
@@ -906,7 +868,7 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				A007F1BA067AF59A3D3E84CB /* Assets.xcassets in Resources */,
+				97B37B52E69F8B5FD29E9A5B /* Assets.xcassets in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -914,14 +876,7 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				7A199DEFD651398B7A320AF3 /* PrivacyInfo.xcprivacy in Resources */,
-			);
-			runOnlyForDeploymentPostprocessing = 0;
-		};
-		33D72E04BF37056F96811BA5 /* Resources */ = {
-			isa = PBXResourcesBuildPhase;
-			buildActionMask = 2147483647;
-			files = (
+				79067E1E806F5EB67A526FB5 /* PrivacyInfo.xcprivacy in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -929,8 +884,8 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				DEB985A9F207B2DCEFF4F5A7 /* Assets.xcassets in Resources */,
-				363FADE44F8A168122919A0D /* PrivacyInfo.xcprivacy in Resources */,
+				406DAC9333C10BAE027A83CE /* Assets.xcassets in Resources */,
+				3847A7BDFF1071CFB5AECBF5 /* PrivacyInfo.xcprivacy in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -948,7 +903,7 @@
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
-		D26D925F681673954CEAF395 /* Resources */ = {
+		DEB985A9F207B2DCEFF4F5A7 /* Resources */ = {
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
@@ -965,10 +920,37 @@
 /* End PBXResourcesBuildPhase section */
 
 /* Begin PBXSourcesBuildPhase section */
+		17E5B92F46493B0AA318B606 /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				E9ACF61ADDE2BB1C04E0A9C8 /* JellyInteractionUITests.swift in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
 		30EB583F09488E6A6D2E6FF6 /* Sources */ = {
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				2A03B7BFB908AB685475CFAE /* BlobColor+SwiftUI.swift in Sources */,
+				EC48EA9A1D7EA80065B1FE56 /* BlobColor.swift in Sources */,
+				417CA4D229D3766C34FC4D28 /* BlobMaterial.swift in Sources */,
+				05B229EE4F473EAB459973A1 /* FoodDateKey.swift in Sources */,
+				51873C94763117059E5F4A6B /* FoodModels.swift in Sources */,
+				ABB7F0D136118A72A567677F /* FoodWatchTransferContract.swift in Sources */,
+				E203AD087BDA9819611D8507 /* FoodWidgetLedger.swift in Sources */,
+				832B11C229EF1F3A11282DF5 /* LivingBlob.swift in Sources */,
+				13DB936B90DA91A31B3A9663 /* WidgetLayoutID.swift in Sources */,
+				CB35A885B7DA10DDD0233BFF /* FoodWatchAcknowledgementApplier.swift in Sources */,
+				0B1C79473F2EA696B3EFDFA1 /* FoodWatchIncomingDeliveryTracker.swift in Sources */,
+				AF0FB4BEFA5338A57E57434D /* FoodWatchLayoutMetrics.swift in Sources */,
+				7D92A168FF01ACBDE397F234 /* FoodWatchOutboxStore.swift in Sources */,
+				7EEC2D6A28CC96F9294C1615 /* FoodWatchVisuals.swift in Sources */,
+				D63FF8C075091DF41AEA4206 /* FoodBlobWatchApp.swift in Sources */,
+				74EF1EBA8059AB9B73CE01BD /* FoodBlobWatchApplicationDelegate.swift in Sources */,
+				673364827DA2FEB31DE3EEFC /* FoodBlobWatchTodayView.swift in Sources */,
+				E055C0FB54131AB06F024778 /* FoodWatchModel.swift in Sources */,
+				A2CD2B7371797053E00044C1 /* FoodWatchSessionClient.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -976,23 +958,23 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				B978EB04A83CB379095F3303 /* BlobColor+SwiftUI.swift in Sources */,
-				27059AF5C6E7E6B246B006C2 /* BlobColor.swift in Sources */,
-				C1074613226220B9EC373D15 /* BlobMaterial.swift in Sources */,
-				81F504F33E9E959B196AF977 /* ChangeFoodCountIntent.swift in Sources */,
-				E0A4023770EE28765FA1A9AD /* FoodBlobPersistence.swift in Sources */,
-				5A1687916EFFE43817D017CD /* FoodBlobSnapshot.swift in Sources */,
-				F0ACAB36750EB7270C0350EA /* FoodDateKey.swift in Sources */,
-				BB8BFFB20BE84791073681F0 /* FoodModels.swift in Sources */,
-				CA9100D0814E50916080D54B /* FoodWatchTransferContract.swift in Sources */,
-				E2D524B8FAE44962F3709DD0 /* FoodWidgetActionRuntime.swift in Sources */,
-				2A03B7BFB908AB685475CFAE /* FoodWidgetArtwork.swift in Sources */,
-				EC48EA9A1D7EA80065B1FE56 /* FoodWidgetLedger.swift in Sources */,
-				417CA4D229D3766C34FC4D28 /* LivingBlob.swift in Sources */,
-				05B229EE4F473EAB459973A1 /* WidgetLayoutID.swift in Sources */,
-				E0526E53F9C0E0604B5E4361 /* FoodBlobWidgetsBundle.swift in Sources */,
-				5F3AA1859D5FE464DE499E76 /* FoodCounterWidget.swift in Sources */,
-				9E3F900931E01840529BF6DE /* FoodWidgetTimeline.swift in Sources */,
+				555FE62DEAD40A9DC2574B5F /* BlobColor+SwiftUI.swift in Sources */,
+				9A3F31E894A41C5C9F3DC8A7 /* BlobColor.swift in Sources */,
+				4D21CB8048AC7FA100C3ED5E /* BlobMaterial.swift in Sources */,
+				A7E3150A13E4180655E5B0DD /* ChangeFoodCountIntent.swift in Sources */,
+				B978EB04A83CB379095F3303 /* FoodBlobPersistence.swift in Sources */,
+				27059AF5C6E7E6B246B006C2 /* FoodBlobSnapshot.swift in Sources */,
+				C1074613226220B9EC373D15 /* FoodDateKey.swift in Sources */,
+				81F504F33E9E959B196AF977 /* FoodModels.swift in Sources */,
+				FFAE9A17321DBAC18314F8E3 /* FoodWatchTransferContract.swift in Sources */,
+				2159EF5780399AB37DC2ADBD /* FoodWidgetActionRuntime.swift in Sources */,
+				76F9987542F71806E48DB467 /* FoodWidgetArtwork.swift in Sources */,
+				5157EF56FF41861557662032 /* FoodWidgetLedger.swift in Sources */,
+				CA9100D0814E50916080D54B /* LivingBlob.swift in Sources */,
+				E2D524B8FAE44962F3709DD0 /* WidgetLayoutID.swift in Sources */,
+				49FDF4CD42299CD1FEFE3D5B /* FoodBlobWidgetsBundle.swift in Sources */,
+				D27F17C4C1F844AC00D0EF8F /* FoodCounterWidget.swift in Sources */,
+				FF0ED3714FF5E62D86196FCD /* FoodWidgetTimeline.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -1000,24 +982,24 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				55BF38D6B4914C0CCFE6F658 /* FoodWatchAcknowledgementApplier.swift in Sources */,
-				D7B88C7BD7950D3ABDBF2C40 /* FoodWatchIncomingDeliveryTracker.swift in Sources */,
-				FA1892D38F5B355B6F78D56D /* FoodWatchLayoutMetrics.swift in Sources */,
-				A29B0A2FCCB63B1041ABFD6F /* FoodWatchOutboxStore.swift in Sources */,
-				39B32D2F832614D834CB5B51 /* FoodWatchVisuals.swift in Sources */,
-				FA3053C4E004B7CCB3D894F2 /* BlobColorTests.swift in Sources */,
-				4747CBE884AA8C1DCB1014F8 /* BlobMaterialPreferenceTests.swift in Sources */,
-				810487A9E5980AD94A95B838 /* DateKeyTests.swift in Sources */,
-				7D2FB09EC85DBDA94C013C23 /* FoodBlobSnapshotTests.swift in Sources */,
-				A4C3AE07078AFAD1831E4756 /* FoodCountsTests.swift in Sources */,
-				66AD244DA81C063CD6231479 /* FoodStoreTests.swift in Sources */,
-				C78766F5264152012CC452A0 /* FoodWatchLayoutTests.swift in Sources */,
-				182F9995769779E2D58A3D8E /* FoodWatchOutboxTests.swift in Sources */,
-				26E04C4B14E8894EC176AB5B /* FoodWatchSyncTests.swift in Sources */,
-				1AA6F361020FB70427518242 /* LivingBlobTests.swift in Sources */,
-				4058C754726B08D7D19F5456 /* WidgetArtworkRenderingTests.swift in Sources */,
-				496D76C74EA45384C95C709B /* WidgetGeometryTests.swift in Sources */,
-				FDB91590E977A5645D6E8ABE /* WidgetLedgerTests.swift in Sources */,
+				C10E0CDADD7922A4596DFE6D /* FoodWatchAcknowledgementApplier.swift in Sources */,
+				9FA134E4DC5F85E1DF4D2E64 /* FoodWatchIncomingDeliveryTracker.swift in Sources */,
+				D99D88882DF39201E580B799 /* FoodWatchLayoutMetrics.swift in Sources */,
+				D2BAA0617038DA8E03D214FC /* FoodWatchOutboxStore.swift in Sources */,
+				D7B88C7BD7950D3ABDBF2C40 /* FoodWatchVisuals.swift in Sources */,
+				403B8FC7AD2BC0D53A6B5F4C /* BlobColorTests.swift in Sources */,
+				ABDE3F0E27FA77C4055933B0 /* BlobMaterialPreferenceTests.swift in Sources */,
+				4A8C2F02DA8E22645797D45F /* DateKeyTests.swift in Sources */,
+				C25797989CFC6F5D6074A446 /* FoodBlobSnapshotTests.swift in Sources */,
+				E1DFE774F5169BDF4B3BBBAF /* FoodCountsTests.swift in Sources */,
+				D670E0096F06FC865CBEF599 /* FoodStoreTests.swift in Sources */,
+				FA3053C4E004B7CCB3D894F2 /* FoodWatchLayoutTests.swift in Sources */,
+				4747CBE884AA8C1DCB1014F8 /* FoodWatchOutboxTests.swift in Sources */,
+				810487A9E5980AD94A95B838 /* FoodWatchSyncTests.swift in Sources */,
+				7D2FB09EC85DBDA94C013C23 /* LivingBlobTests.swift in Sources */,
+				A4C3AE07078AFAD1831E4756 /* WidgetArtworkRenderingTests.swift in Sources */,
+				66AD244DA81C063CD6231479 /* WidgetGeometryTests.swift in Sources */,
+				C78766F5264152012CC452A0 /* WidgetLedgerTests.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -1025,46 +1007,20 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				51873C94763117059E5F4A6B /* BlobColor+SwiftUI.swift in Sources */,
-				ABB7F0D136118A72A567677F /* BlobColor.swift in Sources */,
-				E203AD087BDA9819611D8507 /* BlobMaterial.swift in Sources */,
-				832B11C229EF1F3A11282DF5 /* FoodDateKey.swift in Sources */,
-				13DB936B90DA91A31B3A9663 /* FoodModels.swift in Sources */,
-				6FE4EA61227ACFEF24210A4C /* FoodWatchTransferContract.swift in Sources */,
-				F44545350042FC1411875251 /* FoodWidgetLedger.swift in Sources */,
-				3227884771CC04145CE35F4B /* LivingBlob.swift in Sources */,
-				D99D88882DF39201E580B799 /* WidgetLayoutID.swift in Sources */,
-				D2BAA0617038DA8E03D214FC /* FoodWatchAcknowledgementApplier.swift in Sources */,
-				928A262DAF49C79764B9D869 /* FoodWatchIncomingDeliveryTracker.swift in Sources */,
-				3F2D006F68830C78EF92E41A /* FoodWatchLayoutMetrics.swift in Sources */,
-				BED6B5D76F03F7905BC2BA19 /* FoodWatchOutboxStore.swift in Sources */,
-				A6D0E0FE6A4F0DF286547827 /* FoodWatchVisuals.swift in Sources */,
-				6A58D64A9EF8BA8A1B72718E /* FoodBlobWatchApp.swift in Sources */,
-				BD05207158053C93174FD791 /* FoodBlobWatchApplicationDelegate.swift in Sources */,
-				97B37B52E69F8B5FD29E9A5B /* FoodBlobWatchTodayView.swift in Sources */,
-				DF7A88176100590FEE3E3CDA /* FoodWatchModel.swift in Sources */,
-				3847A7BDFF1071CFB5AECBF5 /* FoodWatchSessionClient.swift in Sources */,
-			);
-			runOnlyForDeploymentPostprocessing = 0;
-		};
-		68DCCFA40DAFE0FE3B952989 /* Sources */ = {
-			isa = PBXSourcesBuildPhase;
-			buildActionMask = 2147483647;
-			files = (
-				E2C0954D6CDE31DC65F7E134 /* BlobColor+SwiftUI.swift in Sources */,
-				5A51C37482168E52FD0D5C97 /* BlobColor.swift in Sources */,
-				4588E1AF4FE5FDDF7BD49680 /* BlobMaterial.swift in Sources */,
-				84B44F1EF46707538E82CB76 /* FoodDateKey.swift in Sources */,
-				226CE20A96B37474DC46A4D9 /* FoodModels.swift in Sources */,
-				CB35A885B7DA10DDD0233BFF /* FoodWatchTransferContract.swift in Sources */,
-				0B1C79473F2EA696B3EFDFA1 /* FoodWidgetLedger.swift in Sources */,
-				AF0FB4BEFA5338A57E57434D /* LivingBlob.swift in Sources */,
-				F84D575C39F1D50D1383B4E4 /* WidgetLayoutID.swift in Sources */,
-				49FDF4CD42299CD1FEFE3D5B /* FoodWatchLayoutMetrics.swift in Sources */,
-				FF0ED3714FF5E62D86196FCD /* FoodWatchOutboxStore.swift in Sources */,
-				C5786BB2B7FC29B38BF73074 /* FoodWatchVisuals.swift in Sources */,
-				408CBA06EAD829ACFEB56C4B /* FoodBlobWatchComplication.swift in Sources */,
-				8D74659F5EAF9663D818022C /* FoodBlobWatchWidgetsBundle.swift in Sources */,
+				77FA3C916A395F48E1E955B3 /* BlobColor+SwiftUI.swift in Sources */,
+				890A32FBB8FF835E92C5BF7E /* BlobColor.swift in Sources */,
+				4B0C5130E209773D0FCC91FD /* BlobMaterial.swift in Sources */,
+				3BBBE1C23E058672A6D45F7A /* FoodDateKey.swift in Sources */,
+				E2C0954D6CDE31DC65F7E134 /* FoodModels.swift in Sources */,
+				5A51C37482168E52FD0D5C97 /* FoodWatchTransferContract.swift in Sources */,
+				4588E1AF4FE5FDDF7BD49680 /* FoodWidgetLedger.swift in Sources */,
+				84B44F1EF46707538E82CB76 /* LivingBlob.swift in Sources */,
+				226CE20A96B37474DC46A4D9 /* WidgetLayoutID.swift in Sources */,
+				902E0C62D7EF1D1B603D6D4E /* FoodWatchLayoutMetrics.swift in Sources */,
+				89ECC9493FC46BD04E06D57D /* FoodWatchOutboxStore.swift in Sources */,
+				928A262DAF49C79764B9D869 /* FoodWatchVisuals.swift in Sources */,
+				24BA1DE9B9B0FCE518FAFB53 /* FoodBlobWatchComplication.swift in Sources */,
+				F89D97F4A2D0A8CFD9D38E7B /* FoodBlobWatchWidgetsBundle.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -1072,52 +1028,44 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				9E35674786D47E3284C81FCD /* FoodBlobApp.swift in Sources */,
-				A354E9413109BE673A408CB5 /* FoodBlobRootView.swift in Sources */,
-				0879608E40E3BD1C2417F195 /* ChangeFoodCountIntent+AppProcess.swift in Sources */,
-				8C7621DA8EFB8426A51E524B /* FoodWatchActivationGate.swift in Sources */,
-				10A9B77E30778AFC3541F0F3 /* FoodWatchConnectivityReceiver.swift in Sources */,
-				D60B07CA1000D9592CAD54DA /* FoodWatchReceiptStore.swift in Sources */,
-				D291C7C0C551EFEE1B8BF713 /* BlobPlopSound.swift in Sources */,
-				6312E364FBE932537C4614D5 /* ConnectedBlobMotion.swift in Sources */,
-				1A5340215C7AF68A827CEBAD /* FoodBlobView.swift in Sources */,
-				D581EB09FB27D6F4778D29E8 /* FoodCounterControls.swift in Sources */,
-				8EB6B0283B4397FB183EA6A6 /* JellySurface.swift in Sources */,
-				919497D28A8270430FF84227 /* LiquidFeedback.swift in Sources */,
-				FE7A56B89785A1930A5E8669 /* MascotBlobView.swift in Sources */,
-				CCE22ABF48542B7338ECA970 /* SkinCatalog.swift in Sources */,
-				9AC6686FE650E4902B36EDB3 /* SkinWorldBackgrounds.swift in Sources */,
-				F6F09EDEA2E50BC18C627608 /* HistoryView.swift in Sources */,
-				6C682492FD63F9FE978D8842 /* OnboardingView.swift in Sources */,
-				C26CB6465A8AF15D291CE64C /* SettingsView.swift in Sources */,
-				1D5CF1D9AAFC655C9E7210CB /* SkinStudioView.swift in Sources */,
-				8BD8D9C6FBDEAFF735FD1106 /* TodayView.swift in Sources */,
-				C31B0639270A79E75A70AA80 /* WidgetSetupView.swift in Sources */,
-				392B9DBC1B12324234A10244 /* BlobColor+SwiftUI.swift in Sources */,
-				82753611CA7E28B3F934E567 /* BlobColor.swift in Sources */,
-				6C81749C0AE3CB669D170436 /* BlobMaterial.swift in Sources */,
-				6302C0AC80D2217D900226FB /* ChangeFoodCountIntent.swift in Sources */,
-				C60433881BA471BC4E2394B8 /* FoodBlobPersistence.swift in Sources */,
-				F46D2A3EE8E9E1AB860B2878 /* FoodBlobSnapshot.swift in Sources */,
-				96DE55653E61384A4C041520 /* FoodDateKey.swift in Sources */,
-				74F0B24894549A6E878C276D /* FoodModels.swift in Sources */,
-				9DF135DB98D257F0E9244048 /* FoodStore.swift in Sources */,
-				5157EF56FF41861557662032 /* FoodWatchAcknowledgementDeliveryTracker.swift in Sources */,
-				9A66DD11AD33A225CEFD73D7 /* FoodWatchTransferContract.swift in Sources */,
-				488E098FA97342489853A5CF /* FoodWidgetActionRuntime.swift in Sources */,
-				C7459895921F12BA114E65FB /* FoodWidgetArtwork.swift in Sources */,
-				F23A5769B9867B6EF9E7DBB2 /* FoodWidgetLedger.swift in Sources */,
-				A81FA8C25CDDC2FFD26C7BE4 /* LivingBlob.swift in Sources */,
-				88928B9739CC94C0571C1FFE /* WidgetLayoutID.swift in Sources */,
-				CAA8F9BD81CDEACF41F459A1 /* JellySurface.metal in Sources */,
-			);
-			runOnlyForDeploymentPostprocessing = 0;
-		};
-		9B36CFB9486678D8ED7E2CD5 /* Sources */ = {
-			isa = PBXSourcesBuildPhase;
-			buildActionMask = 2147483647;
-			files = (
-				C56204256C69D05DA6A6E004 /* JellyInteractionUITests.swift in Sources */,
+				85A80C4A3A967869AAF9934D /* FoodBlobApp.swift in Sources */,
+				1E6CB25EEF3299F07440F89E /* FoodBlobRootView.swift in Sources */,
+				FBE0A1B68DA05D7EF5787179 /* ChangeFoodCountIntent+AppProcess.swift in Sources */,
+				22033041FBAD25CB2D0915FD /* FoodWatchActivationGate.swift in Sources */,
+				4CC27FAFC96F9F5BD33B9792 /* FoodWatchConnectivityReceiver.swift in Sources */,
+				400480E53110BDBF049D75CE /* FoodWatchReceiptStore.swift in Sources */,
+				A354E9413109BE673A408CB5 /* BlobPlopSound.swift in Sources */,
+				23AE42610258271241386C19 /* ConnectedBlobMotion.swift in Sources */,
+				B2DDCA9D1565976D5926CA24 /* FoodBlobView.swift in Sources */,
+				828275C8DF2998F2A4471647 /* FoodCounterControls.swift in Sources */,
+				0C8D738D58182359227F2F45 /* JellySurface.swift in Sources */,
+				A73534649DFFF4E1DCA0848F /* LiquidFeedback.swift in Sources */,
+				D291C7C0C551EFEE1B8BF713 /* MascotBlobView.swift in Sources */,
+				6312E364FBE932537C4614D5 /* SkinCatalog.swift in Sources */,
+				1A5340215C7AF68A827CEBAD /* SkinWorldBackgrounds.swift in Sources */,
+				8EB6B0283B4397FB183EA6A6 /* HistoryView.swift in Sources */,
+				8471893D46AFE77F8D983B12 /* OnboardingView.swift in Sources */,
+				CCE22ABF48542B7338ECA970 /* SettingsView.swift in Sources */,
+				2799DD3AA235CB44CEE51A59 /* SkinStudioView.swift in Sources */,
+				F6F09EDEA2E50BC18C627608 /* TodayView.swift in Sources */,
+				6C682492FD63F9FE978D8842 /* WidgetSetupView.swift in Sources */,
+				C26CB6465A8AF15D291CE64C /* BlobColor+SwiftUI.swift in Sources */,
+				1D5CF1D9AAFC655C9E7210CB /* BlobColor.swift in Sources */,
+				8BD8D9C6FBDEAFF735FD1106 /* BlobMaterial.swift in Sources */,
+				C31B0639270A79E75A70AA80 /* ChangeFoodCountIntent.swift in Sources */,
+				392B9DBC1B12324234A10244 /* FoodBlobPersistence.swift in Sources */,
+				82753611CA7E28B3F934E567 /* FoodBlobSnapshot.swift in Sources */,
+				6C81749C0AE3CB669D170436 /* FoodDateKey.swift in Sources */,
+				6302C0AC80D2217D900226FB /* FoodModels.swift in Sources */,
+				C60433881BA471BC4E2394B8 /* FoodStore.swift in Sources */,
+				03B027C65405DDE244D0AF8C /* FoodWatchAcknowledgementDeliveryTracker.swift in Sources */,
+				5A1687916EFFE43817D017CD /* FoodWatchTransferContract.swift in Sources */,
+				F0ACAB36750EB7270C0350EA /* FoodWidgetActionRuntime.swift in Sources */,
+				BB8BFFB20BE84791073681F0 /* FoodWidgetArtwork.swift in Sources */,
+				160734F76A21470FC4289994 /* FoodWidgetLedger.swift in Sources */,
+				9A66DD11AD33A225CEFD73D7 /* LivingBlob.swift in Sources */,
+				488E098FA97342489853A5CF /* WidgetLayoutID.swift in Sources */,
+				408CBA06EAD829ACFEB56C4B /* JellySurface.metal in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -1125,58 +1073,52 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				DC5E92B716CF1A4C937779D6 /* AppContractTests.swift in Sources */,
-				74BFCD5E19B4D7C4CA26F204 /* ConnectedBlobMotionTests.swift in Sources */,
-				F8F5A3E4DAC42695882A9C36 /* HistoryProjectionTests.swift in Sources */,
-				212CFFC1B6A6FD1AC790D71A /* JellySurfaceTests.swift in Sources */,
-				568F0A22804D53B2C5193E73 /* LiquidFeedbackTests.swift in Sources */,
+				A6D0E0FE6A4F0DF286547827 /* AppContractTests.swift in Sources */,
+				39B32D2F832614D834CB5B51 /* ConnectedBlobMotionTests.swift in Sources */,
+				E452E5E8627CD18C6CC4A99F /* HistoryProjectionTests.swift in Sources */,
+				3B15AA1DD26D51F5CDE0518E /* JellySurfaceTests.swift in Sources */,
+				872DBC91970CDB0521E7E7E1 /* LiquidFeedbackTests.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
 /* End PBXSourcesBuildPhase section */
 
 /* Begin PBXTargetDependency section */
-		17C8B77D6A1C55F5A4AD5247 /* PBXTargetDependency */ = {
+		33D72E04BF37056F96811BA5 /* PBXTargetDependency */ = {
+			isa = PBXTargetDependency;
+			name = FoodBlob;
+			target = 960B8FA2CDFFE166261E3064 /* FoodBlob */;
+			targetProxy = 52764EDAF605F8D86922D02E /* PBXContainerItemProxy */;
+		};
+		68DCCFA40DAFE0FE3B952989 /* PBXTargetDependency */ = {
 			isa = PBXTargetDependency;
 			name = FoodBlobWidgets;
 			target = 678FDF2FADF3BDEF919099D2 /* FoodBlobWidgets */;
-			targetProxy = F3D4522A8D947703854E3CC1 /* PBXContainerItemProxy */;
+			targetProxy = 0562AC289D7B95CAFEFB90F4 /* PBXContainerItemProxy */;
 		};
-		329E39C8B838E555B8A14B12 /* PBXTargetDependency */ = {
-			isa = PBXTargetDependency;
-			name = FoodBlobWidgets;
-			target = 678FDF2FADF3BDEF919099D2 /* FoodBlobWidgets */;
-			targetProxy = 4556F902350C8190CBCF43BB /* PBXContainerItemProxy */;
-		};
-		4F0A604A045DE77C6C3106CA /* PBXTargetDependency */ = {
+		7D7C0EB2BAC658EE89EB3629 /* PBXTargetDependency */ = {
 			isa = PBXTargetDependency;
 			name = FoodBlobWatchWidgets;
-			target = CF05ED8456722E3AF35EE6EA /* FoodBlobWatchWidgets */;
-			targetProxy = 85A80C4A3A967869AAF9934D /* PBXContainerItemProxy */;
+			target = 499C14B23923079FB7688CC1 /* FoodBlobWatchWidgets */;
+			targetProxy = 17C8B77D6A1C55F5A4AD5247 /* PBXContainerItemProxy */;
 		};
-		BF8BCF726335B947A723EEFF /* PBXTargetDependency */ = {
+		8DE07FACA91E44558BB70133 /* PBXTargetDependency */ = {
+			isa = PBXTargetDependency;
+			name = FoodBlobWidgets;
+			target = 678FDF2FADF3BDEF919099D2 /* FoodBlobWidgets */;
+			targetProxy = CF05ED8456722E3AF35EE6EA /* PBXContainerItemProxy */;
+		};
+		8E928C4D610F8E0EEB37A27A /* PBXTargetDependency */ = {
 			isa = PBXTargetDependency;
 			name = FoodBlob;
 			target = 960B8FA2CDFFE166261E3064 /* FoodBlob */;
-			targetProxy = BD3878D91883A14BD2D8C7E4 /* PBXContainerItemProxy */;
+			targetProxy = ED787197696135ED47E674D5 /* PBXContainerItemProxy */;
 		};
-		E2039B1E7F3A4CF2247C5AF3 /* PBXTargetDependency */ = {
+		BC2E3DD78C69D62558997C77 /* PBXTargetDependency */ = {
 			isa = PBXTargetDependency;
 			name = FoodBlob;
 			target = 960B8FA2CDFFE166261E3064 /* FoodBlob */;
-			targetProxy = 7D7C0EB2BAC658EE89EB3629 /* PBXContainerItemProxy */;
-		};
-		E21FAD9C6A2C988D1EDDB467 /* PBXTargetDependency */ = {
-			isa = PBXTargetDependency;
-			name = FoodBlob;
-			target = 960B8FA2CDFFE166261E3064 /* FoodBlob */;
-			targetProxy = 5DF5A27DEFF66545F4443CE5 /* PBXContainerItemProxy */;
-		};
-		F4D1AF513AE74FAAB4E1CF1E /* PBXTargetDependency */ = {
-			isa = PBXTargetDependency;
-			name = FoodBlobWatchExtension;
-			target = 499C14B23923079FB7688CC1 /* FoodBlobWatchExtension */;
-			targetProxy = EE6EFC05C577A5E072D875C3 /* PBXContainerItemProxy */;
+			targetProxy = 7A199DEFD651398B7A320AF3 /* PBXContainerItemProxy */;
 		};
 /* End PBXTargetDependency section */
 
@@ -1185,15 +1127,15 @@
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				APPLICATION_EXTENSION_API_ONLY = YES;
-				CODE_SIGN_ENTITLEMENTS = FoodBlobWatchExtension/FoodBlobWatchExtension.entitlements;
+				CODE_SIGN_ENTITLEMENTS = FoodBlobWatchWidgets/FoodBlobWatchWidgets.entitlements;
 				CODE_SIGN_STYLE = Automatic;
 				CURRENT_PROJECT_VERSION = 1;
 				DEVELOPMENT_TEAM = "";
 				GENERATE_INFOPLIST_FILE = NO;
-				INFOPLIST_FILE = FoodBlobWatchExtension/Info.plist;
+				INFOPLIST_FILE = FoodBlobWatchWidgets/Info.plist;
 				MARKETING_VERSION = 1.5.1;
-				PRODUCT_BUNDLE_IDENTIFIER = org.example.foodblob.watchkitapp.watchkitextension;
-				PRODUCT_NAME = FoodBlobWatchExtension;
+				PRODUCT_BUNDLE_IDENTIFIER = org.example.foodblob.watchkitapp.widgets;
+				PRODUCT_NAME = FoodBlobWatchWidgets;
 				SDKROOT = watchos;
 				SKIP_INSTALL = YES;
 				SUPPORTED_PLATFORMS = "watchos watchsimulator";
@@ -1277,6 +1219,7 @@
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
 				CODE_SIGN_ENTITLEMENTS = FoodBlobWatch/FoodBlobWatch.entitlements;
 				CODE_SIGN_STYLE = Automatic;
 				CURRENT_PROJECT_VERSION = 1;
@@ -1456,27 +1399,6 @@
 			};
 			name = Release;
 		};
-		7974B3BE7499B349B6DB6473 /* Release */ = {
-			isa = XCBuildConfiguration;
-			buildSettings = {
-				CLANG_ENABLE_OBJC_WEAK = NO;
-				CODE_SIGN_STYLE = Automatic;
-				CURRENT_PROJECT_VERSION = 1;
-				DEVELOPMENT_TEAM = "";
-				GENERATE_INFOPLIST_FILE = YES;
-				IPHONEOS_DEPLOYMENT_TARGET = 17.0;
-				MARKETING_VERSION = 1.5.1;
-				PRODUCT_BUNDLE_IDENTIFIER = org.example.foodblob.uitests;
-				SDKROOT = iphoneos;
-				SUPPORTED_PLATFORMS = "iphoneos iphonesimulator";
-				SWIFT_VERSION = 5.0;
-				TARGETED_DEVICE_FAMILY = 1;
-				TEST_TARGET_NAME = FoodBlob;
-				VALIDATE_PRODUCT = YES;
-				VERSIONING_SYSTEM = "apple-generic";
-			};
-			name = Release;
-		};
 		7ACBA318816458397199884A /* Release */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
@@ -1501,7 +1423,7 @@
 			};
 			name = Release;
 		};
-		8E928C4D610F8E0EEB37A27A /* Debug */ = {
+		980CF5ADE51976318805CF97 /* Release */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				APPLICATION_EXTENSION_API_ONLY = YES;
@@ -1519,36 +1441,34 @@
 				SUPPORTED_PLATFORMS = "watchos watchsimulator";
 				SWIFT_VERSION = 5.0;
 				TARGETED_DEVICE_FAMILY = 4;
-				VERSIONING_SYSTEM = "apple-generic";
-				WATCHOS_DEPLOYMENT_TARGET = 10.0;
-			};
-			name = Debug;
-		};
-		980CF5ADE51976318805CF97 /* Release */ = {
-			isa = XCBuildConfiguration;
-			buildSettings = {
-				APPLICATION_EXTENSION_API_ONLY = YES;
-				CODE_SIGN_ENTITLEMENTS = FoodBlobWatchExtension/FoodBlobWatchExtension.entitlements;
-				CODE_SIGN_STYLE = Automatic;
-				CURRENT_PROJECT_VERSION = 1;
-				DEVELOPMENT_TEAM = "";
-				GENERATE_INFOPLIST_FILE = NO;
-				INFOPLIST_FILE = FoodBlobWatchExtension/Info.plist;
-				MARKETING_VERSION = 1.5.1;
-				PRODUCT_BUNDLE_IDENTIFIER = org.example.foodblob.watchkitapp.watchkitextension;
-				PRODUCT_NAME = FoodBlobWatchExtension;
-				SDKROOT = watchos;
-				SKIP_INSTALL = YES;
-				SUPPORTED_PLATFORMS = "watchos watchsimulator";
-				SWIFT_VERSION = 5.0;
-				TARGETED_DEVICE_FAMILY = 4;
 				VALIDATE_PRODUCT = YES;
 				VERSIONING_SYSTEM = "apple-generic";
 				WATCHOS_DEPLOYMENT_TARGET = 10.0;
 			};
 			name = Release;
 		};
-		9ED498A14D92FCAB08E45F3E /* Debug */ = {
+		A899307907579B6504BA86DE /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				CLANG_ENABLE_OBJC_WEAK = NO;
+				CODE_SIGN_STYLE = Automatic;
+				CURRENT_PROJECT_VERSION = 1;
+				DEVELOPMENT_TEAM = "";
+				GENERATE_INFOPLIST_FILE = YES;
+				IPHONEOS_DEPLOYMENT_TARGET = 17.0;
+				MARKETING_VERSION = 1.5.1;
+				PRODUCT_BUNDLE_IDENTIFIER = org.example.foodblob.uitests;
+				SDKROOT = iphoneos;
+				SUPPORTED_PLATFORMS = "iphoneos iphonesimulator";
+				SWIFT_VERSION = 5.0;
+				TARGETED_DEVICE_FAMILY = 1;
+				TEST_TARGET_NAME = FoodBlob;
+				VALIDATE_PRODUCT = YES;
+				VERSIONING_SYSTEM = "apple-generic";
+			};
+			name = Release;
+		};
+		A8FF870A86F8EDA2004B5BAE /* Debug */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				CLANG_ENABLE_OBJC_WEAK = NO;
@@ -1638,6 +1558,7 @@
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
 				CODE_SIGN_ENTITLEMENTS = FoodBlobWatch/FoodBlobWatch.entitlements;
 				CODE_SIGN_STYLE = Automatic;
 				CURRENT_PROJECT_VERSION = 1;
@@ -1647,30 +1568,6 @@
 				MARKETING_VERSION = 1.5.1;
 				PRODUCT_BUNDLE_IDENTIFIER = org.example.foodblob.watchkitapp;
 				PRODUCT_NAME = FoodBlobWatch;
-				SDKROOT = watchos;
-				SKIP_INSTALL = YES;
-				SUPPORTED_PLATFORMS = "watchos watchsimulator";
-				SWIFT_VERSION = 5.0;
-				TARGETED_DEVICE_FAMILY = 4;
-				VALIDATE_PRODUCT = YES;
-				VERSIONING_SYSTEM = "apple-generic";
-				WATCHOS_DEPLOYMENT_TARGET = 10.0;
-			};
-			name = Release;
-		};
-		ED787197696135ED47E674D5 /* Release */ = {
-			isa = XCBuildConfiguration;
-			buildSettings = {
-				APPLICATION_EXTENSION_API_ONLY = YES;
-				CODE_SIGN_ENTITLEMENTS = FoodBlobWatchWidgets/FoodBlobWatchWidgets.entitlements;
-				CODE_SIGN_STYLE = Automatic;
-				CURRENT_PROJECT_VERSION = 1;
-				DEVELOPMENT_TEAM = "";
-				GENERATE_INFOPLIST_FILE = NO;
-				INFOPLIST_FILE = FoodBlobWatchWidgets/Info.plist;
-				MARKETING_VERSION = 1.5.1;
-				PRODUCT_BUNDLE_IDENTIFIER = org.example.foodblob.watchkitapp.widgets;
-				PRODUCT_NAME = FoodBlobWatchWidgets;
 				SDKROOT = watchos;
 				SKIP_INSTALL = YES;
 				SUPPORTED_PLATFORMS = "watchos watchsimulator";
@@ -1712,11 +1609,11 @@
 			defaultConfigurationIsVisible = 0;
 			defaultConfigurationName = Release;
 		};
-		8DE07FACA91E44558BB70133 /* Build configuration list for PBXNativeTarget "FoodBlobWatchWidgets" */ = {
+		8D74659F5EAF9663D818022C /* Build configuration list for PBXNativeTarget "FoodBlobUITests" */ = {
 			isa = XCConfigurationList;
 			buildConfigurations = (
-				ED787197696135ED47E674D5 /* Release */,
-				8E928C4D610F8E0EEB37A27A /* Debug */,
+				A899307907579B6504BA86DE /* Release */,
+				A8FF870A86F8EDA2004B5BAE /* Debug */,
 			);
 			defaultConfigurationIsVisible = 0;
 			defaultConfigurationName = Release;
@@ -1730,7 +1627,7 @@
 			defaultConfigurationIsVisible = 0;
 			defaultConfigurationName = Release;
 		};
-		CB16F4D7CF9A7A1276DF3D77 /* Build configuration list for PBXNativeTarget "FoodBlobWatchExtension" */ = {
+		CB16F4D7CF9A7A1276DF3D77 /* Build configuration list for PBXNativeTarget "FoodBlobWatchWidgets" */ = {
 			isa = XCConfigurationList;
 			buildConfigurations = (
 				980CF5ADE51976318805CF97 /* Release */,
@@ -1744,15 +1641,6 @@
 			buildConfigurations = (
 				73077C54783D7E43112C9FBC /* Release */,
 				1D20BB9BBA17AA74FBA6A8FD /* Debug */,
-			);
-			defaultConfigurationIsVisible = 0;
-			defaultConfigurationName = Release;
-		};
-		E9ACF61ADDE2BB1C04E0A9C8 /* Build configuration list for PBXNativeTarget "FoodBlobUITests" */ = {
-			isa = XCConfigurationList;
-			buildConfigurations = (
-				7974B3BE7499B349B6DB6473 /* Release */,
-				9ED498A14D92FCAB08E45F3E /* Debug */,
 			);
 			defaultConfigurationIsVisible = 0;
 			defaultConfigurationName = Release;
