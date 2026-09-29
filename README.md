@@ -106,6 +106,57 @@ The Xcode project is committed and can be regenerated deterministically:
 make project
 ```
 
+## Local test iteration
+
+Use `make check-affected CHECK_BASE=origin/main` to print a JSON plan before a
+local run. It includes changes since the merge base, staged and unstaged edits,
+untracked files, and both sides of deletions/renames. Additional paths can be
+supplied with `python3 scripts/affected_checks.py --path <path>`; these supplement
+Git discovery. Missing history, unknown paths, and shared build configuration
+select the full platform gates. Documentation still runs the cheap contracts
+because some tests check documentation and platform resources.
+
+Run each selected lane on its admitted fleet host:
+
+```sh
+# Portable work: quiet, admitted ger-z with JDK 17 and Android SDK 36.
+make check-affected-run PLATFORM=portable CHECK_BASE=origin/main
+# Apple work: admitted M1 with Xcode, Metal and iPhone/Watch simulator runtimes.
+make check-affected-run PLATFORM=apple CHECK_BASE=origin/main
+```
+
+The command does not select a host, reserve capacity, install dependencies, or
+run device acceptance. Its JSON lists those acceptance entry points separately
+when affected paths touch native surfaces. An affected run is iteration evidence;
+run the unchanged `make check` once on the exact final head for delivery. Public
+CI keeps its GitHub-hosted platform jobs; those jobs omit `project-check`, so
+record `make project-check` separately for the final head when using CI as the
+full gate. Reuse a verified passing final receipt while source and environment
+stay unchanged.
+
+For a test-first loop, `make android-unit` runs JVM tests and lint;
+`make android-build-check` builds validation artifacts, and `make apple-check`
+runs iPhone unit tests and the Watch build. `make android-check` retains one
+Gradle invocation for all existing tests, lint and build variants. Gradle already
+enables its build cache; retain task-owned build/dependency caches rather than
+cleaning them between runs. Do not run parallel Make targets against the same
+Xcode project/DerivedData.
+
+`android-check` compiles the Room/provider/Compose instrumented suites and
+macrobenchmarks but does not execute them. Storage/schema/provider changes need
+runtime acceptance on an owned synthetic emulator. `make android-device-test
+DEVICE_SERIAL=<serial> TEST_SELECTOR=<class-or-class#method>` exposes the existing
+device runner; inspect its instrumentation result, not merely successful APK
+installation. The real widget PendingIntent test requires the explicit
+`isolatedWidgetAcceptance=true` instrumentation argument on an isolated emulator,
+which the general personal-device wrapper does not pass. Optional capture and
+performance tests also require their documented instrumentation arguments.
+
+For native Apple gesture acceptance, prepare an owned synthetic simulator as
+specified below, then run `make ios-acceptance ACCEPTANCE_SIMULATOR_ID=<id>`.
+A simulator compile, a skipped acceptance test, and an executed gesture test are
+different evidence. Preserve test counts and skip reasons in local receipts.
+
 ## Jelly rendering and interaction acceptance
 
 The iPhone app uses a SwiftUI Metal colour shader for the domed jelly surface,
