@@ -153,8 +153,9 @@ Xcode project/DerivedData.
 macrobenchmarks but does not execute them. Storage/schema/provider changes need
 runtime acceptance on an owned synthetic emulator. `make android-device-test
 DEVICE_SERIAL=<serial> TEST_SELECTOR=<class-or-class#method>` exposes the existing
-device runner; inspect its instrumentation result, not merely successful APK
-installation. The real widget PendingIntent test requires the explicit
+device runner. It validates the completed instrumentation report and requires
+at least one passed test; crashes, test failures, zero tests and all-skipped
+runs fail even when adb exits successfully. Mixed runs report skipped counts. The real widget PendingIntent test requires the explicit
 `isolatedWidgetAcceptance=true` instrumentation argument on an isolated emulator,
 which the general personal-device wrapper does not pass. Optional capture and
 performance tests also require their documented instrumentation arguments.
