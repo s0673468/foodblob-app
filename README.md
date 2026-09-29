@@ -82,9 +82,9 @@ cannot change its data.
 
 ## Build
 
-Apple requirements: Xcode 26.6, iOS 17 or newer, and watchOS 10 or newer.
-The Watch target uses the two-target WatchKit layout; Xcode 27 removed support
-for that layout. CI selects Xcode 26.6 explicitly until the Watch target is migrated.
+Apple requirements: Xcode 26.6 or newer, iOS 17 or newer, and watchOS 10 or newer.
+The Watch app uses the single-target layout supported by Xcode 27. CI currently
+selects Xcode 26.6 explicitly.
 Android requirements: JDK 17 or newer and Android SDK 36.
 
 ```sh
@@ -247,7 +247,6 @@ use standard GitHub-hosted runners, a read-only token, and no artifact upload.
 - iPhone widget extension: `org.example.foodblob.widgets`
 - iPhone App Group: `group.org.example.foodblob`
 - Watch app: `org.example.foodblob.watchkitapp`
-- Watch app extension: `org.example.foodblob.watchkitapp.watchkitextension`
 - Watch widget extension: `org.example.foodblob.watchkitapp.widgets`
 - Watch App Group: `group.org.example.foodblob.watch`
 - Android app: `org.example.foodblob`
