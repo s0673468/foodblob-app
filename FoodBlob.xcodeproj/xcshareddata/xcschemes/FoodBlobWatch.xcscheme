@@ -29,20 +29,6 @@
             <BuildableReference
                BuildableIdentifier = "primary"
                BlueprintIdentifier = "499C14B23923079FB7688CC1"
-               BuildableName = "FoodBlobWatchExtension.appex"
-               BlueprintName = "FoodBlobWatchExtension"
-               ReferencedContainer = "container:FoodBlob.xcodeproj">
-            </BuildableReference>
-         </BuildActionEntry>
-         <BuildActionEntry
-            buildForTesting = "YES"
-            buildForRunning = "YES"
-            buildForProfiling = "YES"
-            buildForArchiving = "YES"
-            buildForAnalyzing = "YES">
-            <BuildableReference
-               BuildableIdentifier = "primary"
-               BlueprintIdentifier = "CF05ED8456722E3AF35EE6EA"
                BuildableName = "FoodBlobWatchWidgets.appex"
                BlueprintName = "FoodBlobWatchWidgets"
                ReferencedContainer = "container:FoodBlob.xcodeproj">

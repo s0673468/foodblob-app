@@ -82,9 +82,9 @@ cannot change its data.
 
 ## Build
 
-Apple requirements: Xcode 26.6, iOS 17 or newer, and watchOS 10 or newer.
-The Watch target uses the two-target WatchKit layout; Xcode 27 removed support
-for that layout. CI selects Xcode 26.6 explicitly until the Watch target is migrated.
+Apple requirements: Xcode 26.6 or newer, iOS 17 or newer, and watchOS 10 or newer.
+The Watch app uses the single-target layout supported by Xcode 27. CI currently
+selects Xcode 26.6 explicitly.
 Android requirements: JDK 17 or newer and Android SDK 36.
 
 ```sh
@@ -105,6 +105,65 @@ The Xcode project is committed and can be regenerated deterministically:
 ```sh
 make project
 ```
+
+## Local test iteration
+
+Use `make check-affected CHECK_BASE=origin/main` to print a JSON plan before a
+local run. It includes changes since the merge base, staged and unstaged edits,
+untracked files, and both sides of deletions/renames. Additional paths can be
+supplied with `python3 scripts/affected_checks.py --path <path>`; these supplement
+Git discovery. Missing history, unknown paths, and shared build configuration
+select the full platform gates. Documentation still runs the cheap contracts
+because some tests check documentation and platform resources.
+
+Run each selected lane on its admitted fleet host:
+
+```sh
+# Portable work: quiet, admitted ger-z with JDK 17 and Android SDK 36.
+make check-affected-run PLATFORM=portable CHECK_BASE=origin/main
+# Ruby lint and affected Apple work: admitted M1 with its installed toolchain.
+make check-affected-run PLATFORM=apple CHECK_BASE=origin/main
+```
+
+The Apple lane always includes the small Ruby workflow lint because the local
+ger-z toolchain has no Ruby; native builds are selected only for affected Apple
+paths. Run both planned lanes, or record the same lightweight lint separately.
+Apple builds require Xcode, Metal and iPhone/Watch simulator runtimes.
+
+The command does not select a host, reserve capacity, install dependencies, or
+run device acceptance. Its JSON lists those acceptance entry points separately
+when affected paths touch native surfaces. An affected run is iteration evidence;
+run the unchanged `make check` once on the exact final head for delivery. Public
+CI keeps its GitHub-hosted platform jobs; those jobs omit `project-check`, so
+record `make project-check` separately for the final head when using CI as the
+full gate. Reuse a verified passing final receipt while source and environment
+stay unchanged.
+
+For a test-first loop, `make android-unit` runs JVM tests and lint;
+`make android-build-check` builds validation artifacts, and `make apple-check`
+runs iPhone unit tests and the Watch build. `make android-check` retains one
+Gradle invocation for all existing tests, lint and build variants. Gradle already
+enables its build cache; retain task-owned build/dependency caches rather than
+cleaning them between runs. `PYTHON` and `ANDROID_GRADLE_ARGS` Make overrides
+are inherited by the selected lane; for example use
+`ANDROID_GRADLE_ARGS=--max-workers=2` within an appropriate reservation. Do not run parallel Make targets against the same
+Xcode project/DerivedData.
+
+`android-check` compiles the Room/provider/Compose instrumented suites and
+macrobenchmarks but does not execute them. Storage/schema/provider changes need
+runtime acceptance on an owned synthetic emulator. `make android-device-test
+DEVICE_SERIAL=<serial> TEST_SELECTOR=<class-or-class#method>` exposes the existing
+device runner. It validates the completed instrumentation report and requires
+at least one passed test; crashes, test failures, zero tests and all-skipped
+runs fail even when adb exits successfully. Mixed runs report skipped counts. The real widget PendingIntent test requires the explicit
+`isolatedWidgetAcceptance=true` instrumentation argument on an isolated emulator,
+which the general personal-device wrapper does not pass. Optional capture and
+performance tests also require their documented instrumentation arguments.
+
+For native Apple gesture acceptance, prepare an owned synthetic simulator as
+specified below, then run `make ios-acceptance ACCEPTANCE_SIMULATOR_ID=<id>`.
+A simulator compile, a skipped acceptance test, and an executed gesture test are
+different evidence. Preserve test counts and skip reasons in local receipts.
 
 ## Jelly rendering and interaction acceptance
 
@@ -188,7 +247,6 @@ use standard GitHub-hosted runners, a read-only token, and no artifact upload.
 - iPhone widget extension: `org.example.foodblob.widgets`
 - iPhone App Group: `group.org.example.foodblob`
 - Watch app: `org.example.foodblob.watchkitapp`
-- Watch app extension: `org.example.foodblob.watchkitapp.watchkitextension`
 - Watch widget extension: `org.example.foodblob.watchkitapp.widgets`
 - Watch App Group: `group.org.example.foodblob.watch`
 - Android app: `org.example.foodblob`

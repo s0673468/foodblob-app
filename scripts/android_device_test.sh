@@ -32,8 +32,11 @@ fi
 
 "$repo_root/scripts/android_gradle.sh" :app:assembleDebug :app:assembleDebugAndroidTest
 
+instrumentation_log="$(mktemp "${TMPDIR:-/tmp}/foodblob-device-test.XXXXXX")"
+
 cleanup_test_package() {
   "${adb_command[@]}" uninstall "$test_id" >/dev/null 2>&1 || true
+  rm -f "$instrumentation_log" || true
 }
 trap cleanup_test_package EXIT
 
@@ -44,8 +47,20 @@ instrumentation_args=(-w -r -e clearPackageData false)
 if [[ -n "$test_selector" ]]; then
   instrumentation_args+=(-e class "$test_selector")
 fi
+# Preserve the live raw report and adb's transport status. am instrument can
+# exit zero even when tests fail, crash, or are all skipped.
+set +e
 "${adb_command[@]}" shell am instrument \
   "${instrumentation_args[@]}" \
-  "$test_id/androidx.test.runner.AndroidJUnitRunner"
+  "$test_id/androidx.test.runner.AndroidJUnitRunner" | tee "$instrumentation_log"
+instrumentation_status=("${PIPESTATUS[@]}")
+set -e
+if (( instrumentation_status[0] != 0 )); then
+  exit "${instrumentation_status[0]}"
+fi
+if (( instrumentation_status[1] != 0 )); then
+  exit "${instrumentation_status[1]}"
+fi
+"${PYTHON:-python3}" "$repo_root/scripts/validate_instrumentation.py" "$instrumentation_log"
 
 "${adb_command[@]}" shell pm path "$app_id" >/dev/null

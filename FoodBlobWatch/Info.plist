@@ -22,7 +22,7 @@
 	<string>$(CURRENT_PROJECT_VERSION)</string>
 	<key>WKCompanionAppBundleIdentifier</key>
 	<string>org.example.foodblob</string>
-	<key>WKWatchKitApp</key>
+	<key>WKApplication</key>
 	<true/>
 </dict>
 </plist>

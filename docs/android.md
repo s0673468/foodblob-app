@@ -42,6 +42,18 @@ state:
 scripts/android_device_test.sh <adb-serial>
 ```
 
+The wrapper preserves the raw instrumentation output and nonzero adb transport
+status. It fails unless the final AndroidJUnitRunner report is complete, has no
+failed tests, and confirms at least one passed test. Zero-test and all-skipped
+runs fail; mixed runs report both passed and skipped counts on stderr. The test
+APK and temporary report are cleaned up without clearing the application.
+
+The general wrapper does not enable capture/performance flags or
+`isolatedWidgetAcceptance=true`. In particular, selecting the real widget
+PendingIntent test through this wrapper will fail as all-skipped. That test
+requires a separately prepared synthetic emulator and explicit opt-in; a pass
+of the general suite does not mean every optional acceptance test executed.
+
 Pass a fully qualified class or `class#method` as the optional second argument
 for a focused hardware run. Reserve Gradle's `connectedDebugAndroidTest` task
 for disposable emulators: Android Gradle Plugin owns that deployment lifecycle

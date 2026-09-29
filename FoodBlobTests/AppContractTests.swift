@@ -172,7 +172,8 @@ final class AppContractTests: XCTestCase {
       watchInfo["WKCompanionAppBundleIdentifier"] as? String,
       "org.example.foodblob"
     )
-    XCTAssertEqual(watchInfo["WKWatchKitApp"] as? Bool, true)
+    XCTAssertEqual(watchInfo["WKApplication"] as? Bool, true)
+    XCTAssertNil(watchInfo["WKWatchKitApp"])
 
     let project = try String(
       contentsOf: repositoryFile("FoodBlob.xcodeproj/project.pbxproj"),
