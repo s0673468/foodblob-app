@@ -125,7 +125,9 @@ jobs:
           "$sdkmanager" --licenses < "$RUNNER_TEMP/android-licenses.txt" > /dev/null
           "$sdkmanager" --install "platforms;android-36" "build-tools;36.0.0" "emulator" "system-images;android-35;google_apis;x86_64"
           "$ANDROID_HOME/emulator/emulator" -version
-          ldd "$ANDROID_HOME/emulator/qemu/linux-x86_64/qemu-system-x86_64" > "$RUNNER_TEMP/emulator-libraries.txt"
+          # The launcher adds its bundled Android/Qt library search paths.
+          emulator_libs=$(find "$ANDROID_HOME/emulator" -type f -name '*.so*' -printf '%h\n' | sort -u | paste -sd:)
+          LD_LIBRARY_PATH="$emulator_libs" ldd "$ANDROID_HOME/emulator/qemu/linux-x86_64/qemu-system-x86_64" > "$RUNNER_TEMP/emulator-libraries.txt"
           cat "$RUNNER_TEMP/emulator-libraries.txt"
           if grep -q 'not found' "$RUNNER_TEMP/emulator-libraries.txt"; then exit 1; fi
           test -f "$ANDROID_HOME/system-images/android-35/google_apis/x86_64/package.xml"
