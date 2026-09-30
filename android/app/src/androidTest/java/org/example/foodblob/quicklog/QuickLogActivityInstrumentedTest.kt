@@ -59,6 +59,7 @@ class QuickLogActivityInstrumentedTest {
         val originalRotation = shell("settings get system user_rotation")
         // Settings values alone do not prove the display's actual frozen state.
         val originalWindowRotation = shell("cmd window user-rotation")
+        val originalWindowCache = windowRotationCache()
         captureRotationDiagnostics("landscape-original")
         val restoreRotation = when {
             originalWindowRotation == "free" -> UiAutomation.ROTATION_UNFREEZE
@@ -103,11 +104,15 @@ class QuickLogActivityInstrumentedTest {
         } finally {
             var restoreFailure: Throwable? = null
             val restoreActions = listOf<() -> Unit>(
+                // Unfreeze can rewrite settings from WindowManager's cached angle.
+                // Complete that operation first, then restore the original settings.
+                { assertTrue("Restore the owned display's original rotation mode",
+                    instrumentation.uiAutomation.setRotation(restoreRotation)) },
                 { restoreSetting("font_scale", originalFontScale) },
                 { restoreSetting("accelerometer_rotation", originalAutoRotate) },
                 { restoreSetting("user_rotation", originalRotation) },
-                { assertTrue("Restore the owned display's original rotation mode",
-                    instrumentation.uiAutomation.setRotation(restoreRotation)) },
+                { waitForRotationRestoration(originalFontScale, originalAutoRotate,
+                    originalRotation, originalWindowRotation, originalWindowCache) },
                 { instrumentation.waitForIdleSync() },
                 { captureRotationDiagnostics("landscape-restored") },
             )
@@ -141,6 +146,48 @@ class QuickLogActivityInstrumentedTest {
         assertTrue("The owned device must apply landscape and large text before checking reachability", ready)
     }
 
+    // API35 dumpsys reports the actual default-display settings observer cache.
+    private fun windowRotationCache(): String {
+        val dump = shell("dumpsys window displays")
+        val displays = Regex("(?m)^\\s*Display: mDisplayId=(\\d+)\\b").findAll(dump).toList()
+        val index = displays.indexOfFirst { it.groupValues[1] == "0" }
+        check(index >= 0) { "Missing default display in rotation readback" }
+        val end = displays.getOrNull(index + 1)?.range?.first ?: dump.length
+        val section = dump.substring(displays[index].range.first, end)
+        return Regex("mUserRotationMode=(USER_ROTATION_(?:FREE|LOCKED))\\s+mUserRotation=ROTATION_(0|90|180|270)")
+            .findAll(section).singleOrNull()?.value
+            ?: error("Missing or ambiguous default-display rotation cache")
+    }
+
+    private fun waitForRotationRestoration(
+        fontScale: String, autoRotate: String, userRotation: String,
+        windowRotation: String, windowCache: String,
+    ) {
+        val expected = listOf(fontScale, autoRotate, userRotation, windowRotation, windowCache)
+        val deadline = SystemClock.uptimeMillis() + 10_000
+        var actual: List<String>
+        do {
+            actual = listOf(
+                shell("settings get system font_scale"),
+                shell("settings get system accelerometer_rotation"),
+                shell("settings get system user_rotation"),
+                shell("cmd window user-rotation"), windowRotationCache(),
+            )
+            if (actual == expected) break
+            SystemClock.sleep(50)
+        } while (SystemClock.uptimeMillis() < deadline)
+        if (InstrumentationRegistry.getArguments().getString("captureInteractionStates") == "true") {
+            val directory = File(ApplicationProvider.getApplicationContext<Context>().getExternalFilesDir(null),
+                "acceptance-path-captures").apply { mkdirs() }
+            File(directory, "landscape-restoration-readback.json").writeText(JSONObject()
+                .put("expected", org.json.JSONArray(expected))
+                .put("actual", org.json.JSONArray(actual))
+                .put("fields", "fontScale,autoRotate,userRotation,windowUserRotation,windowCache")
+                .put("converged", actual == expected).toString(2))
+        }
+        assertEquals("Restore settings and WindowManager cache before the next test", expected, actual)
+    }
+
     private fun captureRotationDiagnostics(name: String, activityConfiguration: String? = null) {
         if (InstrumentationRegistry.getArguments().getString("captureInteractionStates") != "true") return
         val context = ApplicationProvider.getApplicationContext<Context>()
@@ -149,6 +196,7 @@ class QuickLogActivityInstrumentedTest {
         val diagnostics = JSONObject()
             .put("uptimeMillis", SystemClock.uptimeMillis())
             .put("windowUserRotation", shell("cmd window user-rotation"))
+            .put("windowCachedRotation", windowRotationCache())
             .put("fontScaleSetting", shell("settings get system font_scale"))
             .put("autoRotateSetting", shell("settings get system accelerometer_rotation"))
             .put("userRotationSetting", shell("settings get system user_rotation"))

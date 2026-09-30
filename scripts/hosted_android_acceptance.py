@@ -17,6 +17,7 @@ FLAGS = ("isolatedWidgetAcceptance", "captureSecondaryScreens", "captureThemeHig
          "capturePolishedMenus", "captureInteractionStates", "captureGrowthStates",
          "captureJellyMotion", "captureJellyPerformance")
 FOCUSED = (
+    "org.example.foodblob.quicklog.QuickLogActivityInstrumentedTest#confirmationActionRemainsReachableInLandscapeWithLargeText",
     "org.example.foodblob.ui.ConnectedBlobInteractionTest#captureJellyTouchAndColourSequence",
 )
 
@@ -27,6 +28,26 @@ def verify_selectors():
         source = ROOT / "android/app/src/androidTest/java" / (name.replace(".", "/") + ".kt")
         if not re.search(r"\bfun\s+" + re.escape(method) + r"\s*\(", source.read_text()):
             raise ValueError(f"Focused method missing: {selector}")
+
+
+def window_rotation_cache(dump):
+    displays = list(re.finditer(r"(?m)^\s*Display: mDisplayId=(\d+)\b", dump))
+    selected = next((i for i, match in enumerate(displays) if match[1] == "0"), None)
+    if selected is None: raise ValueError("Missing default display in post-instrumentation readback")
+    end = displays[selected + 1].start() if selected + 1 < len(displays) else len(dump)
+    matches = re.findall(r"mUserRotationMode=USER_ROTATION_(?:FREE|LOCKED)\s+mUserRotation=ROTATION_(?:0|90|180|270)\b", dump[displays[selected].start():end])
+    if len(matches) != 1: raise ValueError("Missing or ambiguous default-display rotation cache")
+    return matches[0]
+
+
+def validate_rotation_restoration(original, convergence, post):
+    expected = [original[key] for key in ("fontScaleSetting", "autoRotateSetting",
+                "userRotationSetting", "windowUserRotation", "windowCachedRotation")]
+    if not all(isinstance(value, str) for value in expected): raise ValueError("Invalid original rotation values")
+    if convergence.get("converged") is not True or convergence.get("expected") != expected or convergence.get("actual") != expected:
+        raise ValueError("Rotation fixture did not restore its original settings and WindowManager cache")
+    if post != expected: raise ValueError(f"Rotation drift after UiAutomation disconnect: expected={expected}, actual={post}")
+    return {"expected": expected, "after_disconnect": post, "converged": True}
 
 
 def diagnostic_counts(report):
@@ -181,6 +202,16 @@ def main():
                         adb("pull", remote, str(folder / Path(remote).name), check=False)
             assert transport == 0, f"adb transport failed: {transport}"
             receipt[label]["validated"] = validate(report, expected)
+            if label == "full" or any("confirmationActionRemainsReachableInLandscapeWithLargeText" in case for case in FOCUSED):
+                diagnostics = out / (label + "-fixture-diagnostics")
+                original = json.loads((diagnostics / "landscape-original.json").read_text())
+                convergence = json.loads((diagnostics / "landscape-restoration-readback.json").read_text())
+                display = adb("shell", "dumpsys", "window", "displays").stdout
+                (out / f"{label}-rotation-after-disconnect.log").write_text(display)
+                post = [adb("shell", "settings", "get", "system", key).stdout.strip()
+                        for key in ("font_scale", "accelerometer_rotation", "user_rotation")]
+                post += [adb("shell", "cmd", "window", "user-rotation").stdout.strip(), window_rotation_cache(display)]
+                receipt[label]["rotation_restoration"] = validate_rotation_restoration(original, convergence, post)
             print(f"{label}: {receipt[label]['validated']}", flush=True)
         receipt["tracked_clean_after"] = not run(["git", "status", "--porcelain", "--untracked-files=no"]).stdout
         assert receipt["tracked_clean_after"], "Tracked source changed during acceptance"
