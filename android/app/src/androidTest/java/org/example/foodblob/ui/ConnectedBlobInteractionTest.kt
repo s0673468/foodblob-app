@@ -1,7 +1,6 @@
 package org.example.foodblob.ui
 
 import android.content.Context
-import android.content.Intent
 import androidx.lifecycle.Lifecycle
 import org.json.JSONObject
 import android.graphics.Bitmap
@@ -393,12 +392,8 @@ class ConnectedBlobInteractionTest {
             withTimeout(5_000) { services.store.snapshots.first { it.counts(date) == initial && it.selectedSkin == SkinId.SKY_MEADOW } }
         }
         // Raw UiAutomation pointers target the foreground window, unlike
-        // semantic actions. Bring this owned activity forward and prove it drew.
+        // semantic actions. Resume the scenario-owned activity and prove it drew.
         composeRule.activityRule.scenario.moveToState(Lifecycle.State.RESUMED)
-        composeRule.runOnUiThread {
-            composeRule.activity.startActivity(Intent(composeRule.activity, MainActivity::class.java)
-                .addFlags(Intent.FLAG_ACTIVITY_REORDER_TO_FRONT or Intent.FLAG_ACTIVITY_SINGLE_TOP))
-        }
         visibleTodayNode("today-title")
         composeRule.waitForIdle()
         composeRule.waitUntil(5_000) {

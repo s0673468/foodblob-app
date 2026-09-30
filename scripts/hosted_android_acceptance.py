@@ -17,8 +17,6 @@ FLAGS = ("isolatedWidgetAcceptance", "captureSecondaryScreens", "captureThemeHig
          "capturePolishedMenus", "captureInteractionStates", "captureGrowthStates",
          "captureJellyMotion", "captureJellyPerformance")
 FOCUSED = (
-    "org.example.foodblob.quicklog.QuickLogActivityInstrumentedTest#confirmationActionRemainsReachableInLandscapeWithLargeText",
-    "org.example.foodblob.quicklog.QuickLogActivityInstrumentedTest#openingAValidShortcutRequiresConfirmationAndDoesNotMutate",
     "org.example.foodblob.ui.ConnectedBlobInteractionTest#captureJellyTouchAndColourSequence",
 )
 
