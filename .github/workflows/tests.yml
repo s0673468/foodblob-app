@@ -123,7 +123,7 @@ jobs:
           "$sdkmanager" --licenses < "$RUNNER_TEMP/android-licenses.txt" > /dev/null
           "$sdkmanager" --install "platforms;android-36" "build-tools;36.0.0" "emulator" "system-images;android-35;google_apis;x86_64"
           scripts/android_gradle.sh --max-workers=1 --no-parallel \
-            -Dorg.gradle.jvmargs="-Xmx768m -XX:MaxMetaspaceSize=768m -XX:MaxDirectMemorySize=256m -XX:ActiveProcessorCount=1" \
+            -Dorg.gradle.jvmargs="-Xmx3g -XX:MaxMetaspaceSize=768m -XX:MaxDirectMemorySize=256m -XX:ActiveProcessorCount=1" \
             -Pkotlin.compiler.execution.strategy=in-process :app:assembleDebug :app:assembleDebugAndroidTest
       - name: Execute focused nine then all ninety (all opt-ins, no skips)
         run: python3 scripts/hosted_android_acceptance.py
