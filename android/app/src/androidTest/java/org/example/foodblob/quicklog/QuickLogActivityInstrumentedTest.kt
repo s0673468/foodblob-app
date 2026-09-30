@@ -4,6 +4,7 @@ import android.content.Context
 import android.content.Intent
 import android.content.res.Configuration
 import android.graphics.Rect
+import android.os.SystemClock
 import android.widget.Button
 import android.widget.ScrollView
 import androidx.test.core.app.ActivityScenario
@@ -16,6 +17,8 @@ import org.example.foodblob.domain.FoodColor
 import org.example.foodblob.storage.FoodBlobServices
 import kotlinx.coroutines.runBlocking
 import java.io.FileInputStream
+import java.io.File
+import android.graphics.Bitmap
 import org.junit.Assert.assertEquals
 import org.junit.Assert.assertTrue
 import org.junit.Test
@@ -63,10 +66,12 @@ class QuickLogActivityInstrumentedTest {
                 .setAction(QuickLogContract.ACTION_LOG)
                 .putExtra(QuickLogContract.EXTRA_COLOR, FoodColor.GREEN.storageId)
             ActivityScenario.launch<QuickLogActivity>(intent).use { scenario ->
+                waitForLandscapeWithLargeText(scenario)
                 scenario.onActivity { activity ->
                     activity.findViewById<ScrollView>(R.id.quick_log_scroll).fullScroll(ScrollView.FOCUS_DOWN)
                 }
                 instrumentation.waitForIdleSync()
+                captureFixture("landscape-large-text-action")
                 scenario.onActivity { activity ->
                     assertTrue(activity.resources.configuration.fontScale >= 1.9f)
                     assertEquals(
@@ -88,6 +93,30 @@ class QuickLogActivityInstrumentedTest {
             restoreSetting("user_rotation", originalRotation)
             instrumentation.waitForIdleSync()
         }
+    }
+
+    private fun waitForLandscapeWithLargeText(scenario: ActivityScenario<QuickLogActivity>) {
+        val deadline = SystemClock.uptimeMillis() + 10_000
+        var ready = false
+        while (!ready && SystemClock.uptimeMillis() < deadline) {
+            scenario.onActivity { activity ->
+                val configuration = activity.resources.configuration
+                ready = configuration.orientation == Configuration.ORIENTATION_LANDSCAPE &&
+                    configuration.fontScale >= 1.9f
+            }
+            if (!ready) SystemClock.sleep(50)
+        }
+        captureFixture("landscape-configuration-ready-$ready")
+        assertTrue("The owned device must apply landscape and large text before checking reachability", ready)
+    }
+
+    private fun captureFixture(name: String) {
+        if (InstrumentationRegistry.getArguments().getString("captureInteractionStates") != "true") return
+        val context = ApplicationProvider.getApplicationContext<Context>()
+        val directory = File(context.getExternalFilesDir(null), "acceptance-path-captures").apply { mkdirs() }
+        val image = checkNotNull(InstrumentationRegistry.getInstrumentation().uiAutomation.takeScreenshot())
+        File(directory, "$name.png").outputStream().use { check(image.compress(Bitmap.CompressFormat.PNG, 100, it)) }
+        image.recycle()
     }
 
     private fun shell(command: String): String = InstrumentationRegistry.getInstrumentation()

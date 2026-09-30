@@ -104,7 +104,7 @@ class ConnectedBlobInteractionTest {
                 composeRule.onNodeWithTag("blob-appearance").performScrollTo()
                 capture("${skin.storageId}-settings-$name")
                 composeRule.onNodeWithTag("today-tab").performClick()
-                composeRule.onNodeWithTag("playful-blob").performScrollTo()
+                visibleTodayNode("playful-blob")
                 capture("${skin.storageId}-today-$name")
                 if (level == 0f) {
                     composeRule.mainClock.autoAdvance = false
@@ -133,7 +133,7 @@ class ConnectedBlobInteractionTest {
         capture("slider-recreated-half")
         composeRule.onNodeWithTag("blob-translucency").performTouchInput { down(center); moveTo(centerRight); cancel() }
         composeRule.onNodeWithTag("today-tab").performClick()
-        composeRule.onNodeWithTag("playful-blob").performScrollTo().performTouchInput { down(center); cancel() }
+        visibleTodayNode("playful-blob").performTouchInput { down(center); cancel() }
         composeRule.waitForIdle()
         assertEquals(expectedDay, runBlocking { services.database.dao().day(date) })
         assertEquals(expectedUndo, runBlocking { services.database.dao().latestUndoId() })
@@ -171,7 +171,7 @@ class ConnectedBlobInteractionTest {
         }
         composeRule.onNodeWithTag("blob-total").assertTextEquals("${before.total + 9}")
         listOf("add-green", "add-yellow", "add-red", "undo").forEach {
-            composeRule.onNodeWithTag(it).performScrollTo().assertIsDisplayed().assertHeightIsAtLeast(48.dp)
+            visibleTodayNode(it).assertHeightIsAtLeast(48.dp)
         }
         composeRule.onNodeWithTag("undo").performClick()
         composeRule.waitUntil(5_000) {
@@ -191,7 +191,7 @@ class ConnectedBlobInteractionTest {
         composeRule.waitForIdle()
         assertEquals(before, runBlocking { services.store.snapshots.first().counts(date) })
         assertEquals(previousUndo, runBlocking { services.database.dao().latestUndoId() })
-        composeRule.onNodeWithTag("today-title").assertIsDisplayed()
+        visibleTodayNode("today-title")
     }
 
     @Test fun heldColorDragOnlyLogsOnValidDropAndUndoRestoresIt() {
@@ -201,7 +201,7 @@ class ConnectedBlobInteractionTest {
             services.database.dao().upsertDay(DayEntity(date,3,2,1,System.currentTimeMillis()))
             withTimeout(5000) { services.store.snapshots.first{it.counts(date)==initial} }
         }
-        composeRule.onNodeWithTag("today-title").performScrollTo()
+        visibleTodayNode("today-title")
         composeRule.waitForIdle()
         fun counts()=runBlocking {services.store.snapshots.first().counts(date)}
         val beforeUndo=runBlocking{services.database.dao().latestUndoId()}
@@ -298,6 +298,7 @@ class ConnectedBlobInteractionTest {
         for (skin in SkinId.entries) {
             runBlocking { services.store.setSkin(skin) }
             composeRule.onNodeWithTag("history-tab").performClick()
+            scrollHistoryDayIntoView(date)
             composeRule.onNodeWithTag("history-day-$date").assertIsDisplayed().performClick()
             composeRule.onNodeWithTag("detail-back").performClick()
             capture("${skin.storageId}-history.png")
@@ -354,11 +355,11 @@ class ConnectedBlobInteractionTest {
             }
             composeRule.waitForIdle()
             listOf("add-green", "add-yellow", "add-red", "remove-green", "remove-yellow", "remove-red").forEach { tag ->
-                composeRule.onNodeWithTag(tag).performScrollTo().assertIsDisplayed().assertHeightIsAtLeast(48.dp)
+                visibleTodayNode(tag).assertHeightIsAtLeast(48.dp)
             }
-            // Start each picture at Today's top. Reachability checks above also
-            // work when the caller enables large text or landscape externally.
-            composeRule.onNodeWithTag("today-title").performScrollTo().assertIsDisplayed()
+            // Reveal through the current adaptive layout: a phone LazyColumn
+            // and a wide display's counter scroll panel are different paths.
+            visibleTodayNode("today-title")
             composeRule.onNodeWithTag("blob-total").assertTextEquals(counts.total.toString())
             composeRule.waitForIdle()
             // Capture the real composed display after state/layout assertions.
@@ -388,7 +389,7 @@ class ConnectedBlobInteractionTest {
             }
             withTimeout(5_000) { services.store.snapshots.first { it.counts(date) == initial && it.selectedSkin == SkinId.SKY_MEADOW } }
         }
-        composeRule.onNodeWithTag("today-title").performScrollTo().assertIsDisplayed()
+        visibleTodayNode("today-title")
         composeRule.waitForIdle()
         val automation = InstrumentationRegistry.getInstrumentation().uiAutomation
         val context = ApplicationProvider.getApplicationContext<Context>()
@@ -448,6 +449,45 @@ class ConnectedBlobInteractionTest {
         composeRule.onNodeWithTag("blob-total").assertTextEquals("9")
         capture("07-fed")
         pause(900)
+    }
+
+    private fun visibleTodayNode(tag: String): SemanticsNodeInteraction {
+        val target = composeRule.onNodeWithTag(tag)
+        if (!target.isDisplayed()) {
+            val lists = composeRule.onAllNodes(
+                hasScrollToIndexAction() and hasAnyAncestor(hasTestTag("today-screen")),
+            )
+            if (lists.fetchSemanticsNodes().size == 1) {
+                lists[0].performScrollToNode(hasTestTag(tag))
+            } else {
+                // Wide layouts keep the blob visible and scroll only counters.
+                target.performScrollTo()
+            }
+        }
+        return target.assertIsDisplayed()
+    }
+
+    private fun scrollHistoryDayIntoView(date: String) {
+        val day = composeRule.onNodeWithTag("history-day-$date")
+        val history = composeRule.onNodeWithTag("history-screen")
+        history.performScrollToNode(hasTestTag("history-day-$date"))
+        // A calendar is one LazyColumn item: locating its nested day scrolls
+        // to the calendar, not necessarily to the last week within that item.
+        repeat(4) {
+            if (day.isDisplayed()) { captureFixture("history-day-$date"); return }
+            history.performTouchInput { swipeUp() }
+            composeRule.waitForIdle()
+        }
+        day.assertIsDisplayed()
+    }
+
+    private fun captureFixture(name: String) {
+        if (InstrumentationRegistry.getArguments().getString("captureInteractionStates") != "true") return
+        val context = ApplicationProvider.getApplicationContext<Context>()
+        val directory = File(context.getExternalFilesDir(null), "acceptance-path-captures").apply { mkdirs() }
+        val image = checkNotNull(InstrumentationRegistry.getInstrumentation().uiAutomation.takeScreenshot())
+        File(directory, "$name.png").outputStream().use { check(image.compress(Bitmap.CompressFormat.PNG, 100, it)) }
+        image.recycle()
     }
 
     private fun ready() {
