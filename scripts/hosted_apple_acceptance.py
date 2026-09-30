@@ -7,6 +7,7 @@ from pathlib import Path
 import plistlib
 import shutil
 import signal
+import shlex
 import subprocess
 import sys
 import time
@@ -14,6 +15,26 @@ import uuid
 from validate_apple_acceptance import validate
 
 ROOT = Path(__file__).resolve().parents[1]
+
+
+def validate_compiler_log(log):
+    """WMO plans one frontend; -jN may bound dependency planning on older Xcode."""
+    invocations = []
+    for line in log.splitlines():
+        if not line.strip().startswith("builtin-SwiftDriver -- "):
+            continue
+        args = shlex.split(line)
+        threads = [args[i + 1] for i, arg in enumerate(args[:-1]) if arg == "-num-threads"]
+        if "-whole-module-optimization" not in args or not threads or any(n != "1" for n in threads):
+            raise ValueError("Require single-threaded whole-module Swift compilation")
+        if "-enable-batch-mode" in args or "-Onone" not in args:
+            raise ValueError("Require non-batch Debug compilation")
+        invocations.append({"module": args[args.index("-module-name") + 1],
+                            "planning_jobs": [arg for arg in args if arg.startswith("-j")],
+                            "frontend_threads": threads})
+    if not invocations:
+        raise ValueError("No emitted Swift driver proof")
+    return invocations
 
 
 def main():
@@ -32,8 +53,24 @@ def main():
     def execute(command, log_path, timeout):
         with log_path.open("w") as log:
             process = subprocess.Popen(command, cwd=ROOT, stdout=log, stderr=subprocess.STDOUT, start_new_session=True)
+            begin = time.monotonic()
+            seen = {process.pid}; peak = 0
             try:
-                return process.wait(timeout=timeout)
+                while process.poll() is None:
+                    if log_path.name == "build.log":
+                        inventory = subprocess.check_output(["ps", "-axo", "pid=,ppid=,comm="], text=True)
+                        rows = {int(p): (int(pp), name) for p, pp, name in (line.split(None, 2) for line in inventory.splitlines())}
+                        while True:
+                            children = {p for p, (pp, _) in rows.items() if pp in seen}
+                            if children <= seen: break
+                            seen |= children
+                        workers = sum(name.endswith("/swift-frontend") for p, (_, name) in rows.items() if p in seen)
+                        peak = max(peak, workers)
+                        receipt["observed_max_owned_swift_frontends"] = peak
+                        if workers > 1: raise RuntimeError("Owned Swift frontend worker bound exceeded")
+                    if time.monotonic() - begin > timeout: raise TimeoutError("Owned xcodebuild phase timed out")
+                    time.sleep(.25)
+                return process.wait()
             finally:
                 if process.poll() is None:
                     os.killpg(process.pid, signal.SIGTERM)
@@ -58,10 +95,7 @@ def main():
         build_code = execute(command, out / "build.log", 900)
         receipt["build_exit_code"] = build_code
         assert build_code == 0, f"Build failed: {build_code}"
-        import re
-        emitted = (out / "build.log").read_text()
-        assert not re.search(r'(?<!\w)-j(?:[2-9]|[1-9][0-9]+)(?![0-9])', emitted), "Swift worker override"
-        assert not re.search(r'-num-threads\s+(?:[2-9]|[1-9][0-9]+)(?![0-9])', emitted), "Swift thread override"
+        receipt["swift_driver_invocations"] = validate_compiler_log((out / "build.log").read_text())
         receipt["compiled_product_sha256"] = products_hashes()
         app = derived / "Build/Products/Debug-iphonesimulator/Food Blob.app"
         widget = app / "PlugIns/FoodBlobWidgets.appex"; assert widget.is_dir()

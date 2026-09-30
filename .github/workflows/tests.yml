@@ -13,7 +13,7 @@ on:
         default: none
 
 concurrency:
-  group: tests-${{ github.ref }}
+  group: tests-${{ github.ref }}-${{ inputs.device_platform || 'gate' }}
   cancel-in-progress: true
 
 permissions:
