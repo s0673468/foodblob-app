@@ -117,7 +117,15 @@ final class JellyInteractionUITests: XCTestCase {
   private func materialSlider() -> XCUIElement {
     app.tabBars.buttons["Settings"].tap()
     let slider = app.sliders["blob-translucency-slider"]
-    for _ in 0..<4 where !slider.isHittable { app.swipeDown() }
+    // Scroll in the leading gutter, outside the material slider/preview.
+    for _ in 0..<4 where !slider.isHittable {
+      let top = app.navigationBars.firstMatch.frame.maxY + 36
+      let bottom = app.tabBars.firstMatch.frame.minY - 36
+      let origin = app.coordinate(withNormalizedOffset: .zero)
+      origin.withOffset(CGVector(dx: 8, dy: top))
+        .press(forDuration: 0.05, thenDragTo: origin.withOffset(CGVector(dx: 8, dy: bottom)),
+          withVelocity: .slow, thenHoldForDuration: 0)
+    }
     XCTAssertTrue(slider.waitForExistence(timeout: 3))
     return slider
   }
@@ -129,7 +137,21 @@ final class JellyInteractionUITests: XCTestCase {
   @discardableResult
   private func setMaterial(_ amount: CGFloat, slider: XCUIElement) -> Int {
     slider.adjust(toNormalizedSliderPosition: amount)
+    if amount == 0 || amount == 1 {
+      // XCTest's normalized adjustment can stop one 5% step inside the
+      // track. Drag the visible thumb beyond the track to select its endpoint.
+      let position = CGFloat(materialPercentage(slider) ?? -1) / 100
+      XCTAssertTrue((0...1).contains(position))
+      let frame = slider.frame
+      let inset = min(frame.height / 2, frame.width / 2)
+      let thumbX = (inset + (frame.width - 2 * inset) * position) / frame.width
+      slider.coordinate(withNormalizedOffset: CGVector(dx: thumbX, dy: 0.5))
+        .press(forDuration: 0.1, thenDragTo: slider.coordinate(
+          withNormalizedOffset: CGVector(dx: amount == 0 ? -0.1 : 1.1, dy: 0.5)),
+          withVelocity: .slow, thenHoldForDuration: 0.1)
+    }
     let applied = materialPercentage(slider) ?? -1
+    capture("material-request-\(Int(amount * 100))-actual-\(applied)")
     if amount == 0.5 {
       // XCTest thumb drags are approximate. Verify the real intermediate value
       // persists; the renderer's exact 0.5 interpolation has a unit test.
@@ -265,15 +287,39 @@ final class JellyInteractionUITests: XCTestCase {
 
   func testCancelledLensPressAndSettingsLinksPreserveCounts() throws {
     let start = try XCTUnwrap(baseline)
-    // A dragged-away press may animate its material relaxing, but must never
-    // be interpreted as an accepted offering. Recover if that assertion fails.
+    // Verify held cancellation against the real recognizer, then retain
+    // the separate short dragged-away press contract with absolute geometry.
     attemptedAdds = 1
     let lens = foodButton(0)
-    let press = lens.coordinate(withNormalizedOffset: CGVector(dx: 0.5, dy: 0.5))
-    press.press(forDuration: 0.08, thenDragTo: press.withOffset(CGVector(dx: 0, dy: -95)),
-      withVelocity: .fast, thenHoldForDuration: 0)
-    XCTAssertEqual(try readCounts(), start)
-    capture("cancelled-lens-press")
+    let visibleLens = lens.frame.intersection(app.frame)
+    XCTAssertFalse(visibleLens.isEmpty)
+    let startPoint = CGPoint(x: visibleLens.midX, y: visibleLens.midY)
+    let origin = app.coordinate(withNormalizedOffset: .zero)
+    let press = origin.withOffset(CGVector(dx: startPoint.x - app.frame.minX, dy: startPoint.y - app.frame.minY))
+    let blob = app.descendants(matching: .any).matching(
+      NSPredicate(format: "label == %@", "Food mix")).firstMatch
+    // Release in empty navigation space, well outside the visible controls
+    // and the hero/drop region. Use absolute coordinates for the expanded AX frame.
+    let destination = CGPoint(x: app.frame.minX + 8, y: app.navigationBars.firstMatch.frame.midY)
+    XCTAssertFalse(lens.frame.contains(destination))
+    XCTAssertFalse(blob.frame.contains(destination))
+    let geometry = XCTAttachment(string: "lens=\(lens.frame), visibleLens=\(visibleLens), start=\(startPoint), blob=\(blob.frame), cancellation=\(destination), heldDuration=0.55, shortDuration=0.08, recognizerMinimum=0.45")
+    geometry.name = "cancelled-lens-geometry"; geometry.lifetime = .keepAlways; add(geometry)
+    capture("before-cancelled-lens-press")
+    let target = app.coordinate(withNormalizedOffset: .zero)
+      .withOffset(CGVector(dx: destination.x - app.frame.minX, dy: destination.y - app.frame.minY))
+    press.press(forDuration: 0.55, thenDragTo: target,
+      withVelocity: .slow, thenHoldForDuration: 0.15)
+    capture("cancelled-held-lens-press")
+    XCTAssertEqual(try readCounts(), start, "A held offering released outside the drop region must cancel.")
+    let shortLens = foodButton(0).frame.intersection(app.frame)
+    let shortPress = origin.withOffset(CGVector(dx: shortLens.midX - app.frame.minX,
+      dy: shortLens.midY - app.frame.minY))
+    capture("before-cancelled-short-lens-press")
+    shortPress.press(forDuration: 0.08, thenDragTo: target,
+      withVelocity: .slow, thenHoldForDuration: 0.15)
+    capture("cancelled-short-lens-press")
+    XCTAssertEqual(try readCounts(), start, "A short dragged-away press must not add an offering.")
     app.tabBars.buttons["Settings"].tap()
     for (row, title) in [("Privacy", "Privacy"), ("Add the Home Screen widget", "Add widget")] {
       let link = app.buttons.containing(.staticText, identifier: row).firstMatch
