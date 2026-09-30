@@ -30,6 +30,12 @@ def verify_selectors():
             raise ValueError(f"Focused method missing: {selector}")
 
 
+def boot_services_ready(boot_completed, services):
+    return boot_completed.strip() == "1" and all(
+        re.fullmatch(r"Service " + name + r": found\s*", services.get(name, ""))
+        for name in ("phone", "wifi"))
+
+
 def window_rotation_cache(dump):
     displays = list(re.finditer(r"(?m)^\s*Display: mDisplayId=(\d+)\b", dump))
     selected = next((i for i, match in enumerate(displays) if match[1] == "0"), None)
@@ -149,7 +155,12 @@ def main():
         (out / "owned-device.json").write_text(json.dumps(ownership, indent=2) + "\n")
         deadline = time.monotonic() + 240
         while True:
-            try: booted = adb("shell", "getprop", "sys.boot_completed", timeout=8, check=False).stdout.strip() == "1"
+            try:
+                completed = adb("shell", "getprop", "sys.boot_completed", timeout=8, check=False).stdout.strip()
+                services = {name: adb("shell", "service", "check", name, timeout=8, check=False).stdout.strip()
+                            for name in ("phone", "wifi")} if completed == "1" else {}
+                booted = boot_services_ready(completed, services)
+                receipt["boot_readiness"] = dict(boot_completed=completed, services=services, ready=bool(booted))
             except subprocess.TimeoutExpired: booted = False
             if booted: break
             assert emulator.poll() is None, "Owned emulator exited during boot"
