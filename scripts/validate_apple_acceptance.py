@@ -28,15 +28,25 @@ def _walk(nodes):
         yield from _walk(node.get("children", []))
 
 
-def validate(summary, tests):
+def validate(summary, tests, expected_identifiers=None):
     """Return exact successful counts/identifiers, or reject incomplete evidence."""
-    expected_counts = {"totalTestCount": 8, "passedTests": 8, "skippedTests": 0,
+    if expected_identifiers is None:
+        expected_identifiers = EXPECTED_IDENTIFIERS
+    if not isinstance(expected_identifiers, (set, frozenset, list, tuple)):
+        raise ValueError("Expected identifiers must be an explicit inventory subset")
+    if any(not isinstance(identifier, str) for identifier in expected_identifiers):
+        raise ValueError("Expected identifiers must be strings")
+    expected = set(expected_identifiers)
+    if not expected or not expected <= EXPECTED_IDENTIFIERS or len(expected) != len(expected_identifiers):
+        raise ValueError("Expected identifiers must be a nonempty unique subset of the UI inventory")
+    count = len(expected)
+    expected_counts = {"totalTestCount": count, "passedTests": count, "skippedTests": 0,
                        "failedTests": 0, "expectedFailures": 0}
     if not isinstance(summary, dict) or summary.get("result") != "Passed":
         raise ValueError("Apple acceptance summary must be Passed")
-    for key, expected in expected_counts.items():
-        if type(summary.get(key)) is not int or summary[key] != expected:
-            raise ValueError(f"Expected {key}={expected}; got {summary.get(key)!r}")
+    for key, expected_count in expected_counts.items():
+        if type(summary.get(key)) is not int or summary[key] != expected_count:
+            raise ValueError(f"Expected {key}={expected_count}; got {summary.get(key)!r}")
     if summary.get("testFailures") != []:
         raise ValueError("Apple acceptance has missing or nonempty testFailures")
     if not isinstance(tests, dict):
@@ -56,12 +66,12 @@ def validate(summary, tests):
         raise ValueError("A test case is missing its identifier")
     if len(identifiers) != len(set(identifiers)):
         raise ValueError("Duplicate acceptance case identifiers")
-    if set(identifiers) != EXPECTED_IDENTIFIERS:
-        raise ValueError(f"Incomplete acceptance inventory: missing={sorted(EXPECTED_IDENTIFIERS-set(identifiers))}, "
-                         f"extra={sorted(set(identifiers)-EXPECTED_IDENTIFIERS)}")
+    if set(identifiers) != expected:
+        raise ValueError(f"Incomplete acceptance inventory: missing={sorted(expected-set(identifiers))}, "
+                         f"extra={sorted(set(identifiers)-expected)}")
     for case in cases:
         runs = [node for node in _walk(case.get("children", [])) if node["nodeType"] == "Test Case Run"]
         if len(runs) > 1:
             raise ValueError(f"Repeated acceptance case runs: {case['nodeIdentifier']}")
-    return {"passedTests": 8, "skippedTests": 0, "failedTests": 0,
+    return {"passedTests": count, "skippedTests": 0, "failedTests": 0,
             "identifiers": sorted(identifiers)}

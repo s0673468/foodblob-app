@@ -117,7 +117,15 @@ final class JellyInteractionUITests: XCTestCase {
   private func materialSlider() -> XCUIElement {
     app.tabBars.buttons["Settings"].tap()
     let slider = app.sliders["blob-translucency-slider"]
-    for _ in 0..<4 where !slider.isHittable { app.swipeDown() }
+    // Scroll in the leading gutter, outside the material slider/preview.
+    for _ in 0..<4 where !slider.isHittable {
+      let top = app.navigationBars.firstMatch.frame.maxY + 36
+      let bottom = app.tabBars.firstMatch.frame.minY - 36
+      let origin = app.coordinate(withNormalizedOffset: .zero)
+      origin.withOffset(CGVector(dx: 8, dy: top))
+        .press(forDuration: 0.05, thenDragTo: origin.withOffset(CGVector(dx: 8, dy: bottom)),
+          withVelocity: .slow, thenHoldForDuration: 0)
+    }
     XCTAssertTrue(slider.waitForExistence(timeout: 3))
     return slider
   }
@@ -129,7 +137,21 @@ final class JellyInteractionUITests: XCTestCase {
   @discardableResult
   private func setMaterial(_ amount: CGFloat, slider: XCUIElement) -> Int {
     slider.adjust(toNormalizedSliderPosition: amount)
+    if amount == 0 || amount == 1 {
+      // XCTest's normalized adjustment can stop one 5% step inside the
+      // track. Drag the visible thumb beyond the track to select its endpoint.
+      let position = CGFloat(materialPercentage(slider) ?? -1) / 100
+      XCTAssertTrue((0...1).contains(position))
+      let frame = slider.frame
+      let inset = min(frame.height / 2, frame.width / 2)
+      let thumbX = (inset + (frame.width - 2 * inset) * position) / frame.width
+      slider.coordinate(withNormalizedOffset: CGVector(dx: thumbX, dy: 0.5))
+        .press(forDuration: 0.1, thenDragTo: slider.coordinate(
+          withNormalizedOffset: CGVector(dx: amount == 0 ? -0.1 : 1.1, dy: 0.5)),
+          withVelocity: .slow, thenHoldForDuration: 0.1)
+    }
     let applied = materialPercentage(slider) ?? -1
+    capture("material-request-\(Int(amount * 100))-actual-\(applied)")
     if amount == 0.5 {
       // XCTest thumb drags are approximate. Verify the real intermediate value
       // persists; the renderer's exact 0.5 interpolation has a unit test.
@@ -270,10 +292,22 @@ final class JellyInteractionUITests: XCTestCase {
     attemptedAdds = 1
     let lens = foodButton(0)
     let press = lens.coordinate(withNormalizedOffset: CGVector(dx: 0.5, dy: 0.5))
-    press.press(forDuration: 0.08, thenDragTo: press.withOffset(CGVector(dx: 0, dy: -95)),
-      withVelocity: .fast, thenHoldForDuration: 0)
-    XCTAssertEqual(try readCounts(), start)
+    let blob = app.descendants(matching: .any).matching(
+      NSPredicate(format: "label == %@", "Food mix")).firstMatch
+    // The Food mix accessibility frame includes its drop area. A fixed upward
+    // offset can be a valid offering, so use the empty leading gutter instead.
+    let destination = CGPoint(x: app.frame.minX + 8, y: lens.frame.minY - 16)
+    XCTAssertFalse(lens.frame.contains(destination))
+    XCTAssertFalse(blob.frame.contains(destination))
+    let geometry = XCTAttachment(string: "lens=\(lens.frame), blob=\(blob.frame), cancellation=\(destination)")
+    geometry.name = "cancelled-lens-geometry"; geometry.lifetime = .keepAlways; add(geometry)
+    capture("before-cancelled-lens-press")
+    let target = app.coordinate(withNormalizedOffset: .zero)
+      .withOffset(CGVector(dx: destination.x - app.frame.minX, dy: destination.y - app.frame.minY))
+    press.press(forDuration: 0.08, thenDragTo: target,
+      withVelocity: .slow, thenHoldForDuration: 0.15)
     capture("cancelled-lens-press")
+    XCTAssertEqual(try readCounts(), start)
     app.tabBars.buttons["Settings"].tap()
     for (row, title) in [("Privacy", "Privacy"), ("Add the Home Screen widget", "Add widget")] {
       let link = app.buttons.containing(.staticText, identifier: row).firstMatch

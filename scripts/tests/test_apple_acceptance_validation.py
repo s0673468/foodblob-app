@@ -10,13 +10,20 @@ sys.path.insert(0, str(SCRIPTS))
 from validate_apple_acceptance import EXPECTED_IDENTIFIERS, validate
 
 
-def fixture():
-    summary = {"result": "Passed", "totalTestCount": 8, "passedTests": 8,
+FOCUSED_IDENTIFIERS = {
+    "JellyInteractionUITests/testCancelledLensPressAndSettingsLinksPreserveCounts()",
+    "JellyInteractionUITests/testPaintJellySliderPersistsWithoutChangingFoodAndBothWorldsStayPlayable()",
+}
+
+
+def fixture(identifiers=None):
+    identifiers = EXPECTED_IDENTIFIERS if identifiers is None else identifiers
+    summary = {"result": "Passed", "totalTestCount": len(identifiers), "passedTests": len(identifiers),
                "failedTests": 0, "skippedTests": 0, "expectedFailures": 0,
                "testFailures": []}
     cases = [{"nodeType": "Test Case", "name": identifier.split("/")[1],
               "nodeIdentifier": identifier, "result": "Passed"}
-             for identifier in sorted(EXPECTED_IDENTIFIERS)]
+             for identifier in sorted(identifiers)]
     tests = {"testNodes": [{"nodeType": "Test Plan", "name": "Acceptance",
                            "children": [{"nodeType": "UI test bundle", "name": "FoodBlobUITests",
                                          "children": cases}]}]}
@@ -24,6 +31,39 @@ def fixture():
 
 
 class AppleAcceptanceValidationTests(unittest.TestCase):
+    def test_explicit_focused_two_passes_but_cannot_claim_full_gate(self):
+        summary, tests, _ = fixture(FOCUSED_IDENTIFIERS)
+        result = validate(summary, tests, expected_identifiers=FOCUSED_IDENTIFIERS)
+        self.assertEqual(result["passedTests"], 2)
+        self.assertEqual(result["identifiers"], sorted(FOCUSED_IDENTIFIERS))
+        with self.assertRaises(ValueError): validate(summary, tests)
+
+    def test_focused_missing_or_wrong_case_is_rejected(self):
+        for wrong in (False, True):
+            summary, tests, cases = fixture(FOCUSED_IDENTIFIERS)
+            if wrong:
+                cases[0]["nodeIdentifier"] = next(iter(EXPECTED_IDENTIFIERS-FOCUSED_IDENTIFIERS))
+            else:
+                cases.pop()
+            with self.subTest(wrong=wrong), self.assertRaises(ValueError):
+                validate(summary, tests, expected_identifiers=FOCUSED_IDENTIFIERS)
+
+    def test_empty_unknown_and_duplicate_expected_subsets_fail(self):
+        summary, tests, _ = fixture(FOCUSED_IDENTIFIERS)
+        for expected in (set(), {"Other/testCase()"}, [*FOCUSED_IDENTIFIERS, *FOCUSED_IDENTIFIERS], "invalid"):
+            with self.subTest(expected=expected), self.assertRaises(ValueError):
+                validate(summary, tests, expected_identifiers=expected)
+
+    def test_focused_skipped_or_retried_case_is_still_rejected(self):
+        for retried in (False, True):
+            summary, tests, cases = fixture(FOCUSED_IDENTIFIERS)
+            if retried:
+                cases[0]["children"] = [{"nodeType": "Repetition", "name": "again", "result": "Passed"}]
+            else:
+                cases[0]["result"] = "Skipped"
+            with self.subTest(retried=retried), self.assertRaises(ValueError):
+                validate(summary, tests, expected_identifiers=FOCUSED_IDENTIFIERS)
+
     def test_inventory_matches_real_ui_source(self):
         source = (SCRIPTS.parent / "FoodBlobUITests/JellyInteractionUITests.swift").read_text()
         methods = re.findall(r"\bfunc (test\w+)\(\)", source)
