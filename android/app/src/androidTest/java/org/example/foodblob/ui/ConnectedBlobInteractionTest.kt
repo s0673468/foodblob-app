@@ -1,6 +1,9 @@
 package org.example.foodblob.ui
 
 import android.content.Context
+import android.content.Intent
+import androidx.lifecycle.Lifecycle
+import org.json.JSONObject
 import android.graphics.Bitmap
 import androidx.compose.ui.semantics.SemanticsActions
 import androidx.compose.ui.test.*
@@ -389,12 +392,37 @@ class ConnectedBlobInteractionTest {
             }
             withTimeout(5_000) { services.store.snapshots.first { it.counts(date) == initial && it.selectedSkin == SkinId.SKY_MEADOW } }
         }
+        // Raw UiAutomation pointers target the foreground window, unlike
+        // semantic actions. Bring this owned activity forward and prove it drew.
+        composeRule.activityRule.scenario.moveToState(Lifecycle.State.RESUMED)
+        composeRule.runOnUiThread {
+            composeRule.activity.startActivity(Intent(composeRule.activity, MainActivity::class.java)
+                .addFlags(Intent.FLAG_ACTIVITY_REORDER_TO_FRONT or Intent.FLAG_ACTIVITY_SINGLE_TOP))
+        }
         visibleTodayNode("today-title")
         composeRule.waitForIdle()
+        composeRule.waitUntil(5_000) {
+            composeRule.activity.lifecycle.currentState == Lifecycle.State.RESUMED &&
+                composeRule.activity.hasWindowFocus()
+        }
         val automation = InstrumentationRegistry.getInstrumentation().uiAutomation
         val context = ApplicationProvider.getApplicationContext<Context>()
         val directory = File(context.getExternalFilesDir(null),"jelly-motion-captures")
         check(directory.isDirectory || directory.mkdirs())
+        val readiness = JSONObject().put("lifecycle", composeRule.activity.lifecycle.currentState.name)
+            .put("windowFocus", composeRule.activity.hasWindowFocus())
+        val rendered = checkNotNull(automation.takeScreenshot())
+        try {
+            File(directory, "00-rendered-ready.png").outputStream().use {
+                check(rendered.compress(Bitmap.CompressFormat.PNG, 100, it))
+            }
+            val pixel = rendered.getPixel(rendered.width / 2, rendered.height / 2)
+            val visible = android.graphics.Color.red(pixel) > 20 ||
+                android.graphics.Color.green(pixel) > 20 || android.graphics.Color.blue(pixel) > 20
+            readiness.put("centerPixel", pixel).put("visibleSkyMeadow", visible)
+            File(directory, "raw-touch-readiness.json").writeText(readiness.toString())
+            check(visible) { "Raw pointer acceptance requires the actual rendered Sky Meadow window" }
+        } finally { rendered.recycle() }
         composeRule.mainClock.autoAdvance = false
         fun pause(ms: Long) {
             var remaining = ms

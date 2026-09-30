@@ -115,9 +115,7 @@ def main():
         udid = sim("create", "FoodBlobAcceptance-" + uuid.uuid4().hex[:10], kind, runtime['identifier']).stdout.strip(); uuid.UUID(udid)
         receipt["device"] = {"udid": udid, "type": kind, "runtime": runtime}
         (out / "owned-simulator.json").write_text(json.dumps(receipt["device"]))
-        focused = {identifier for identifier in EXPECTED_IDENTIFIERS if any(name in identifier for name in (
-            "testCancelledLensPressAndSettingsLinksPreserveCounts",
-            "testPaintJellySliderPersistsWithoutChangingFoodAndBothWorldsStayPlayable"))}
+        focused = {"JellyInteractionUITests/testCancelledLensPressAndSettingsLinksPreserveCounts()"}
         receipt["phases"] = {}
         for phase, expected in [("focused", focused), ("full", EXPECTED_IDENTIFIERS)]:
             if phase == "full":

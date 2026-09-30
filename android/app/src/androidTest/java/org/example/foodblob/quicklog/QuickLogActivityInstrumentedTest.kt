@@ -1,5 +1,6 @@
 package org.example.foodblob.quicklog
 
+import android.app.UiAutomation
 import android.content.Context
 import android.content.Intent
 import android.content.res.Configuration
@@ -23,6 +24,7 @@ import org.junit.Assert.assertEquals
 import org.junit.Assert.assertTrue
 import org.junit.Test
 import org.junit.runner.RunWith
+import org.json.JSONObject
 
 @RunWith(AndroidJUnit4::class)
 class QuickLogActivityInstrumentedTest {
@@ -55,10 +57,21 @@ class QuickLogActivityInstrumentedTest {
         val originalFontScale = shell("settings get system font_scale")
         val originalAutoRotate = shell("settings get system accelerometer_rotation")
         val originalRotation = shell("settings get system user_rotation")
+        // Settings values alone do not prove the display's actual frozen state.
+        val originalWindowRotation = shell("cmd window user-rotation")
+        captureRotationDiagnostics("landscape-original")
+        val restoreRotation = when {
+            originalWindowRotation == "free" -> UiAutomation.ROTATION_UNFREEZE
+            originalWindowRotation.matches(Regex("lock [0-3]")) -> originalWindowRotation.last().digitToInt()
+            else -> error("Cannot safely restore original display rotation: $originalWindowRotation")
+        }
         try {
             shell("settings put system font_scale 2.0")
-            shell("settings put system accelerometer_rotation 0")
-            shell("settings put system user_rotation 1")
+            assertTrue(
+                "The owned device must accept the explicit landscape rotation freeze",
+                instrumentation.uiAutomation.setRotation(UiAutomation.ROTATION_FREEZE_90),
+            )
+            captureRotationDiagnostics("landscape-requested")
             instrumentation.waitForIdleSync()
 
             val context = ApplicationProvider.getApplicationContext<Context>()
@@ -88,26 +101,61 @@ class QuickLogActivityInstrumentedTest {
                 }
             }
         } finally {
-            restoreSetting("font_scale", originalFontScale)
-            restoreSetting("accelerometer_rotation", originalAutoRotate)
-            restoreSetting("user_rotation", originalRotation)
-            instrumentation.waitForIdleSync()
+            var restoreFailure: Throwable? = null
+            val restoreActions = listOf<() -> Unit>(
+                { restoreSetting("font_scale", originalFontScale) },
+                { restoreSetting("accelerometer_rotation", originalAutoRotate) },
+                { restoreSetting("user_rotation", originalRotation) },
+                { assertTrue("Restore the owned display's original rotation mode",
+                    instrumentation.uiAutomation.setRotation(restoreRotation)) },
+                { instrumentation.waitForIdleSync() },
+                { captureRotationDiagnostics("landscape-restored") },
+            )
+            for (restore in restoreActions) {
+                try { restore() } catch (failure: Throwable) {
+                    val previous = restoreFailure
+                    if (previous == null) restoreFailure = failure else previous.addSuppressed(failure)
+                }
+            }
+            restoreFailure?.let { throw it }
         }
     }
 
     private fun waitForLandscapeWithLargeText(scenario: ActivityScenario<QuickLogActivity>) {
         val deadline = SystemClock.uptimeMillis() + 10_000
         var ready = false
+        var actualConfiguration = "Activity not observed"
         while (!ready && SystemClock.uptimeMillis() < deadline) {
             scenario.onActivity { activity ->
                 val configuration = activity.resources.configuration
+                actualConfiguration = "orientation=${configuration.orientation};fontScale=${configuration.fontScale};" +
+                    "widthDp=${configuration.screenWidthDp};heightDp=${configuration.screenHeightDp};" +
+                    "displayRotation=${activity.display?.rotation};requestedOrientation=${activity.requestedOrientation}"
                 ready = configuration.orientation == Configuration.ORIENTATION_LANDSCAPE &&
                     configuration.fontScale >= 1.9f
             }
             if (!ready) SystemClock.sleep(50)
         }
+        captureRotationDiagnostics("landscape-configuration-ready-$ready", actualConfiguration)
         captureFixture("landscape-configuration-ready-$ready")
         assertTrue("The owned device must apply landscape and large text before checking reachability", ready)
+    }
+
+    private fun captureRotationDiagnostics(name: String, activityConfiguration: String? = null) {
+        if (InstrumentationRegistry.getArguments().getString("captureInteractionStates") != "true") return
+        val context = ApplicationProvider.getApplicationContext<Context>()
+        val configuration = context.resources.configuration
+        val directory = File(context.getExternalFilesDir(null), "acceptance-path-captures").apply { mkdirs() }
+        val diagnostics = JSONObject()
+            .put("uptimeMillis", SystemClock.uptimeMillis())
+            .put("windowUserRotation", shell("cmd window user-rotation"))
+            .put("fontScaleSetting", shell("settings get system font_scale"))
+            .put("autoRotateSetting", shell("settings get system accelerometer_rotation"))
+            .put("userRotationSetting", shell("settings get system user_rotation"))
+            .put("applicationOrientation", configuration.orientation)
+            .put("applicationFontScale", configuration.fontScale)
+            .put("activityConfiguration", activityConfiguration ?: JSONObject.NULL)
+        File(directory, "$name.json").writeText(diagnostics.toString(2))
     }
 
     private fun captureFixture(name: String) {

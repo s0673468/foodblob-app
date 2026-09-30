@@ -287,27 +287,39 @@ final class JellyInteractionUITests: XCTestCase {
 
   func testCancelledLensPressAndSettingsLinksPreserveCounts() throws {
     let start = try XCTUnwrap(baseline)
-    // A dragged-away press may animate its material relaxing, but must never
-    // be interpreted as an accepted offering. Recover if that assertion fails.
+    // Verify held cancellation against the real recognizer, then retain
+    // the separate short dragged-away press contract with absolute geometry.
     attemptedAdds = 1
     let lens = foodButton(0)
-    let press = lens.coordinate(withNormalizedOffset: CGVector(dx: 0.5, dy: 0.5))
+    let visibleLens = lens.frame.intersection(app.frame)
+    XCTAssertFalse(visibleLens.isEmpty)
+    let startPoint = CGPoint(x: visibleLens.midX, y: visibleLens.midY)
+    let origin = app.coordinate(withNormalizedOffset: .zero)
+    let press = origin.withOffset(CGVector(dx: startPoint.x - app.frame.minX, dy: startPoint.y - app.frame.minY))
     let blob = app.descendants(matching: .any).matching(
       NSPredicate(format: "label == %@", "Food mix")).firstMatch
-    // The Food mix accessibility frame includes its drop area. A fixed upward
-    // offset can be a valid offering, so use the empty leading gutter instead.
-    let destination = CGPoint(x: app.frame.minX + 8, y: lens.frame.minY - 16)
+    // Release in empty navigation space, well outside the visible controls
+    // and the hero/drop region. Use absolute coordinates for the expanded AX frame.
+    let destination = CGPoint(x: app.frame.minX + 8, y: app.navigationBars.firstMatch.frame.midY)
     XCTAssertFalse(lens.frame.contains(destination))
     XCTAssertFalse(blob.frame.contains(destination))
-    let geometry = XCTAttachment(string: "lens=\(lens.frame), blob=\(blob.frame), cancellation=\(destination)")
+    let geometry = XCTAttachment(string: "lens=\(lens.frame), visibleLens=\(visibleLens), start=\(startPoint), blob=\(blob.frame), cancellation=\(destination), heldDuration=0.55, shortDuration=0.08, recognizerMinimum=0.45")
     geometry.name = "cancelled-lens-geometry"; geometry.lifetime = .keepAlways; add(geometry)
     capture("before-cancelled-lens-press")
     let target = app.coordinate(withNormalizedOffset: .zero)
       .withOffset(CGVector(dx: destination.x - app.frame.minX, dy: destination.y - app.frame.minY))
-    press.press(forDuration: 0.08, thenDragTo: target,
+    press.press(forDuration: 0.55, thenDragTo: target,
       withVelocity: .slow, thenHoldForDuration: 0.15)
-    capture("cancelled-lens-press")
-    XCTAssertEqual(try readCounts(), start)
+    capture("cancelled-held-lens-press")
+    XCTAssertEqual(try readCounts(), start, "A held offering released outside the drop region must cancel.")
+    let shortLens = foodButton(0).frame.intersection(app.frame)
+    let shortPress = origin.withOffset(CGVector(dx: shortLens.midX - app.frame.minX,
+      dy: shortLens.midY - app.frame.minY))
+    capture("before-cancelled-short-lens-press")
+    shortPress.press(forDuration: 0.08, thenDragTo: target,
+      withVelocity: .slow, thenHoldForDuration: 0.15)
+    capture("cancelled-short-lens-press")
+    XCTAssertEqual(try readCounts(), start, "A short dragged-away press must not add an offering.")
     app.tabBars.buttons["Settings"].tap()
     for (row, title) in [("Privacy", "Privacy"), ("Add the Home Screen widget", "Add widget")] {
       let link = app.buttons.containing(.staticText, identifier: row).firstMatch

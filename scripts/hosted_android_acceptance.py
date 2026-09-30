@@ -18,14 +18,8 @@ FLAGS = ("isolatedWidgetAcceptance", "captureSecondaryScreens", "captureThemeHig
          "captureJellyMotion", "captureJellyPerformance")
 FOCUSED = (
     "org.example.foodblob.quicklog.QuickLogActivityInstrumentedTest#confirmationActionRemainsReachableInLandscapeWithLargeText",
-    "org.example.foodblob.ui.ConnectedBlobInteractionTest#capturePolishedMenus",
-    "org.example.foodblob.ui.ConnectedBlobInteractionTest#heldColorDragOnlyLogsOnValidDropAndUndoRestoresIt",
-    "org.example.foodblob.ui.ConnectedBlobInteractionTest#materialSliderPersistsAndPokeAndCancelledSliderNeverWriteFood",
+    "org.example.foodblob.quicklog.QuickLogActivityInstrumentedTest#openingAValidShortcutRequiresConfirmationAndDoesNotMutate",
     "org.example.foodblob.ui.ConnectedBlobInteractionTest#captureJellyTouchAndColourSequence",
-    "org.example.foodblob.ui.ConnectedBlobInteractionTest#captureNativeInteractionStates",
-    "org.example.foodblob.ui.FoodBlobComposeSmokeTest#historyShowsRecentDaysWithAccessibleCountsAndOpensTheSelectedDay",
-    "org.example.foodblob.ui.ConnectedBlobInteractionTest#rapidAcceptedTapsPersistAndControlsStayReachable",
-    "org.example.foodblob.ui.ConnectedBlobInteractionTest#accessiblePokeAndStretchNeverWriteFoodOrChangeDay",
 )
 
 
@@ -78,7 +72,7 @@ def main():
             evidence["inventory_returncode"] = result.returncode
             if result.returncode: evidence["errors"].append(result.stderr or result.stdout)
             evidence["files"] = sorted(p for p in result.stdout.splitlines() if p.startswith(base + "/") and p.endswith(".png") and ".." not in Path(p).parts)
-            priorities = {"landscape": ("landscape",), "today": ("today-controls", "interaction-captures"), "calendar": ("calendar", "history"), "held": ("held", "paint-held"), "stretch": ("stretched", "stretch"), "baseline": ("empty", "rest", "before")}
+            priorities = {"landscape": ("landscape",), "rendered": ("00-rendered-ready", "today-controls"), "calendar": ("calendar", "history"), "held": ("held", "paint-held"), "stretch": ("stretched", "stretch"), "baseline": ("empty", "rest", "before")}
             selected = []
             for kind, tags in priorities.items():
                 match = next((p for p in evidence["files"] if p not in selected and any(tag in p for tag in tags)), None)
@@ -147,12 +141,21 @@ def main():
             receipt["device"][key] = adb("shell", "getprop", key).stdout.strip()
         assert receipt["device"]["ro.kernel.qemu"] == "1" and receipt["device"]["ro.build.version.sdk"] == "35" and receipt["device"]["ro.product.cpu.abi"] == "x86_64"
         adb("shell", "svc", "wifi", "disable"); adb("shell", "svc", "data", "disable"); receipt["offline_guest"] = True
+        # These settings affect only the disposable owned AVD, deleted at exit.
+        adb("shell", "settings", "put", "global", "stay_on_while_plugged_in", "3")
+        adb("shell", "settings", "put", "system", "screen_off_timeout", "1800000")
         phase = "install"
         for apk in apks:
             installed = adb("install", "-t", str(apk), timeout=120)
             assert "Success" in installed.stdout, "APK installation was not confirmed"
-        for label, selector, expected in [("focused", ",".join(FOCUSED), 9), ("full", None, 90)]:
-            phase = label; adb("shell", "pm", "clear", "org.example.foodblob")
+        for label, selector, expected in [("focused", ",".join(FOCUSED), len(FOCUSED)), ("full", None, 90)]:
+            phase = label
+            adb("shell", "input", "keyevent", "KEYCODE_WAKEUP")
+            adb("shell", "wm", "dismiss-keyguard")
+            for service in ("power", "window", "display"):
+                state = adb("shell", "dumpsys", service, check=False)
+                (out / f"{label}-before-{service}.log").write_text(state.stdout + state.stderr)
+            adb("shell", "pm", "clear", "org.example.foodblob")
             command = [str(sdk / "platform-tools/adb"), "-s", serial, "shell", "am", "instrument", "-w", "-r", "-e", "clearPackageData", "false"]
             for flag in FLAGS: command += ["-e", flag, "true"]
             if selector: command += ["-e", "class", selector]
@@ -168,6 +171,16 @@ def main():
             finally:
                 (out / f"{label}-instrumentation.log").write_text(report)
                 receipt.setdefault(label, {}).update(observed=diagnostic_counts(report), transport_returncode=transport, captures=capture_files(label))
+                for service in ("power", "window", "display"):
+                    state = adb("shell", "dumpsys", service, check=False)
+                    (out / f"{label}-after-{service}.log").write_text(state.stdout + state.stderr)
+                diagnostics = adb("shell", "logcat", "-d", "-t", "500", check=False)
+                (out / f"{label}-logcat.log").write_text(diagnostics.stdout + diagnostics.stderr)
+                files = adb("shell", "find", "/sdcard/Android/data/org.example.foodblob/files", "-type", "f", "-name", "*.json", check=False)
+                for remote in files.stdout.splitlines():
+                    if Path(remote).name.startswith("landscape-") or Path(remote).name == "raw-touch-readiness.json":
+                        folder = out / (label + "-fixture-diagnostics"); folder.mkdir(exist_ok=True)
+                        adb("pull", remote, str(folder / Path(remote).name), check=False)
             assert transport == 0, f"adb transport failed: {transport}"
             receipt[label]["validated"] = validate(report, expected)
             print(f"{label}: {receipt[label]['validated']}", flush=True)

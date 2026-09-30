@@ -132,7 +132,7 @@ jobs:
           scripts/android_gradle.sh --max-workers=1 --no-parallel \
             -Dorg.gradle.jvmargs="-Xmx3g -XX:MaxMetaspaceSize=768m -XX:MaxDirectMemorySize=256m -XX:ActiveProcessorCount=1" \
             -Pkotlin.compiler.execution.strategy=in-process :app:assembleDebug :app:assembleDebugAndroidTest
-      - name: Execute focused nine then all ninety (all opt-ins, no skips)
+      - name: Execute affected regression cases then all ninety (all opt-ins, no skips)
         run: python3 scripts/hosted_android_acceptance.py
       - name: Clean only the owned Android device
         if: always()
@@ -180,7 +180,7 @@ jobs:
             xcodebuild -downloadComponent MetalToolchain
           fi
           xcodebuild -showComponent MetalToolchain -json
-      - name: Execute all eight owned-simulator UI cases (no skips)
+      - name: Execute held cancellation then all eight owned-simulator UI cases (no skips)
         env:
           OMP_NUM_THREADS: "1"
           VECLIB_MAXIMUM_THREADS: "1"
