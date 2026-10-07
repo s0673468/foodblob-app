@@ -72,6 +72,19 @@ opening one cannot change the day.
 
 ## Privacy
 
+On iOS 17 or newer, Shortcuts offers **Log Food Offering** and **Get Today's
+Food Mix** without opening the app. Log chooses Green, Yellow, or Red and has an
+optional **Remove Instead** switch, off by default. Removing an empty colour does
+nothing. The mix result exposes green, yellow, red, total, and the local date key
+as individual fields; it includes pending widget actions and never reads history.
+Siri phrases include “Log a green offering in Food Blob” (also yellow or red)
+and “What's my Food Blob mix today”. Siri and personal automations use the user's
+normal system setup; Food Blob requests no new OS access and schedules no actions.
+
+Shortcuts writes append one UUID-tagged action to the existing widget ledger.
+`FoodStore` reconciles it exactly once when the app next becomes active. The
+widget count-change intent and persisted formats remain unchanged.
+
 Food Blob has no account, analytics, ads, tracking, cloud sync, or paid
 backend. Counts stay in each platform's local containers. The iPhone app and
 its widgets share their App Group; the Watch app has a separate durable App

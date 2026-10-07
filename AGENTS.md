@@ -16,6 +16,10 @@ and Glance.
   Track may import absolute counts but must never mutate Food Blob state.
 - Widget interactions use App Intents and the append-only ledger. Never mutate
   an app-owned history file directly from WidgetKit.
+- The iPhone Shortcuts surface has only Log Food Offering and Get Today's Food
+  Mix. External writes append UUID-tagged widget ledger entries; queries expose
+  only today, including pending actions. Keep Siri/automation activation user-driven
+  and do not add OS access requests or automatic meal actions.
 - Widget long-press and horizontal swipes belong to the Home Screen. Widgets
   use explicit add and minus App Intent zones.
 - Sky Meadow and Shrine are the only product skins. Unknown and retired skin
