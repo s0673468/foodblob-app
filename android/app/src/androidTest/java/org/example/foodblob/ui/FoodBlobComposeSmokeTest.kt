@@ -12,6 +12,9 @@ import androidx.compose.ui.test.captureToImage
 import androidx.compose.ui.test.hasAnyAncestor
 import androidx.compose.ui.test.hasTestTag
 import androidx.compose.ui.test.hasText
+import androidx.compose.ui.test.isDisplayed
+import androidx.compose.ui.test.performTouchInput
+import androidx.compose.ui.test.swipeUp
 import androidx.compose.ui.test.junit4.createAndroidComposeRule
 import androidx.compose.ui.test.onAllNodesWithTag
 import androidx.compose.ui.test.onNodeWithTag
@@ -22,6 +25,7 @@ import androidx.compose.ui.test.performScrollToNode
 import androidx.compose.ui.unit.dp
 import androidx.room.withTransaction
 import androidx.test.core.app.ApplicationProvider
+import androidx.test.platform.app.InstrumentationRegistry
 import androidx.lifecycle.Lifecycle
 import org.example.foodblob.MainActivity
 import org.example.foodblob.R
@@ -237,10 +241,10 @@ class FoodBlobComposeSmokeTest {
             .assertContentDescriptionEquals(expectedTodayDescription)
         (0 until minOf(7,today.dayOfMonth)).forEach { offset ->
             val date = today.minusDays(offset.toLong())
-            composeRule.onNodeWithTag("history-screen").performScrollToNode(hasTestTag("history-day-$date"))
+            scrollHistoryDayIntoView(date.toString())
             composeRule.onNodeWithTag("history-day-$date").assertIsDisplayed()
         }
-        composeRule.onNodeWithTag("history-screen").performScrollToNode(hasTestTag("history-day-$today"))
+        scrollHistoryDayIntoView(today.toString())
         composeRule.onNodeWithTag("history-day-$today").performClick()
         composeRule.onNodeWithTag("day-detail").assertIsDisplayed()
     }
@@ -293,6 +297,29 @@ class FoodBlobComposeSmokeTest {
         composeRule.onNodeWithTag("skins-tab").performClick()
         composeRule.onNodeWithTag("skins-screen").performScrollToNode(hasTestTag("skin-preservation"))
         composeRule.onNodeWithTag("skin-preservation").assertIsDisplayed()
+    }
+
+    private fun scrollHistoryDayIntoView(date: String) {
+        val day = composeRule.onNodeWithTag("history-day-$date")
+        val history = composeRule.onNodeWithTag("history-screen")
+        history.performScrollToNode(hasTestTag("history-day-$date"))
+        // A calendar is one LazyColumn item: locating its nested day scrolls
+        // to the calendar, not necessarily to the last week within that item.
+        repeat(4) {
+            if (day.isDisplayed()) { captureFixture("history-day-$date"); return }
+            history.performTouchInput { swipeUp() }
+            composeRule.waitForIdle()
+        }
+        day.assertIsDisplayed()
+    }
+
+    private fun captureFixture(name: String) {
+        if (InstrumentationRegistry.getArguments().getString("captureInteractionStates") != "true") return
+        val context = ApplicationProvider.getApplicationContext<android.content.Context>()
+        val directory = java.io.File(context.getExternalFilesDir(null), "acceptance-path-captures").apply { mkdirs() }
+        val image = checkNotNull(InstrumentationRegistry.getInstrumentation().uiAutomation.takeScreenshot())
+        java.io.File(directory, "$name.png").outputStream().use { check(image.compress(android.graphics.Bitmap.CompressFormat.PNG, 100, it)) }
+        image.recycle()
     }
 
     private fun finishOnboardingIfNeeded() {
