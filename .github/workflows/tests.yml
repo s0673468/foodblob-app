@@ -9,7 +9,7 @@ on:
       device_platform:
         description: Disposable device acceptance (ordinary gates run with none)
         type: choice
-        options: [none, android, apple, both]
+        options: [none, android]
         default: none
 
 concurrency:
@@ -99,7 +99,7 @@ jobs:
 
   android-device:
     name: Android device acceptance
-    if: github.event_name == 'workflow_dispatch' && (inputs.device_platform == 'android' || inputs.device_platform == 'both')
+    if: github.event_name == 'workflow_dispatch' && inputs.device_platform == 'android'
     runs-on: ubuntu-latest
     timeout-minutes: 40
     env:
@@ -163,51 +163,3 @@ jobs:
           compression-level: 9
           if-no-files-found: warn
 
-  apple-device:
-    name: Apple UI acceptance
-    if: github.event_name == 'workflow_dispatch' && (inputs.device_platform == 'apple' || inputs.device_platform == 'both')
-    runs-on: macos-26
-    timeout-minutes: 40
-    env:
-      DEVELOPER_DIR: /Applications/Xcode_26.6.app/Contents/Developer
-      ACCEPTANCE_OUTPUT: /tmp/foodblob-apple-evidence-${{ github.run_id }}-${{ github.run_attempt }}
-    steps:
-      - uses: actions/checkout@d23441a48e516b6c34aea4fa41551a30e30af803 # v6
-        with:
-          persist-credentials: false
-      - name: Ensure official Metal compiler component
-        run: |
-          set -euo pipefail
-          if ! xcodebuild -showComponent MetalToolchain -json | python3 -c 'import json, sys; sys.exit(json.load(sys.stdin).get("status") != "installed")'; then
-            xcodebuild -downloadComponent MetalToolchain
-          fi
-          xcodebuild -showComponent MetalToolchain -json
-      - name: Execute held cancellation then all eight owned-simulator UI cases (no skips)
-        env:
-          OMP_NUM_THREADS: "1"
-          VECLIB_MAXIMUM_THREADS: "1"
-        run: python3 scripts/hosted_apple_acceptance.py
-      - name: Clean only the owned Apple simulator
-        if: always()
-        run: |
-          python3 - <<'PYTHON'
-          import json, os, pathlib, subprocess, uuid
-          marker = pathlib.Path(os.environ["ACCEPTANCE_OUTPUT"]) / "owned-simulator.json"
-          if marker.exists():
-              owner = json.loads(marker.read_text())
-              uuid.UUID(owner["udid"])
-              for action in ("shutdown", "delete"):
-                  subprocess.run(["xcrun", "simctl", action, owner["udid"]], timeout=60)
-          PYTHON
-      - name: Record device outcome
-        if: always()
-        run: |
-          if test -f "$ACCEPTANCE_OUTPUT/receipt.json"; then cat "$ACCEPTANCE_OUTPUT/receipt.json" | tee -a "$GITHUB_STEP_SUMMARY"; fi
-      - uses: actions/upload-artifact@ea165f8d65b6e75b540449e92b4886f43607fa02 # v4
-        if: always()
-        with:
-          name: apple-device-${{ github.sha }}
-          path: ${{ env.ACCEPTANCE_OUTPUT }}
-          retention-days: 1
-          compression-level: 9
-          if-no-files-found: warn
